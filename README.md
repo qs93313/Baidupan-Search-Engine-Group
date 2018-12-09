@@ -1,4 +1,7 @@
 # Baidupan-Search-Engine-Group
+greasyfork上的分享：  
+https://greasyfork.org/zh-CN/scripts/375337-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E8%81%9A%E5%90%88  
+
 在百度云盘页面中新增百度网盘搜索引擎聚合，有：  
 爱搜资源 | https://www.aisouziyuan.com/	  
 云盘精灵 | https://www.yunpanjingling.com/	  
