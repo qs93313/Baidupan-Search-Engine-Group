@@ -1,20 +1,21 @@
 // ==UserScript==
 // @name         百度网盘搜索引擎聚合
-// @version      1.1
+// @version      1.4
 // @description  在百度云盘页面中新增百度网盘搜索引擎聚合
 // @match        *://pan.baidu.com/*
+// @match        *://yun.baidu.com/*
 // @grant        来自各个网盘搜索引擎开发者
 // @author       太史子义慈
 // @namespace    qs93313@sina.cn
 // ==/UserScript==
 
 !(function() {
-	bdyjuhe();
+	bseg();
 })();
 
-function bdyjuhe() {
+function bseg() {
 	//确定显示点是否存在
-	if(document.querySelector(".find-light-icon") !== null) {
+	if(document.querySelector(".find-light-icon") !== null || document.querySelector("#hgejgNaM") !== null) {
 
 		//搜索引擎网址目录，%sv%为替换符
 		var dirall = {
@@ -28,15 +29,15 @@ function bdyjuhe() {
 			},
 			"id_opt_02": {
 				0: "云盘恶魔a",
-				1: "https://pan.09l.me/search/a/%sv%/1.html",
+				1: "https://yunpanem.com/search/a/%sv%/1.html",
 			},
 			"id_opt_03": {
 				0: "云盘恶魔c",
-				1: "https://pan.09l.me/search/c/%sv%/1.html",
+				1: "https://yunpanem.com/search/c/%sv%/1.html",
 			},
 			"id_opt_04": {
 				0: "云盘恶魔f",
-				1: "https://pan.09l.me/search/f/%sv%/1.html",
+				1: "https://yunpanem.com/search/f/%sv%/1.html",
 			},
 			"id_opt_05": {
 				0: "磁力猫",
@@ -319,16 +320,25 @@ function bdyjuhe() {
 
 		//找到父亲节点
 		var father = document.getElementsByClassName("vyQHNyb")[0];
+		var father2 = document.getElementsByClassName("pickpw")[0];
 
 		//新建span子节点
 		var new_span = document.createElement('span');
 		new_span.setAttribute("id", "id_new_span");
-		father.appendChild(new_span);
+		if(father) {
+			father.appendChild(new_span);
+		} else if(father2) {
+			father2.appendChild(new_span);
+		}
 
 		//span节点再建【选择框】子节点
 		var new_select = document.createElement('select');
 		new_span.appendChild(new_select);
-		new_select.style.cssText = "font-size: 15px;height: 30px;color: black;";
+		if(father) {
+			new_select.style.cssText = "font-size: 15px;height: 30px;color: black;";
+		} else if(father2) {
+			new_select.style.cssText = "font-size: 15px;height: 30px;color: black;display:inline-block;margin:5px 0 0 0;";
+		}
 
 		//选择框子节点下面要建立大量【选项】子节点
 		for(var i in dirall) {
@@ -342,8 +352,12 @@ function bdyjuhe() {
 		new_input.setAttribute("class", "scont");
 		new_input.setAttribute("placeholder", "请输入要搜索的内容");
 		new_span.appendChild(new_input);
-		new_input.style.cssText = "font-size: 15px;width: 180px;height: 22px;color: black;padding: 2px;";
-		new_input.focus();
+		if(father) {
+			new_input.style.cssText = "font-size:15px;width:180px;height: 22px;color:black;padding:2px;";
+			new_input.focus();
+		} else if(father2) {
+			new_input.style.cssText = "font-size:15px;width:231px;height: 22px;color:black;padding:2px;";
+		}
 
 		//span节点再建【按钮】子节点
 		var new_btn = document.createElement('button');
@@ -382,7 +396,7 @@ function bdyjuhe() {
 		console.log("失败一次");
 		//显示点不存在，50毫秒后再次执行
 		setTimeout(function() {
-			bdyjuhe();
+			bseg();
 		}, 50);
 	}
 
