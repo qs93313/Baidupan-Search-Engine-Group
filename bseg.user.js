@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘搜索引擎聚合
-// @version      1.4
+// @version      1.7
 // @description  在百度云盘页面中新增百度网盘搜索引擎聚合
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -247,10 +247,6 @@ function bseg() {
 				0: "fastsoso",
 				1: "https://www.fastsoso.cn/search?k=%sv%",
 			},
-			"id_opt_57": {
-				0: "v搜索",
-				1: "http://www.v1248.com/index.htm?kw=%sv%",
-			},
 			"id_opt_58": {
 				0: "搜盘",
 				1: "http://www.soupan.info/search.php?q=%sv%",
@@ -269,15 +265,11 @@ function bseg() {
 			},
 			"id_opt_62": {
 				0: "特百度",
-				1: "http://www.tebaidu.com/search.asp?wd=%sv%",
+				1: "http://www.tebaidu.com/search.asp?so_md5key=79c1a7c496e5051205d46dd9b5a169a9&wd=%sv%",
 			},
 			"id_opt_63": {
 				0: "搜搜云盘",
 				1: "http://www.sosoyunpan.com/search.asp?wd=%sv%",
-			},
-			"id_opt_64": {
-				0: "云网盘之家",
-				1: "http://www.wowenda.com/search?wd=%sv%",
 			},
 			"id_opt_65": {
 				0: "盘优搜",
@@ -315,6 +307,10 @@ function bseg() {
 				0: "乐依分享",
 				1: "https://www.dyroy.com/html/search.html?q=%sv%",
 			},
+			"id_opt_74": {
+				0: "搜狗搜索",
+				1: "https://www.sogou.com/web?ie=utf8&query=%sv%%20site:pan.baidu.com",
+			},
 
 		};
 
@@ -329,6 +325,7 @@ function bseg() {
 			father.appendChild(new_span);
 		} else if(father2) {
 			father2.appendChild(new_span);
+			new_span.style.cssText = "display:inline-block;margin:30px 0 0 0;";
 		}
 
 		//span节点再建【选择框】子节点
@@ -394,10 +391,10 @@ function bseg() {
 		zzy.style.cssText = "display: none!important;";
 	} else {
 		console.log("失败一次");
-		//显示点不存在，50毫秒后再次执行
+		//显示点不存在，140毫秒后再次执行
 		setTimeout(function() {
 			bseg();
-		}, 50);
+		}, 140);
 	}
 
 	//新建option
