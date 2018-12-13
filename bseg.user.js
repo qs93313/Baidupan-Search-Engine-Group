@@ -62,7 +62,7 @@ function bseg(t) {
 			new_btn.onmouseenter = function() {
 				new_btn.style.background = "#7EB2FF";
 			};
-			new_btn.onmouseleave  = function() {
+			new_btn.onmouseleave = function() {
 				new_btn.style.background = "#3B8CFF";
 			};
 
@@ -442,6 +442,10 @@ function dir_all() {
 			0: "必应搜索",
 			1: "https://cn.bing.com/search?q=%sv%%20pan.baidu.com",
 		},
+		"id_opt_84": {
+			0: "神马搜索",
+			1: "https://m.sm.cn/s?q=%sv%%20pan.baidu.com",
+		},
 		"id_opt_79": {
 			0: "ecosia",
 			1: "https://www.ecosia.org/search?q=%sv%%20pan.baidu.com",
@@ -507,6 +511,5 @@ function dir_all() {
 			1: "http://www.zhuzhupan.com/search?s=8&query=%sv%",
 		},
 	};
-	console.log(da);
 	return da;
 }
