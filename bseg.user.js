@@ -17,36 +17,36 @@ function bseg(t) {
 	//最多找100次
 	if(t < 100) {
 		//主页
-		let find_home = (document.querySelector(".find-light-icon") !== null);
+		var find_home = (document.querySelector(".find-light-icon") !== null);
 		//密码填写页
-		let find_init = (document.querySelector("#hgejgNaM") !== null);
+		var find_init = (document.querySelector("#hgejgNaM") !== null);
 		//客户端下载页
-		let find_download = (document.querySelector("#login-header") !== null);
+		var find_download = (document.querySelector("#login-header") !== null);
 		//版本更新页 | 服务协议
-		let find_version = (document.querySelector(".help-all") !== null || document.querySelector(".main-i") !== null);
+		var find_version = (document.querySelector(".help-all") !== null || document.querySelector(".main-i") !== null);
 		//综合
-		let find_or = (find_home || find_init || find_download || find_version);
+		var find_or = (find_home || find_init || find_download || find_version);
 		//确定显示点是否存在
 		if(find_or) {
 			//搜索引擎网址目录
-			let dirall = dir_all();
+			var dirall = dir_all();
 
 			//新建span子节点（！！！注意每个页面父节点不同！！！）
-			let new_span = document.createElement('span');
+			var new_span = document.createElement('span');
 			new_span.setAttribute("id", "id_new_span");
 
 			//span节点再建【选择框】子节点
-			let new_select = document.createElement('select');
+			var new_select = document.createElement('select');
 			new_span.appendChild(new_select);
 
 			//选择框子节点下面要建立大量【选项】子节点
-			for(let i in dirall) {
-				let v = dirall[i][0];
+			for(var i in dirall) {
+				var v = dirall[i][0];
 				new_option(v, i, new_select);
 			}
 
 			//span节点再建【输入框】子节点
-			let new_input = document.createElement('input');
+			var new_input = document.createElement('input');
 			new_input.setAttribute("id", "scont");
 			new_input.setAttribute("class", "scont");
 			new_input.setAttribute("placeholder", "请输入要搜索的内容");
@@ -54,7 +54,7 @@ function bseg(t) {
 			new_span.appendChild(new_input);
 
 			//span节点再建【按钮】子节点
-			let new_btn = document.createElement('button');
+			var new_btn = document.createElement('button');
 			new_btn.innerHTML = "搜索";
 			new_span.appendChild(new_btn);
 			new_btn.style.cssText = "font-size: 14px;width: 52px;height: 29px;color: white;border:0px;";
@@ -69,10 +69,10 @@ function bseg(t) {
 			//找到父亲节点
 			if(find_home) {
 				//首页
-				let father_home = document.getElementsByClassName("vyQHNyb")[0];
+				var father_home = document.getElementsByClassName("vyQHNyb")[0];
 				father_home.style.cssText = "margin-left: 0!important;;";
 				//主页清除广告，腾位置
-				let zzy = father_home.childNodes[2];
+				var zzy = father_home.childNodes[2];
 				zzy.style.cssText = "display: none!important;";
 				//.vyQHNyb
 				//新建span子节点
@@ -84,7 +84,7 @@ function bseg(t) {
 				new_input.focus();
 			} else if(find_init) {
 				//密码填写页
-				let father_init = document.getElementsByClassName("pickpw")[0];
+				var father_init = document.getElementsByClassName("pickpw")[0];
 				//新建span子节点
 				father_init.appendChild(new_span);
 				//设置新建的span节点样式
@@ -95,7 +95,7 @@ function bseg(t) {
 				new_input.style.cssText = "font-size:15px;width:231px;height: 22px;color:black;padding:2px;outline:none;";
 			} else if(find_download) {
 				//客户端下载页
-				let father_download = document.getElementsByClassName("logo-main")[0];
+				var father_download = document.getElementsByClassName("logo-main")[0];
 				//新建span子节点
 				father_download.appendChild(new_span);
 				//设置新建的span节点样式
@@ -107,7 +107,7 @@ function bseg(t) {
 				new_input.focus();
 			} else if(find_version) {
 				//版本更新页
-				let father_version = document.getElementsByClassName("hd-main")[0];
+				var father_version = document.getElementsByClassName("hd-main")[0];
 				//新建span子节点
 				father_version.appendChild(new_span);
 				//设置新建的span节点样式
@@ -122,19 +122,19 @@ function bseg(t) {
 			//按钮点击事件
 			new_btn.onclick = function new_btn_click() {
 				//获得输入框数据
-				let new_input_val = new_input.value;
+				var new_input_val = new_input.value;
 				//计算输入框数据长度
-				let new_input_val_len = new_input_val.length;
+				var new_input_val_len = new_input_val.length;
 				//如果输入框有数据
 				if(new_input_val_len > 0) {
 					//获得选择框里被选中的选项索引
-					let option_index = new_select.selectedIndex;
+					var option_index = new_select.selectedIndex;
 					//根据索引获得获得选择框里被选中的选项id
-					let option_select_id = new_select.options[option_index].id;
+					var option_select_id = new_select.options[option_index].id;
 					//根据id和网址目录获得网址
-					let pcsearch = dirall[option_select_id][1];
+					var pcsearch = dirall[option_select_id][1];
 					//用输入框的数据替换掉网址内的替换符
-					let dti = pcsearch.replace("%sv%", new_input_val);
+					var dti = pcsearch.replace("%sv%", new_input_val);
 					//网址跳转
 					window.open(dti);
 				} else {
@@ -157,14 +157,14 @@ function bseg(t) {
 
 //新建option
 function new_option(ih, aid, ns) {
-	let new_opt = document.createElement('option');
+	var new_opt = document.createElement('option');
 	new_opt.innerHTML = ih;
 	new_opt.setAttribute("id", aid);
 	ns.appendChild(new_opt);
 }
 //搜索引擎网址目录，%sv%为替换符
 function dir_all() {
-	let da = {
+	var da = {
 		"id_opt_00": {
 			0: "爱搜资源",
 			1: "https://www.aisouziyuan.com/?name=%sv%",
