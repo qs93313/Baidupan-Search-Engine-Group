@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘搜索引擎聚合
-// @version      1.82
+// @version      1.83
 // @description  在百度云盘页面中新增百度网盘搜索引擎聚合
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -24,8 +24,10 @@ function bseg(t) {
 		var find_download = (document.querySelector("#login-header") !== null);
 		//版本更新页 | 服务协议
 		var find_version = (document.querySelector(".help-all") !== null || document.querySelector(".main-i") !== null);
+		//支付中心页
+		var find_checkout = (document.querySelector(".cashier-page-header") !== null);
 		//综合
-		var find_or = (find_home || find_init || find_download || find_version);
+		var find_or = (find_home || find_init || find_download || find_version || find_checkout);
 		//确定显示点是否存在
 		if(find_or) {
 			//搜索引擎网址目录
@@ -71,16 +73,23 @@ function bseg(t) {
 				//首页
 				var father_home = document.getElementsByClassName("vyQHNyb")[0];
 				father_home.style.cssText = "margin-left: 0!important;;";
+
 				//主页清除广告，腾位置
-				var zzy = father_home.childNodes[2];
-				zzy.style.cssText = "display: none!important;";
-				//.vyQHNyb
+				var cMEMEF_0 = father_home.childNodes[0];
+				cMEMEF_0.style.cssText = "margin:0 8px!important;";
+				var cMEMEF_1 = father_home.childNodes[1];
+				cMEMEF_1.style.cssText = "margin:0 8px!important;";
+				var cMEMEF_2 = father_home.childNodes[2];
+				cMEMEF_2.style.cssText = "display: none!important;";
+				var cMEMEF_3 = father_home.childNodes[3];
+				cMEMEF_3.style.cssText = "margin:0 8px!important;";
+
 				//新建span子节点
 				father_home.appendChild(new_span);
 				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;";
+				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;margin:0 0 0 20px;";
 				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:240px;height: 22px;color:black;padding:2px;outline:none;";
+				new_input.style.cssText = "font-size:15px;width:280px;height: 22px;color:black;padding:2px;outline:none;";
 				new_input.focus();
 			} else if(find_init) {
 				//密码填写页
@@ -116,6 +125,18 @@ function bseg(t) {
 				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;";
 				//设置新建的输入框的样式
 				new_input.style.cssText = "font-size:15px;width:250px;height: 22px;color:black;padding:2px;outline:none;";
+				new_input.focus();
+			} else if(find_checkout) {
+				//版本更新页
+				var father_checkout = document.getElementsByClassName("cashier-page-ul")[0];
+				//新建span子节点
+				father_checkout.appendChild(new_span);
+				//设置新建的span节点样式
+				new_span.style.cssText = "display:inline-block;margin:5px 0 0 20px;";
+				//设置新建的选择框的样式
+				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;";
+				//设置新建的输入框的样式
+				new_input.style.cssText = "font-size:15px;width:200px;height: 22px;color:black;padding:2px;outline:none;";
 				new_input.focus();
 			}
 
@@ -162,6 +183,7 @@ function new_option(ih, aid, ns) {
 	new_opt.setAttribute("id", aid);
 	ns.appendChild(new_opt);
 }
+
 //搜索引擎网址目录，%sv%为替换符
 function dir_all() {
 	var da = {
@@ -194,11 +216,11 @@ function dir_all() {
 			1: "https://www.cilimao.me/search?word=%sv%",
 		},
 		"id_opt_07": {
-			0: "小不点搜索",
+			0: "小不点",
 			1: "https://www.xiaobd.net/m/search?wd=%sv%",
 		},
 		"id_opt_08": {
-			0: "胖次搜索",
+			0: "胖次",
 			1: "https://www.panc.cc/s/%sv%/td_0",
 		},
 		"id_opt_09": {
@@ -226,7 +248,7 @@ function dir_all() {
 			1: "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=1",
 		},
 		"id_opt_15": {
-			0: "鸵鸟搜索",
+			0: "鸵鸟",
 			1: "http://www.tuoniao.me/search/%sv%/list",
 		},
 		"id_opt_16": {
@@ -238,176 +260,176 @@ function dir_all() {
 			1: "http://www.verypan.com/index/index/baidusearch?keyword=%sv%",
 		},
 		"id_opt_18": {
-			0: "西林街搜索",
-			1: "http://www.xilinjie.com/s?q=%sv%&t=pan",
-		},
-		"id_opt_19": {
 			0: "小白盘",
 			1: "http://www.xiaobaipan.com/list-%svh%",
 		},
-		"id_opt_20": {
+		"id_opt_19": {
 			0: "盘多多",
 			1: "http://www.panduoduo.net/s/name/%sv%",
 		},
-		"id_opt_21": {
+		"id_opt_20": {
 			0: "图书盘",
 			1: "http://www.tushupan.com/search?query=%sv%",
 		},
-		"id_opt_22": {
-			0: "史莱姆搜索",
+		"id_opt_21": {
+			0: "史莱姆",
 			1: "http://www.slimego.cn/search.html?q=%sv%",
 		},
-		"id_opt_23": {
+		"id_opt_22": {
 			0: "云铺子",
 			1: "http://www.yunpuzi.net/all/s-%sv%.html",
 		},
-		"id_opt_24": {
+		"id_opt_23": {
 			0: "sola资源站",
 			1: "http://www.3134.cc/search.php?kw=%sv%",
 		},
-		"id_opt_25": {
+		"id_opt_24": {
 			0: "盘115",
 			1: "http://www.guanggua.com/search?key=%sv%",
 		},
-		"id_opt_26": {
+		"id_opt_25": {
 			0: "58网盘",
 			1: "http://www.58wangpan.com/search/kw%sv%",
 		},
-		"id_opt_27": {
+		"id_opt_26": {
 			0: "56网盘",
 			1: "http://www.56wangpan.com/search/kw%sv%",
 		},
-		"id_opt_28": {
+		"id_opt_27": {
 			0: "58网盘2",
 			1: "http://wx01.51caichang.com/so?keyword=%sv%",
 		},
-		"id_opt_29": {
+		"id_opt_28": {
 			0: "我的盘",
 			1: "http://www.wodepan.com/list/%sv%-1.html",
 		},
-		"id_opt_30": {
+		"id_opt_29": {
 			0: "及搜盘",
 			1: "http://www.jisoupan.com/search/%sv%.html",
 		},
-		"id_opt_31": {
+		"id_opt_30": {
 			0: "哎呦喂啊",
 			1: "http://www.aiyoweia.com/search/%sv%",
 		},
-		"id_opt_32": {
+		"id_opt_31": {
 			0: "爱挖盘",
 			1: "http://www.iwapan.com/so.aspx?wd=%sv%",
 		},
-		"id_opt_33": {
+		"id_opt_32": {
 			0: "盘搜",
 			1: "http://www.pansou.com/?q=%sv%",
 		},
-		"id_opt_34": {
+		"id_opt_33": {
 			0: "云搜一下",
 			1: "http://sou.wolfbe.com/s?q=%sv%",
 		},
-		"id_opt_35": {
+		"id_opt_34": {
 			0: "麦库搜索",
 			1: "http://www.huisou.me/index.php?k=%sv%",
 		},
-		"id_opt_36": {
+		"id_opt_35": {
 			0: "探索云盘",
 			1: "http://tansuo233.com/?search=%sv%",
 		},
-		"id_opt_37": {
+		"id_opt_36": {
 			0: "坑搜网",
 			1: "http://www.kengso.com/s?wd=%sv%",
 		},
-		"id_opt_38": {
+		"id_opt_37": {
 			0: "喵搜",
 			1: "https://nyaso.com/dong/%sv%.html",
 		},
-		"id_opt_39": {
+		"id_opt_38": {
 			0: "西边云",
 			1: "http://www.xibianyun.com/wp/search?q=%sv%",
 		},
-		"id_opt_40": {
+		"id_opt_39": {
 			0: "网盘搜索BT",
 			1: "http://www.sosobta.cn/search/%sv%",
 		},
-		"id_opt_41": {
+		"id_opt_40": {
 			0: "百度盘资源",
 			1: "http://www.friok.com/?s=%sv%",
 		},
-		"id_opt_42": {
+		"id_opt_41": {
 			0: "325搜",
 			1: "http://pan.here325.com/s?q=%sv%",
 		},
-		"id_opt_43": {
+		"id_opt_42": {
 			0: "6miu",
 			1: "http://baiduyun.6miu.com/word.html?kw=%sv%",
 		},
-		"id_opt_44": {
+		"id_opt_43": {
 			0: "90网盘",
 			1: "https://pan.90xz.com/search/%sv%",
 		},
-		"id_opt_45": {
+		"id_opt_44": {
 			0: "fastsoso",
 			1: "https://www.fastsoso.cn/search?k=%sv%",
 		},
-		"id_opt_46": {
+		"id_opt_45": {
 			0: "搜盘",
 			1: "http://www.soupan.info/search.php?q=%sv%",
 		},
-		"id_opt_47": {
+		"id_opt_46": {
 			0: "特多盘",
 			1: "http://so.hzbslp.com/api.php?pn=1&sr=%sv%",
 		},
-		"id_opt_48": {
+		"id_opt_47": {
 			0: "网盘资源网",
 			1: "http://www.0933.me/search.html?wd=%sv%",
 		},
-		"id_opt_49": {
+		"id_opt_48": {
 			0: "百度网盘搜",
 			1: "https://www.xalssy.com.cn/search/kw%sv%",
 		},
-		"id_opt_50": {
+		"id_opt_49": {
 			0: "特百度",
 			1: "http://www.tebaidu.com/search.asp?so_md5key=79c1a7c496e5051205d46dd9b5a169a9&wd=%sv%",
 		},
-		"id_opt_51": {
+		"id_opt_50": {
 			0: "搜搜云盘",
 			1: "http://www.sosoyunpan.com/search.asp?wd=%sv%",
 		},
-		"id_opt_52": {
+		"id_opt_51": {
 			0: "盘优搜",
 			1: "http://www.panuso.com/s/%sv%.html",
 		},
-		"id_opt_53": {
+		"id_opt_52": {
 			0: "麦库搜索",
 			1: "http://huisou.me/index.php?k=%sv%",
 		},
-		"id_opt_54": {
+		"id_opt_53": {
 			0: "网盘传奇",
 			1: "https://www.jidanso.com/index.php/search/?q=%sv%",
 		},
-		"id_opt_55": {
+		"id_opt_54": {
 			0: "SoV5",
 			1: "https://www.sov5.cn/search?q=%sv%",
 		},
-		"id_opt_56": {
+		"id_opt_55": {
 			0: "下载搜",
 			1: "https://www.xiazaisou.com/wangpan?s=%sv%",
 		},
-		"id_opt_57": {
+		"id_opt_56": {
 			0: "优质吧",
 			1: "http://uzi8.cn/search/kw%sv%",
 		},
-		"id_opt_58": {
+		"id_opt_57": {
 			0: "网盘之家",
 			1: "http://www.wangpanzhijia.net/search.html?wd=%sv%",
 		},
-		"id_opt_59": {
+		"id_opt_58": {
 			0: "众人搜网盘",
 			1: "http://wangpan.renrensousuo.com/jieguo?sa=网盘搜索&q=%sv%",
 		},
-		"id_opt_60": {
+		"id_opt_59": {
 			0: "乐依分享",
 			1: "https://www.dyroy.com/html/search.html?q=%sv%",
+		},
+		"id_opt_60": {
+			0: "搜网盘",
+			1: "http://www.sowp.cn/list/%sv%-1.html",
 		},
 		"id_opt_61": {
 			0: "网盘007",
@@ -470,46 +492,50 @@ function dir_all() {
 			1: "https://swisscows.ch/web?query=%sv%%20pan.baidu.com&region=zh-CN",
 		},
 		"id_opt_76": {
+			0: "西林街",
+			1: "http://www.xilinjie.com/s?q=%sv%&t=pan",
+		},
+		"id_opt_77": {
 			0: "去转盘",
 			1: "http://www.quzhuanpan.com/source/search.action?q=%sv%",
 		},
-		"id_opt_77": {
+		"id_opt_78": {
 			0: "猪猪盘总线",
 			1: "http://www.zhuzhupan.com/search?s=100&query=%sv%",
 		},
-		"id_opt_78": {
+		"id_opt_79": {
 			0: "猪猪盘1",
 			1: "http://www.zhuzhupan.com/search?s=1&query=%sv%",
 		},
-		"id_opt_79": {
+		"id_opt_80": {
 			0: "猪猪盘2",
 			1: "http://www.zhuzhupan.com/search?s=2&query=%sv%",
 		},
-		"id_opt_80": {
+		"id_opt_81": {
 			0: "猪猪盘3",
 			1: "http://www.zhuzhupan.com/search?s=3&query=%sv%",
 		},
-		"id_opt_81": {
+		"id_opt_82": {
 			0: "猪猪盘4",
 			1: "http://www.zhuzhupan.com/search?s=4&query=%sv%",
 		},
-		"id_opt_82": {
+		"id_opt_83": {
 			0: "猪猪盘5",
 			1: "http://www.zhuzhupan.com/search?s=5&query=%sv%",
 		},
-		"id_opt_83": {
+		"id_opt_84": {
 			0: "猪猪盘6",
 			1: "http://www.zhuzhupan.com/search?s=6&query=%sv%",
 		},
-		"id_opt_84": {
+		"id_opt_85": {
 			0: "猪猪盘7",
 			1: "http://www.zhuzhupan.com/search?s=7&query=%sv%",
 		},
-		"id_opt_85": {
+		"id_opt_86": {
 			0: "猪猪盘8",
 			1: "http://www.zhuzhupan.com/search?s=8&query=%sv%",
 		},
-		"id_opt_86": {
+		"id_opt_87": {
 			0: "搜云盘",
 			1: "http://www.soyunpan.com/search/%sv%-0-全部-0.html",
 		},
