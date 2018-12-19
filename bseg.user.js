@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘搜索引擎聚合
-// @version      1.83
+// @version      1.85
 // @description  在百度云盘页面中新增百度网盘搜索引擎聚合
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -16,18 +16,22 @@
 function bseg(t) {
 	//最多找100次
 	if(t < 100) {
-		//主页
+		//主页（https://pan.baidu.com/netdisk/home，等）
 		var find_home = (document.querySelector(".find-light-icon") !== null);
-		//密码填写页
+		//密码填写页（https://pan.baidu.com/share/init?surl=……）
 		var find_init = (document.querySelector("#hgejgNaM") !== null);
-		//客户端下载页
+		//客户端下载页（https://pan.baidu.com/download）
 		var find_download = (document.querySelector("#login-header") !== null);
-		//版本更新页 | 服务协议
+		//版本更新页 | 服务协议（https://pan.baidu.com/disk/version/ || https://pan.baidu.com/disk/duty/ || https://yun.baidu.com/disk/autoduty || https://pan.baidu.com/disk/protocol 等）
 		var find_version = (document.querySelector(".help-all") !== null || document.querySelector(".main-i") !== null);
-		//支付中心页
+		//支付中心页（https://pan.baidu.com/buy/checkoutcounter）
 		var find_checkout = (document.querySelector(".cashier-page-header") !== null);
+		//内容商城（https://pan.baidu.com/mall/home?from=panhome）
+		var find_mall = (document.querySelector(".ts-logo__text") !== null);
+		//会员中心（https://pan.baidu.com/buy/center || https://pan.baidu.com/buy/card）
+		var find_center = (document.querySelector(".header-content") !== null);
 		//综合
-		var find_or = (find_home || find_init || find_download || find_version || find_checkout);
+		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center);
 		//确定显示点是否存在
 		if(find_or) {
 			//搜索引擎网址目录
@@ -41,8 +45,10 @@ function bseg(t) {
 			var new_select = document.createElement('select');
 			new_span.appendChild(new_select);
 
+			//循环索引
+			var i
 			//选择框子节点下面要建立大量【选项】子节点
-			for(var i in dirall) {
+			for(i in dirall) {
 				var v = dirall[i][0];
 				new_option(v, i, new_select);
 			}
@@ -51,7 +57,7 @@ function bseg(t) {
 			var new_input = document.createElement('input');
 			new_input.setAttribute("id", "scont");
 			new_input.setAttribute("class", "scont");
-			new_input.setAttribute("placeholder", "请输入要搜索的内容");
+			new_input.setAttribute("placeholder", "请输入要搜索的内容[GreasyFork]");
 			new_input.setAttribute("autocomplete", "off");
 			new_span.appendChild(new_input);
 
@@ -73,17 +79,14 @@ function bseg(t) {
 				//首页
 				var father_home = document.getElementsByClassName("vyQHNyb")[0];
 				father_home.style.cssText = "margin-left: 0!important;;";
-
 				//主页清除广告，腾位置
-				var cMEMEF_0 = father_home.childNodes[0];
-				cMEMEF_0.style.cssText = "margin:0 8px!important;";
-				var cMEMEF_1 = father_home.childNodes[1];
-				cMEMEF_1.style.cssText = "margin:0 8px!important;";
+				var cMEMEF = document.getElementsByClassName("cMEMEF");
+				var cMEMEF_len = cMEMEF.length;
+				for(i = 0; i < cMEMEF_len; i++) {
+					cMEMEF[i].style.cssText = "margin:0 8px!important;";
+				}
 				var cMEMEF_2 = father_home.childNodes[2];
 				cMEMEF_2.style.cssText = "display: none!important;";
-				var cMEMEF_3 = father_home.childNodes[3];
-				cMEMEF_3.style.cssText = "margin:0 8px!important;";
-
 				//新建span子节点
 				father_home.appendChild(new_span);
 				//设置新建的选择框的样式
@@ -127,17 +130,70 @@ function bseg(t) {
 				new_input.style.cssText = "font-size:15px;width:250px;height: 22px;color:black;padding:2px;outline:none;";
 				new_input.focus();
 			} else if(find_checkout) {
-				//版本更新页
-				var father_checkout = document.getElementsByClassName("cashier-page-ul")[0];
+				//支付中心页
+				var father_checkout = document.getElementsByClassName("cashier-page-header")[0];
+				var bro_checkout = document.getElementsByClassName("cashier-page-ul")[0];
 				//新建span子节点
-				father_checkout.appendChild(new_span);
+				father_checkout.insertBefore(new_span, bro_checkout);
 				//设置新建的span节点样式
 				new_span.style.cssText = "display:inline-block;margin:5px 0 0 20px;";
 				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;";
+				new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
 				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:200px;height: 22px;color:black;padding:2px;outline:none;";
+				new_input.style.cssText = "font-size:15px;width:250px;height: 23px;color:black;padding:2px;outline:none;";
+				//设置按钮样式
+				new_btn.style.height = "31px";
+				new_btn.style.lineHeight = "31px";
 				new_input.focus();
+			} else if(find_mall) {
+				//内容商城页
+				var father_mall = document.getElementsByClassName("ts-category")[0];
+				//新建span子节点
+				father_mall.appendChild(new_span);
+				//设置新建的span节点样式
+				new_span.style.cssText = "background-color:white;margin:0 0 0 5px;";
+				//设置新建的选择框的样式
+				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;background-color: white;";
+				//设置新建的输入框的样式
+				new_input.style.cssText = "font-size:15px;width:231px;height: 22px;color:black;padding:4px 2px;outline:none;background-color: white;border-left:1px solid black;";
+				//设置新建的按钮样式
+				new_btn.style.height = "30px";
+				new_btn.style.lineHeight = "31px";
+				//设置父节点样式
+				father_mall.style.left = "200px";
+				//设置兄弟节点样式
+				var tce = document.getElementsByClassName("ts-category__entry");
+				var tce_len = tce.length;
+				for(i = 0; i < tce_len; i++) {
+					tce[i].style.cssText = "padding:0 8px!important;";
+				}
+			} else if(find_center) {
+				//会员中心页
+				var father_center = document.getElementsByClassName("header-content")[0];
+				var bro_center = document.getElementsByClassName("activation-code")[0];
+				//新建span子节点
+				father_center.insertBefore(new_span, bro_center);
+				new_span.style.cssText = "display:inline-block;float:left;margin:19px 0 0 14px;";
+				//删除log，腾地方
+				var lml = document.getElementsByClassName("logo-main-link")[0];
+				lml.style.display = "none";
+				//拓宽header
+				var hc = document.getElementsByClassName("header-content")[0];
+				hc.style.width = "1140px";
+				//设置侄节点样式
+				var nb = document.getElementsByClassName("nav-button");
+				var nb_len = nb.length;
+				for(i = 0; i < nb_len; i++) {
+					nb[i].style.cssText = "margin:0 8px!important;";
+				}
+				//设置新建的选择框的样式
+				new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
+				//设置新建的输入框的样式
+				new_input.style.cssText = "font-size:15px;width:190px;height: 23px;color:black;padding:2px;outline:none;";
+				new_input.focus();
+				//设置新建的按钮样式
+				new_btn.style.height = "31px";
+				new_btn.style.lineHeight = "31px";
 			}
 
 			//按钮点击事件
@@ -539,7 +595,6 @@ function dir_all() {
 			0: "搜云盘",
 			1: "http://www.soyunpan.com/search/%sv%-0-全部-0.html",
 		},
-
 	};
 	return da;
 }
