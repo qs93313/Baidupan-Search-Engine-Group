@@ -223,7 +223,6 @@ function bseg(t) {
 				//设置新建的按钮样式
 				new_btn.style.height = "31px";
 				new_btn.style.lineHeight = "31px";
-
 			}
 
 			//按钮点击事件
