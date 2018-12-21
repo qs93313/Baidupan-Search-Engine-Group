@@ -1,9 +1,15 @@
 // ==UserScript==
 // @name         百度网盘搜索引擎聚合
-// @version      1.86
+// @version      1.87
 // @description  在百度云盘页面中新增百度网盘搜索引擎聚合
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
+// @match        *://zhaohui.baidu.com/*
+// @match        *://duanxin.baidu.com/*
+// @match        *://note.baidu.com/*
+// @match        *://wenzhang.baidu.com/*
+// @match        *://tongxunlu.baidu.com/*
+// @match        *://tonghuajilu.baidu.com/*
 // @grant        来自各个网盘搜索引擎开发者
 // @author       太史子义慈
 // @namespace    qs93313@sina.cn
@@ -16,6 +22,8 @@
 function bseg(t) {
 	//最多找100次
 	if(t < 100) {
+		//获取域名
+		var wlhost = window.location.host;
 		//主页（https://pan.baidu.com/netdisk/home，等）
 		var find_home = (document.querySelector(".find-light-icon") !== null);
 		//密码填写页（https://pan.baidu.com/share/init?surl=……）
@@ -30,8 +38,10 @@ function bseg(t) {
 		var find_mall = (document.querySelector(".ts-logo__text") !== null);
 		//会员中心（https://pan.baidu.com/buy/center || https://pan.baidu.com/buy/card）
 		var find_center = (document.querySelector(".header-content") !== null);
+		//页面不存在
+		var find_error = (document.querySelector(".hd-main") !== null);
 		//综合
-		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center);
+		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center || find_error);
 		//确定显示点是否存在
 		if(find_or) {
 			//搜索引擎网址目录
@@ -94,6 +104,10 @@ function bseg(t) {
 				//设置新建的输入框的样式
 				new_input.style.cssText = "font-size:15px;width:280px;height: 22px;color:black;padding:2px;outline:none;";
 				new_input.focus();
+				//短信、通讯录的搜索框
+				if(wlhost == "duanxin.baidu.com" || wlhost == "tongxunlu.baidu.com") {
+					barSearch(0, new_input);
+				}
 			} else if(find_init) {
 				//密码填写页
 				var father_init = document.getElementsByClassName("pickpw")[0];
@@ -194,6 +208,22 @@ function bseg(t) {
 				//设置新建的按钮样式
 				new_btn.style.height = "31px";
 				new_btn.style.lineHeight = "31px";
+			} else if(find_error) {
+				//页面不存在
+				var father_error = document.getElementsByClassName("hd-main")[0];
+				var bro_error = document.getElementsByClassName("info")[0];
+				//新建span子节点
+				father_error.insertBefore(new_span, bro_error);
+				new_span.style.cssText = "display:inline-block;float:left;margin:7px 0 0 100px;";
+				//设置新建的选择框的样式
+				new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
+				//设置新建的输入框的样式
+				new_input.style.cssText = "font-size:15px;width:270px;height: 23px;color:black;padding:2px;outline:none;";
+				new_input.focus();
+				//设置新建的按钮样式
+				new_btn.style.height = "31px";
+				new_btn.style.lineHeight = "31px";
+
 			}
 
 			//按钮点击事件
@@ -238,6 +268,21 @@ function new_option(ih, aid, ns) {
 	new_opt.innerHTML = ih;
 	new_opt.setAttribute("id", aid);
 	ns.appendChild(new_opt);
+}
+
+//短信、通讯录的搜索框
+function barSearch(t1, ni) {
+	if(t1 < 10) {
+		var bar_search = (document.querySelector(".bar-search") !== null);
+		if(bar_search) {
+			ni.style.width = "240px";
+		} else {
+			t1++;
+			setTimeout(function() {
+				barSearch(t1, ni);
+			}, 500);
+		}
+	}
 }
 
 //搜索引擎网址目录，%sv%为替换符
