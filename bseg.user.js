@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         百度网盘搜索引擎聚合
-// @version      1.87
+// @version      1.88
 // @description  在百度云盘页面中新增百度网盘搜索引擎聚合
+// @include      /https?\:\/\/(pan|yun|duanxin|note|tonghuajilu|tongxunlu|wenzhang|zhaohui)\.baidu\.com.*/
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
 // @match        *://zhaohui.baidu.com/*
@@ -13,6 +14,7 @@
 // @grant        来自各个网盘搜索引擎开发者
 // @author       太史子义慈
 // @namespace    qs93313@sina.cn
+// @updateURL    https://greasyfork.org/zh-CN/scripts/375337
 // ==/UserScript==
 
 !(function() {
@@ -28,7 +30,7 @@ function bseg(t) {
 		var find_home = (document.querySelector(".find-light-icon") !== null);
 		//密码填写页（https://pan.baidu.com/share/init?surl=……）
 		var find_init = (document.querySelector("#hgejgNaM") !== null);
-		//客户端下载页（https://pan.baidu.com/download）
+		//客户端下载页（https://pan.baidu.com/download || 无视https://pan.baidu.com/disk/award）
 		var find_download = (document.querySelector("#login-header") !== null);
 		//版本更新页 | 服务协议（https://pan.baidu.com/disk/version/ || https://pan.baidu.com/disk/duty/ || https://yun.baidu.com/disk/autoduty || https://pan.baidu.com/disk/protocol 等）
 		var find_version = (document.querySelector(".help-all") !== null || document.querySelector(".main-i") !== null);
@@ -40,8 +42,10 @@ function bseg(t) {
 		var find_center = (document.querySelector(".header-content") !== null);
 		//页面不存在
 		var find_error = (document.querySelector(".hd-main") !== null);
+		//文章页（https://wenzhang.baidu.com/ || https://pan.baidu.com/tools 等）
+		var find_wenzhang = (document.querySelector(".__header") !== null);
 		//综合
-		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center || find_error);
+		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center || find_error || find_wenzhang);
 		//确定显示点是否存在
 		if(find_or) {
 			//搜索引擎网址目录
@@ -223,6 +227,18 @@ function bseg(t) {
 				//设置新建的按钮样式
 				new_btn.style.height = "31px";
 				new_btn.style.lineHeight = "31px";
+			} else if(find_wenzhang) {
+				//文章页
+				var father_wenzhang = document.getElementsByClassName("__header")[0];
+				var bro_wenzhang = document.getElementsByClassName("__tools")[0];
+				//新建span子节点
+				father_wenzhang.insertBefore(new_span, bro_wenzhang);
+				//设置新建的span节点样式
+				new_span.style.cssText = "display:inline-block;margin:6px 0px 0px 60px";
+				//设置新建的选择框的样式
+				new_select.style.cssText = "font-size:15px;height:30px;color:black;display:inline-block;margin:5px 0 0 0;border-right:0;outline:none;";
+				//设置新建的输入框的样式
+				new_input.style.cssText = "font-size:15px;width:280px;height: 22px;color:black;padding:2px;outline:none;";
 			}
 
 			//按钮点击事件
@@ -504,146 +520,182 @@ function dir_all() {
 			1: "http://www.panuso.com/s/%sv%.html",
 		},
 		"id_opt_54": {
-			0: "麦库搜索",
-			1: "http://huisou.me/index.php?k=%sv%",
-		},
-		"id_opt_55": {
 			0: "SoV5",
 			1: "https://www.sov5.cn/search?q=%sv%",
 		},
-		"id_opt_56": {
+		"id_opt_55": {
 			0: "下载搜",
 			1: "https://www.xiazaisou.com/wangpan?s=%sv%",
 		},
-		"id_opt_57": {
+		"id_opt_56": {
 			0: "优质吧",
 			1: "http://uzi8.cn/search/kw%sv%",
 		},
-		"id_opt_58": {
+		"id_opt_57": {
 			0: "网盘之家",
 			1: "http://www.wangpanzhijia.net/search.html?wd=%sv%",
 		},
-		"id_opt_59": {
+		"id_opt_58": {
 			0: "众人搜网盘",
 			1: "http://wangpan.renrensousuo.com/jieguo?sa=网盘搜索&q=%sv%",
 		},
-		"id_opt_60": {
+		"id_opt_59": {
 			0: "乐依分享",
 			1: "https://www.dyroy.com/html/search.html?q=%sv%",
 		},
+		"id_opt_60": {
+			0: "盘搜搜",
+			1: "http://www.pansoso.com/zh/%sv%",
+		},
 		"id_opt_61": {
+			0: "盘131",
+			1: "http://www.pan131.com/yun/%sv%/",
+		},
+		"id_opt_62": {
 			0: "soohub",
 			1: "https://www.soohub.com/search/%sv%/1",
 		},
-		"id_opt_62": {
+		"id_opt_63": {
 			0: "搜网盘",
 			1: "http://www.sowp.cn/list/%sv%-1.html",
 		},
-		"id_opt_63": {
+		"id_opt_64": {
+			0: "搜网盘",
+			1: "http://www.sowangpan.com/search/%sv%-0-全部-0.html",
+		},
+		"id_opt_65": {
+			0: "99搜索",
+			1: "http://www.99baiduyun.com/baidu/%sv%",
+		},
+		"id_opt_66": {
+			0: "文件搜",
+			1: "http://wjsou.com:8080/s2.jsp?q=%sv%",
+		},
+		"id_opt_67": {
+			0: "榆木搜",
+			1: "https://www.yumuso.com/q/%sv%",
+		},
+		"id_opt_68": {
+			0: "大漠搜索",
+			1: "http://www.dmpans.com/search?wd=%sv%",
+		},
+		"id_opt_69": {
+			0: "搜百度吧",
+			1: "http://www.bdsoba.com/search/type_0_1_%sv%/",
+		},
+		"id_opt_70": {
 			0: "网盘007",
 			1: "https://wangpan007.com/share/kw%sv%",
 		},
-		"id_opt_64": {
+		"id_opt_71": {
+			0: "闪电云",
+			1: "http://www.h2ero.com/search?keywords=%sv%",
+		},
+		"id_opt_72": {
+			0: "v搜索",
+			1: "http://www.v1248.com/index.htm?kw=%sv%",
+		},
+		"id_opt_73": {
 			0: "百度搜索",
 			1: "https://www.baidu.com/s?wd=%sv%%20pan.baidu.com&ct=1",
 		},
-		"id_opt_65": {
+		"id_opt_74": {
 			0: "谷歌搜索",
 			1: "https://www.google.com.hk/search?q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_66": {
+		"id_opt_75": {
 			0: "MEZW",
 			1: "https://so.mezw.com/Search?wd=%sv%%20pan.baidu.com",
 		},
-		"id_opt_67": {
+		"id_opt_76": {
 			0: "searx",
 			1: "https://searx.me/?language=zh-CN&q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_68": {
+		"id_opt_77": {
 			0: "搜狗搜索",
 			1: "https://www.sogou.com/web?ie=utf8&query=%sv%%20pan.baidu.com",
 		},
-		"id_opt_69": {
+		"id_opt_78": {
 			0: "360好搜",
 			1: "https://www.so.com/s?q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_70": {
+		"id_opt_79": {
 			0: "中国搜索",
 			1: "http://www.chinaso.com/search/pagesearch.htm?q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_71": {
+		"id_opt_80": {
 			0: "必应搜索",
 			1: "https://cn.bing.com/search?q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_72": {
+		"id_opt_81": {
 			0: "神马搜索",
 			1: "https://m.sm.cn/s?q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_73": {
+		"id_opt_82": {
 			0: "ecosia",
 			1: "https://www.ecosia.org/search?q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_74": {
+		"id_opt_83": {
 			0: "duckgo",
 			1: "https://duckduckgo.com/?q=%sv%+pan.baidu.com&ia=web",
 		},
-		"id_opt_75": {
+		"id_opt_84": {
 			0: "crawler",
 			1: "http://www.webcrawler.com/serp?q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_76": {
+		"id_opt_85": {
 			0: "web.de",
 			1: "https://suche.web.de/web/result?q=%sv%%20pan.baidu.com",
 		},
-		"id_opt_77": {
+		"id_opt_86": {
 			0: "swisscows",
 			1: "https://swisscows.ch/web?query=%sv%%20pan.baidu.com&region=zh-CN",
 		},
-		"id_opt_78": {
+		"id_opt_87": {
 			0: "西林街",
 			1: "http://www.xilinjie.com/s?q=%sv%&t=pan",
 		},
-		"id_opt_79": {
+		"id_opt_88": {
 			0: "去转盘",
 			1: "http://www.quzhuanpan.com/source/search.action?q=%sv%",
 		},
-		"id_opt_80": {
+		"id_opt_89": {
 			0: "猪猪盘总线",
 			1: "http://www.zhuzhupan.com/search?s=100&query=%sv%",
 		},
-		"id_opt_81": {
+		"id_opt_90": {
 			0: "猪猪盘1",
 			1: "http://www.zhuzhupan.com/search?s=1&query=%sv%",
 		},
-		"id_opt_82": {
+		"id_opt_91": {
 			0: "猪猪盘2",
 			1: "http://www.zhuzhupan.com/search?s=2&query=%sv%",
 		},
-		"id_opt_83": {
+		"id_opt_92": {
 			0: "猪猪盘3",
 			1: "http://www.zhuzhupan.com/search?s=3&query=%sv%",
 		},
-		"id_opt_84": {
+		"id_opt_93": {
 			0: "猪猪盘4",
 			1: "http://www.zhuzhupan.com/search?s=4&query=%sv%",
 		},
-		"id_opt_85": {
+		"id_opt_94": {
 			0: "猪猪盘5",
 			1: "http://www.zhuzhupan.com/search?s=5&query=%sv%",
 		},
-		"id_opt_86": {
+		"id_opt_95": {
 			0: "猪猪盘6",
 			1: "http://www.zhuzhupan.com/search?s=6&query=%sv%",
 		},
-		"id_opt_87": {
+		"id_opt_96": {
 			0: "猪猪盘7",
 			1: "http://www.zhuzhupan.com/search?s=7&query=%sv%",
 		},
-		"id_opt_88": {
+		"id_opt_97": {
 			0: "猪猪盘8",
 			1: "http://www.zhuzhupan.com/search?s=8&query=%sv%",
 		},
-		"id_opt_89": {
+		"id_opt_98": {
 			0: "搜云盘",
 			1: "http://www.soyunpan.com/search/%sv%-0-全部-0.html",
 		},
