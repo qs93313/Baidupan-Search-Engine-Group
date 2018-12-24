@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘搜索引擎聚合
-// @version      2.00
+// @version      2.01
 // @description  在百度云盘页面中新增百度网盘搜索引擎聚合
 // @include      /https?\:\/\/(pan|yun|duanxin|note|tonghuajilu|tongxunlu|wenzhang|zhaohui)\.baidu\.com.*/
 // @match        *://pan.baidu.com/*
@@ -23,6 +23,8 @@
 function bseg(t) {
 	//最多找100次
 	if(t < 100) {
+		//获取body
+		var body = document.body;
 		//获取域名
 		var wlhost = window.location.host;
 		//主页（https://pan.baidu.com/netdisk/home，等）
@@ -70,7 +72,7 @@ function bseg(t) {
 			var new_input = document.createElement('input');
 			new_input.setAttribute("id", "scont");
 			new_input.setAttribute("class", "scont");
-			new_input.setAttribute("placeholder", "请输入要搜索的内容[油猴脚本]");
+			new_input.setAttribute("placeholder", "请输入内容[油猴脚本]");
 			new_input.setAttribute("autocomplete", "off");
 			new_span.appendChild(new_input);
 
@@ -91,153 +93,171 @@ function bseg(t) {
 			if(find_home) {
 				//首页
 				var father_home = document.getElementsByClassName("vyQHNyb")[0];
-				father_home.style.cssText = "margin-left: 0!important;;";
-				//主页清除广告，腾位置
-				var cMEMEF = document.getElementsByClassName("cMEMEF");
-				var cMEMEF_len = cMEMEF.length;
-				for(i = 0; i < cMEMEF_len; i++) {
-					cMEMEF[i].style.cssText = "margin:0 8px!important;";
-				}
-				var cMEMEF_2 = father_home.childNodes[2];
-				cMEMEF_2.style.cssText = "display: none!important;";
-				//新建span子节点
-				father_home.appendChild(new_span);
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;margin:0 0 0 20px;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:280px;height: 22px;color:black;padding:2px;outline:none;";
-				new_input.focus();
-				//短信、通讯录的搜索框
-				if(wlhost == "duanxin.baidu.com" || wlhost == "tongxunlu.baidu.com") {
-					barSearch(0, new_input);
+				if(father_home) {
+					father_home.style.cssText = "margin-left: 0!important;;";
+					//主页清除广告，腾位置
+					var cMEMEF = document.getElementsByClassName("cMEMEF");
+					var cMEMEF_len = cMEMEF.length;
+					for(i = 0; i < cMEMEF_len; i++) {
+						cMEMEF[i].style.cssText = "margin:0 8px!important;";
+					}
+					var cMEMEF_2 = father_home.childNodes[2];
+					cMEMEF_2.style.cssText = "display: none!important;";
+					//新建span子节点
+					father_home.appendChild(new_span);
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;margin:0 0 0 20px;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:280px;height: 22px;color:black;padding:2px;outline:none;";
+					new_input.focus();
+					//短信、通讯录的搜索框
+					if(wlhost == "duanxin.baidu.com" || wlhost == "tongxunlu.baidu.com") {
+						barSearch(0, new_input);
+					}
 				}
 			} else if(find_init) {
 				//密码填写页
 				var father_init = document.getElementsByClassName("pickpw")[0];
-				//新建span子节点
-				father_init.appendChild(new_span);
-				//设置新建的span节点样式
-				new_span.style.cssText = "display:inline-block;margin:30px 0 0 0;";
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:30px;color:black;display:inline-block;margin:5px 0 0 0;border-right:0;outline:none;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:218px;height: 22px;color:black;padding:2px;outline:none;";
+				if(father_init) {
+					//新建span子节点
+					father_init.appendChild(new_span);
+					//设置新建的span节点样式
+					new_span.style.cssText = "display:inline-block;margin:30px 0 0 0;";
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:30px;color:black;display:inline-block;margin:5px 0 0 0;border-right:0;outline:none;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:218px;height: 22px;color:black;padding:2px;outline:none;";
+				}
 			} else if(find_download) {
 				//客户端下载页
 				var father_download = document.getElementsByClassName("logo-main")[0];
-				//新建span子节点
-				father_download.appendChild(new_span);
-				//设置新建的span节点样式
-				new_span.style.cssText = "display:inline-block;margin:5px 0 0 60px;";
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:250px;height: 22px;color:black;padding:2px;outline:none;";
-				new_input.focus();
+				if(father_download) {
+					//新建span子节点
+					father_download.appendChild(new_span);
+					//设置新建的span节点样式
+					new_span.style.cssText = "display:inline-block;margin:5px 0 0 60px;";
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:250px;height: 22px;color:black;padding:2px;outline:none;";
+					new_input.focus();
+				}
 			} else if(find_version) {
 				//版本更新页
 				var father_version = document.getElementsByClassName("hd-main")[0];
-				//新建span子节点
-				father_version.appendChild(new_span);
-				//设置新建的span节点样式
-				new_span.style.cssText = "display:inline-block;margin:5px 0 0 100px;";
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:250px;height: 22px;color:black;padding:2px;outline:none;";
-				new_input.focus();
+				if(father_version) {
+					//新建span子节点
+					father_version.appendChild(new_span);
+					//设置新建的span节点样式
+					new_span.style.cssText = "display:inline-block;margin:5px 0 0 100px;";
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:250px;height: 22px;color:black;padding:2px;outline:none;";
+					new_input.focus();
+				}
 			} else if(find_checkout) {
 				//支付中心页
 				var father_checkout = document.getElementsByClassName("cashier-page-header")[0];
-				var bro_checkout = document.getElementsByClassName("cashier-page-ul")[0];
-				//新建span子节点
-				father_checkout.insertBefore(new_span, bro_checkout);
-				//设置新建的span节点样式
-				new_span.style.cssText = "display:inline-block;margin:5px 0 0 20px;";
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:250px;height: 23px;color:black;padding:2px;outline:none;";
-				//设置按钮样式
-				new_btn.style.height = "31px";
-				new_btn.style.lineHeight = "31px";
-				new_input.focus();
+				if(father_checkout) {
+					var bro_checkout = document.getElementsByClassName("cashier-page-ul")[0];
+					//新建span子节点
+					father_checkout.insertBefore(new_span, bro_checkout);
+					//设置新建的span节点样式
+					new_span.style.cssText = "display:inline-block;margin:5px 0 0 20px;";
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:250px;height: 23px;color:black;padding:2px;outline:none;";
+					//设置按钮样式
+					new_btn.style.height = "31px";
+					new_btn.style.lineHeight = "31px";
+					new_input.focus();
+				}
 			} else if(find_mall) {
 				//内容商城页
 				var father_mall = document.getElementsByClassName("ts-category")[0];
-				//新建span子节点
-				father_mall.appendChild(new_span);
-				//设置新建的span节点样式
-				new_span.style.cssText = "margin:0 0 0 5px;";
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;background-color: white;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:231px;height: 22px;color:black;padding:4px 2px;outline:none;background-color: white;border-left:1px solid black;";
-				//设置新建的按钮样式
-				new_btn.style.height = "30px";
-				new_btn.style.lineHeight = "31px";
-				//设置父节点样式
-				father_mall.style.left = "200px";
-				//设置兄弟节点样式
-				var tce = document.getElementsByClassName("ts-category__entry");
-				var tce_len = tce.length;
-				for(i = 0; i < tce_len; i++) {
-					tce[i].style.cssText = "padding:0 8px!important;";
+				if(father_mall) {
+					//新建span子节点
+					father_mall.appendChild(new_span);
+					//设置新建的span节点样式
+					new_span.style.cssText = "margin:0 0 0 5px;";
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:30px;color:black;border-right:0;outline:none;background-color: white;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:231px;height: 22px;color:black;padding:4px 2px;outline:none;background-color: white;border-left:1px solid black;";
+					//设置新建的按钮样式
+					new_btn.style.height = "30px";
+					new_btn.style.lineHeight = "31px";
+					//设置父节点样式
+					father_mall.style.left = "200px";
+					//设置兄弟节点样式
+					var tce = document.getElementsByClassName("ts-category__entry");
+					var tce_len = tce.length;
+					for(i = 0; i < tce_len; i++) {
+						tce[i].style.cssText = "padding:0 8px!important;";
+					}
 				}
 			} else if(find_center) {
 				//会员中心页
 				var father_center = document.getElementsByClassName("header-content")[0];
-				var bro_center = document.getElementsByClassName("activation-code")[0];
-				//新建span子节点
-				father_center.insertBefore(new_span, bro_center);
-				new_span.style.cssText = "display:inline-block;float:left;margin:19px 0 0 14px;";
-				//删除log，腾地方
-				var lml = document.getElementsByClassName("logo-main-link")[0];
-				lml.style.display = "none";
-				//拓宽header
-				var hc = document.getElementsByClassName("header-content")[0];
-				hc.style.width = "1140px";
-				//设置侄节点样式
-				var nb = document.getElementsByClassName("nav-button");
-				var nb_len = nb.length;
-				for(i = 0; i < nb_len; i++) {
-					nb[i].style.cssText = "margin:0 8px!important;";
+				if(father_center) {
+					var bro_center = document.getElementsByClassName("activation-code")[0];
+					//新建span子节点
+					father_center.insertBefore(new_span, bro_center);
+					new_span.style.cssText = "display:inline-block;float:left;margin:19px 0 0 14px;";
+					//删除log，腾地方
+					var lml = document.getElementsByClassName("logo-main-link")[0];
+					lml.style.display = "none";
+					//拓宽header
+					var hc = document.getElementsByClassName("header-content")[0];
+					hc.style.width = "1140px";
+					//设置侄节点样式
+					var nb = document.getElementsByClassName("nav-button");
+					var nb_len = nb.length;
+					for(i = 0; i < nb_len; i++) {
+						nb[i].style.cssText = "margin:0 8px!important;";
+					}
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:190px;height: 23px;color:black;padding:2px;outline:none;";
+					new_input.focus();
+					//设置新建的按钮样式
+					new_btn.style.height = "31px";
+					new_btn.style.lineHeight = "31px";
 				}
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:190px;height: 23px;color:black;padding:2px;outline:none;";
-				new_input.focus();
-				//设置新建的按钮样式
-				new_btn.style.height = "31px";
-				new_btn.style.lineHeight = "31px";
 			} else if(find_error) {
 				//页面不存在
 				var father_error = document.getElementsByClassName("hd-main")[0];
-				var bro_error = document.getElementsByClassName("info")[0];
-				//新建span子节点
-				father_error.insertBefore(new_span, bro_error);
-				new_span.style.cssText = "display:inline-block;float:left;margin:7px 0 0 100px;";
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:270px;height: 23px;color:black;padding:2px;outline:none;";
-				new_input.focus();
-				//设置新建的按钮样式
-				new_btn.style.height = "31px";
-				new_btn.style.lineHeight = "31px";
+				if(father_error) {
+					var bro_error = document.getElementsByClassName("info")[0];
+					//新建span子节点
+					father_error.insertBefore(new_span, bro_error);
+					new_span.style.cssText = "display:inline-block;float:left;margin:7px 0 0 100px;";
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:31px;color:black;border-right:0;outline:none;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:261px;height: 23px;color:black;padding:2px;outline:none;";
+					new_input.focus();
+					//设置新建的按钮样式
+					new_btn.style.height = "31px";
+					new_btn.style.lineHeight = "31px";
+				}
 			} else if(find_wenzhang) {
 				//文章页
 				var father_wenzhang = document.getElementsByClassName("__header")[0];
-				var bro_wenzhang = document.getElementsByClassName("__tools")[0];
-				//新建span子节点
-				father_wenzhang.insertBefore(new_span, bro_wenzhang);
-				//设置新建的span节点样式
-				new_span.style.cssText = "display:inline-block;margin:6px 0px 0px 60px";
-				//设置新建的选择框的样式
-				new_select.style.cssText = "font-size:15px;height:30px;color:black;display:inline-block;margin:5px 0 0 0;border-right:0;outline:none;";
-				//设置新建的输入框的样式
-				new_input.style.cssText = "font-size:15px;width:280px;height: 22px;color:black;padding:2px;outline:none;";
+				if(father_wenzhang) {
+					var bro_wenzhang = document.getElementsByClassName("__tools")[0];
+					//新建span子节点
+					father_wenzhang.insertBefore(new_span, bro_wenzhang);
+					//设置新建的span节点样式
+					new_span.style.cssText = "display:inline-block;margin:6px 0px 0px 60px";
+					//设置新建的选择框的样式
+					new_select.style.cssText = "font-size:15px;height:30px;color:black;display:inline-block;margin:5px 0 0 0;border-right:0;outline:none;";
+					//设置新建的输入框的样式
+					new_input.style.cssText = "font-size:15px;width:280px;height: 22px;color:black;padding:2px;outline:none;";
+				}
 			}
 
 			//按钮点击事件
@@ -264,25 +284,23 @@ function bseg(t) {
 				}
 			}
 
-			var body = document.body;
-
 			//span节点再建div求赏点击子节点
 			var new_div_reward = document.createElement('div');
 			new_input.setAttribute("id", "reward");
-			new_div_reward.innerHTML = "支";
-			new_div_reward.style.cssText = "display:inline-block;border-top:1px solid lightgray;border-right:1px solid lightgray;border-bottom:1px solid lightgray;font-size:10px;width: 15px;height:20px;line-height:20px;border-radius: 0 12px 12px 0;color:lightgrey";
+			new_div_reward.innerHTML = "助";
+			new_div_reward.style.cssText = "display:inline-block;border-top:1px solid lightgray;border-right:1px solid lightgray;border-bottom:1px solid lightgray;font-size:10px;width: 15px;height:20px;line-height:20px;border-radius: 0 12px 12px 0;color:lightgrey;cursor:pointer;";
 			new_span.appendChild(new_div_reward);
 
 			//建div支持作者二维码放置子节点
 			var new_div_qr_all = document.createElement('div');
 			new_div_qr_all.setAttribute("id", "qr_all");
-			new_div_qr_all.style.cssText = "position: absolute;width:600px;height:240px;top:62px;right:14px;background-color:white;border:1px solid lightgray;z-index:999;border-radius:7px;";
+			new_div_qr_all.style.cssText = "position: absolute;width:810px;height:270px;top:62px;right:14px;background-color:white;border:1px solid lightgray;z-index:999;border-radius:7px;";
 			new_div_qr_all.style.display = "none";
 			body.appendChild(new_div_qr_all);
 
 			//支持作者标题
 			var new_div_qr_title = document.createElement('div');
-			new_div_qr_title.innerHTML = "支持[油猴脚本][百度网盘搜索引擎聚合]作者"
+			new_div_qr_title.innerHTML = "感谢你支持<a href='https://greasyfork.org/zh-CN/scripts/375337' target='_blank' style='color:green'> [油猴脚本] [百度网盘搜索引擎聚合] </a>的作者,谢谢"
 			new_div_qr_title.style.cssText = "height:20px;border-bottom:1px solid lightgray;text-align:center;font-size:14px;padding:5px;font-weight:700;letter-spacing:1px;"
 			new_div_qr_all.appendChild(new_div_qr_title);
 
@@ -300,30 +318,71 @@ function bseg(t) {
 			new_qr_close_right.style.cssText = "float:right;width:22px;height:22px;background-color:#B4E3FF;border-radius:11px;color:red;cursor:pointer;line-height:normal;"
 			new_div_qr_title.appendChild(new_qr_close_right);
 
+			//支付宝红包二维码
+			var img_qr_alipay_hongbao = document.createElement('img');
+			img_qr_alipay_hongbao.style.cssText = "width:180px;height:180px;border:1px solid lightgray;margin:9px 9px 0 9px;";
+			var base64_qr_alipay_hongbao = qrAlipayHongbao();
+			img_qr_alipay_hongbao.setAttribute('src', base64_qr_alipay_hongbao);
+			new_div_qr_all.appendChild(img_qr_alipay_hongbao);
+
 			//支付宝二维码
 			var img_qr_alipay = document.createElement('img');
-			img_qr_alipay.style.cssText = "width:180px;height:180px;border:1px solid lightgray;margin:9px";
+			img_qr_alipay.style.cssText = "width:180px;height:180px;border:1px solid lightgray;margin:9px 9px 0 14px";
 			var base64_qr_alipay = qrAlipay();
 			img_qr_alipay.setAttribute('src', base64_qr_alipay);
 			new_div_qr_all.appendChild(img_qr_alipay);
 
 			//微信二维码
 			var img_qr_wechat = document.createElement('img');
-			img_qr_wechat.style.cssText = "width:180px;height:180px;border:1px solid lightgray;margin:9px;";
+			img_qr_wechat.style.cssText = "width:180px;height:180px;border:1px solid lightgray;margin:9px 9px 0 9px;";
 			var base64_qr_wechat = qrWechat();
 			img_qr_wechat.setAttribute('src', base64_qr_wechat);
 			new_div_qr_all.appendChild(img_qr_wechat);
 
 			//qq二维码
 			var img_qr_qq = document.createElement('img');
-			img_qr_qq.style.cssText = "width:180px;height:180px;border:1px solid lightgray;margin:9px;";
+			img_qr_qq.style.cssText = "width:180px;height:180px;border:1px solid lightgray;margin:9px 14px 0 9px;";
 			var base64_qr_qq = qrQQ();
 			img_qr_qq.setAttribute('src', base64_qr_qq);
 			new_div_qr_all.appendChild(img_qr_qq);
 
+			//解释
+			var new_div_qr_c = document.createElement('div');
+			new_div_qr_c.style.cssText = "width:100%;height:30px;font-size:16px;color:black;"
+			new_div_qr_all.appendChild(new_div_qr_c);
+
+			//支付宝红包解释
+			var new_div_qr_c_alipay_hongbao = document.createElement('div');
+			new_div_qr_c_alipay_hongbao.innerHTML = "<span style='color:#2790D6'>支付宝</span>扫描<span style='color:red;'>领红包</span>";
+			new_div_qr_c_alipay_hongbao.style.cssText = "width:200px;height:30px;display:inline-block;text-align:center;"
+			new_div_qr_c.appendChild(new_div_qr_c_alipay_hongbao);
+
+			//支付宝解释
+			var new_div_qr_c_alipay = document.createElement('div');
+			new_div_qr_c_alipay.innerHTML = "<span style='color:#2790D6'>支付宝</span>扫描捐助支持";
+			new_div_qr_c_alipay.style.cssText = "width:200px;height:30px;margin-left:5px;display:inline-block;text-align:center;"
+			new_div_qr_c.appendChild(new_div_qr_c_alipay);
+
+			//微信解释
+			var new_div_qr_c_wechat = document.createElement('div');
+			new_div_qr_c_wechat.innerHTML = "<span style='color:#7CAA0D'>微信</span>扫描捐助支持";
+			new_div_qr_c_wechat.style.cssText = "width:200px;height:30px;display:inline-block;text-align:center;"
+			new_div_qr_c.appendChild(new_div_qr_c_wechat);
+
+			//qq解释
+			var new_div_qr_c_qq = document.createElement('div');
+			new_div_qr_c_qq.innerHTML = "QQ扫描捐助支持";
+			new_div_qr_c_qq.style.cssText = "width:200px;height:30px;display:inline-block;text-align:center;margin-right:5px;"
+			new_div_qr_c.appendChild(new_div_qr_c_qq);
+
 			//求赏点击事件
 			new_div_reward.onclick = function() {
-				new_div_qr_all.style.display = "block";
+				var ndqr_display = new_div_qr_all.style.display;
+				if(ndqr_display == "none") {
+					new_div_qr_all.style.display = "block";
+				} else if(ndqr_display == "block") {
+					new_div_qr_all.style.display = "none";
+				}
 			}
 
 			//关闭求赏点击事件
@@ -788,4 +847,10 @@ function qrWechat() {
 function qrQQ() {
 	var qq = "data:image/png;base64,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";
 	return qq;
+}
+
+//支付宝红二维码图片的base64编码
+function qrAlipayHongbao() {
+	var qah = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAALqklEQVR4nO2df4xcVRXHz503P3Z39ldbCqVbrLRFDBgbkmKKpYiV2mpibaEoFcUfGESCEUIUEkykEVGItSH4F6GNtlpQNv6hMYihtlCrEGosLCxLFWHpdru4bXd3mJ2dX+8d/3izyzLT82bvvvtmJm+/n/TH7sx979775jvnnXfeuecpZiYAzkak3gMAjQvEAUQgDiACcQCRaNnvSqma9V3mC5d1reUpVw7b5+YeVN2z1kS8G9fx4yBYDuABxAFEIA4gAnEAkXKHtAyz8VNv90rLP63qqWlt7tM19h6M1qyrYvATqXoMYTmACMQBRCAOIAJxAJEqDmkZZiOJtdxcy2cMNI3BYFy4cnOtrqsCywFEIA4gAnEAEYgDiOg5pIESqFdoMPxaOTA/6QGNnMMLywFEIA4gAnEAEYgDiDSQQ9qwrpnZqGXDTrMSWA4gAnEAEYgDiEAcQETPIa2jM2U2sOi9uW6+ah0PS6Bdw3IAEYgDiEAcQATiACIQBxCpcrVSyxIAgZZgMLjErfJdP9khZlfXmQWWA4hAHEAE4gAiEAcQUQ2bXuDThfSzFMyn0xeafGNYDiACcQARiAOIQBxARM8hNVtR1WAQ02fKhdkSYd4718JnX35mTbAcwAOIA4hAHEAE4gAiek9NMOupeeNz51rtfY7czxI3s462z1oSZcByABGIA4hAHEAE4gAiek9NCDRCquW4ee+qsr3PWKEWftx2s6kI3gOrCiwHEIE4gAjEAUQgDiBS7pDqrufx09jgPXrd58rWMrar9W4du8Yte6ABxAFEIA4gAnEAkfIc0kADi37yAbxpqLVAZQQ6EbOPfygDlgOIQBxABOIAIhAHEIE4gIivFW/eBJq1a7Yvg+imBAda7sHnXQJYDiDSQA/jCYJALUotC/vVhZCLY+rzc1VyYtz5/X/yzw8VT6QdJj6vJXL5edFrlyeWd0TK2k9tVfWVEBNyn2Pq9aJDv3g5u/vVbM6m0o6ZSBERRRRdvyJ+z6qW5mh5v7OTQnCB4Kp78x6JdvjVYMDV7DxNpVwwc8Gh7xwcPzCQf58s3P0ptw2tPCe6a31rW0xVdm0Ws18wg0Odc/kc7oR/cmTiwECeiJgVEzFRZyLS2RRhImZiVkT00in77r9leHKrmVDPidWEkIuDiHpO20+8nlOTNoKYmGjnVcmda5OTHy+77+4/Xth/vEBEambUb041IuQOKRHt7cs55EpDfWZp7GOLYg7zsnZLKbr/iiQTvf2u/dgrWfez/tVruWsuiM0pr9ODkIvDZjo8WCAmUoqZnu4vpAusiFadG1VEBwYKDtM//1dUpFxH5OhwMZXn9jiUQVQ1wbiW66u0Np+huzqW59NZds8o7r+DaUcpuuvQOBFtXpb46iWJtU+OuW8porzNA2nnkvmWn5F7j82n313LorYhtxwFm5hds0AfbLduvrRpUTISVfT6iH1osLDqvOiBgcLo5GnHPcx5m2hmBz30p56Qi6M1ruIWFRxFRDd+OPHgkUy6wO3xyLoLYttXt1zQGnlukD+xJP7CUCFbZFKkSM1rUqfu+v67+56Q9mlb0ZaNn1q042dWZ2cNp1IHQn61kozSik6LmBTRRJHTBSalUnnnTNZpj6snjuXnJ9Sj65LPbe146MrkuiXxc5vVkmQk2/Oa45DjkGOT+wNP/WoTFex3//j02G8er/fkAifkloOINl0Y7z2dYVZnsrzjqtahcefS+dYH2iPbX8j86c28UmrN4ui3PtL0+WXxSxdEu/+d45OD+Vd7Sy6q66YyEdHUOUQRKVLO8eP1m1ON0CvBUIbuSdegeztzR+wLH0rs6csNjju/7M2en7RWdEaeeivfN2IXHSKlmOjwYPHwYPqyhVYypn58RXJ0x56iXSRiYiYrQkSKKFJyZ6f+IyUPwGyWr9bOzSZph99yJKP00JqWm59J5x01lHGGMo77etlxOzps71ibnHfijbcff7z9+s3JdZ+02tuLp0+N/2V/+pmDzkQ2UrocVkxkKypGw3/ofD1vxWdBFS1mN86prQ4NFu86ND6Wc967LHlvWNRkqe2rWz43PzP4zVvm33Zr8uqrlVW6muVCYay7e/je7ZzOEBErpZJN7dduWnDnHbGurpmMwazl8N65WcsRfnEoVZrjyQw/fHTiqbfy2SITKUXMRDFLXd0Vu/Oy5qXpoZO3fHve7be2btyYP3Ys2tUVaW21R0bsU6fiK1aM7to9/KMHrfbW5Gc/3fn1ryUuvphmHEGHOGbWWZ3EMX3zVJ7/NWwPpG2H6fxk5LKF0QVNiogKb76Z6+1t3bCBotHRxx4rDL2z8J67h+/b3rz2ytYNG5zx8cyzzzatXBnt6uJCYeLFF51Mpm39+pmMITziMFgWoWr3foJ9M9x2+l2Syjap3/4uc/h5FaX2bTc0fXSlSiRcM2OfOXPixpvaNm/K9vQs2vnzSCxGSjGzk0qN//XA2K/3TRx5ad626xb+9IFZjM3sMfTuWos555B6l/FIPfzIxBtvO0qNdf8hsfzCc35wT+s113AmM/Loo/bI6Kn7HkhcvjLV3d1xww1ElHqy+8zOR/L9x8l2IswR3LIPPRZRjNnKFXK9x8b27mPbVolE25YtbZs3KaU6vrStefVqUopzudSeffn/9ltFO+omgMwBQi6Ostycymwdds0ps0U0/uyhXF8fM9sjI5zJUCxqj445qRQxZw4enHjpFYuZ5kaaj0vITyszYvLilifyQ9+9Y/HuXS2rV8eXLo0t6er4ypdVc3Ou5+XhH95P+Ty5spgjdkO3JpgWZq9WAkIRMSlSTEQWc67n2MDWL86//baWNR9v23pdob8//dSfR3fvLQ6ftt6bToCpst6NK9trfV66zm/4LcdUnENsULIHTEwWUaF/8J3v3auaElZHmz2a4nyeHLLepwjmuWE9Qi4O98tR5Ssy7ZaaIooyMxFP5JyJXKT0ckXLuUHIHdKqlNLNXce0dLfNzTdmN3Y22ab0bgOtyg2ekFuOygipSynYpSLuNQxN3pufphWaporST5N/eY6YkCri0Cp6WvVL5Sct1IgjVhYtjV90Ue6Nfst1O1zXtHTlolwX5P3jm9SIUjaRHRMPncFpVh5/P4dF94JgTpxWpi8zcQ+f+2vHN26KLlpoOw47DtvT/nXsyR+m/Zl8xXYca/HCtmu31HNKNaGaJ1+/xbG6tyTO2nvZvRW32fQTTb6vL/v3f0Rse+bjdGKxpqvWxpctO+vBqX5xVL/7U9qXzeEWR+0JkzjmxGkFzI7wiKMRwq+NMAaD6F3KatlAn6kJs2hc35PL1HwNSsTsmVp35+GxHMA4YQuCnTXkVZtOw0c4LUctP62wKoPCZzmmmP6ZBWFIQqyJKUyKo5bX6LrZyAb1oSsLPxnhuhhMRqewnlaAESAOIAJxABGIA4iYXPFWvTNzS9wCxawLaXbBqcG9IUIKZg/EAUQgDiACcQARk0Vqq/o7ZosReBNoOpZWX1pd6+450Jq1sBxABOIAIhAHEIE4gIhehNRvZ+ZKpwXqM/rsupZ+t1bX3o0rgeUAIhAHEIE4gAjEAUQaZYkp1faGfh1TEcwWNDZYEBdrZYEGEAcQgTiACMQBRMpv2dcxVdOPa6x7a1ursW6tM+/NfVYqMF6awANYDiACcQARiAOIQBxABOIAIr4eOqyLwXrIVRv7qVemG2YOroxwoDXBqgLLAUQgDiACcQARiAOI6NUEq6UzpYXPMLPPHAuDD1oL9PaFbm4zLAcQgTiACMQBRCAOINJAFYzNPp/MGz+x2kAX25lNTPHeFivewOyBOIAIxAFEIA4g0kAOaR0fUhHcAxt09xZoCQyseAPGgDiACMQBRCAOIOLrubJmMVvPSquvMnS9wuAeJGu2Ui8ipMAYEAcQgTiACMQBRKoUqQ0Us8+30urLj7erm69qNvHWz3Is3a5hOYAIxAFEIA4gAnEAkQYqUgsaDVgOIAJxABGIA4hAHEAE4gAi/wcCCPPYv1+lFwAAAABJRU5ErkJggg==";
+	return qah;
 }
