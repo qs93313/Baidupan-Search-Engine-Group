@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      2.5
+// @version      2.51
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合
-// @include      /https?\:\/\/(pan|yun|duanxin|note|tonghuajilu|tongxunlu|wenzhang|zhaohui)\.baidu\.com.*/
+// @match        *://pan.baidu.com
+// @match        *://yun.baidu.com
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
 // @match        *://zhaohui.baidu.com/*
@@ -36,7 +37,7 @@ function bseg(t) {
 		var find_init = (document.querySelector("#cnwp8RJ8") !== null);
 
 		//客户端下载页（https://pan.baidu.com/download || 无视https://pan.baidu.com/disk/award）
-		var find_download = (document.querySelector("#login-header") !== null);
+		var find_download = (document.querySelector("#logo-main") !== null);
 
 		//版本更新页 | 服务协议（https://pan.baidu.com/disk/version/ || https://pan.baidu.com/disk/duty/ || https://yun.baidu.com/disk/autoduty || https://pan.baidu.com/disk/protocol 等）
 		var find_version = (document.querySelector(".help-all") !== null || document.querySelector(".main-i") !== null);
@@ -56,8 +57,11 @@ function bseg(t) {
 		//文章页（https://wenzhang.baidu.com/ || https://pan.baidu.com/tools 等）
 		var find_wenzhang = (document.querySelector(".__header") !== null);
 
+		//未登录页
+		var find_notlogin = (document.querySelector("#login-header") !== null);
+
 		//综合
-		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center || find_error || find_wenzhang);
+		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center || find_error || find_wenzhang || find_notlogin);
 		//确定显示点是否存在
 		if(find_or) {
 			//循环索引
@@ -103,7 +107,7 @@ function bseg(t) {
 			new_input.setAttribute("placeholder", "请输入内容[油猴脚本]");
 			new_input.setAttribute("autocomplete", "off");
 			new_span.appendChild(new_input);
-			new_input.style.cssText = "display:inline-block;border-top:1px solid #A9A9A9;border-bottom:1px solid #A9A9A9;border-left:0;border-right:0;font-size:15px;color:black;outline:none;padding:2px;background-color:white;outline:none;"
+			new_input.style.cssText = "display:inline-block;border-top:1px solid #A9A9A9;border-bottom:1px solid #A9A9A9;border-left:0;border-right:0;font-size:15px;color:black;outline:none;padding:2px;background-color:white;outline:none;box-sizing:content-box;margin:0;cursor:text;font-family:'Microsoft YaHei',arial,SimSun,宋体;"
 
 			//span节点再建【清除输入框】子节点
 			var new_x_btnd = document.createElement('div');
@@ -309,6 +313,29 @@ function bseg(t) {
 					new_select.style.cssText += "height:30px;display:inline-block;";
 					//设置新建的输入框的样式
 					new_input.style.cssText += "width:264px;height:24px;";
+				}
+			} else if(find_notlogin) {
+				//未登录页
+				var father_notlogin = document.getElementById("login-header");
+				var bro_notlogin = document.getElementsByClassName("login-title")[0];
+				if(father_notlogin && bro_notlogin) {
+					//新建span子节点
+					father_notlogin.insertBefore(new_span, bro_notlogin);
+					//设置新建的span节点样式
+					new_span.style.cssText = "display:inline-block;margin:18px 0px 0px 2px";
+					//设置新建的选择框的样式
+					new_select.style.cssText += "height:30px;display:inline-block;";
+					//设置新建的输入框的样式
+					new_input.style.cssText += "width:214px;height:24px;";
+					
+					//版面清理
+					var b_no_ln = document.getElementsByClassName("b-no-ln");
+					if(b_no_ln) {
+						var b_no_ln_len = b_no_ln.length;
+						for(i = 0; i < b_no_ln_len; i++) {
+							b_no_ln[i].style.marginRight = "4px";
+						}
+					}
 				}
 			}
 
@@ -582,7 +609,7 @@ function inText() {
 		['https://52youhou.com/userscript/userjs-rqj9q', '吾爱油猴', ],
 	];
 	var uslf = user_scripts.length - 1;
-	for(var i in user_scripts) {
+	for(i in user_scripts) {
 		var uc = user_scripts[i];
 		var uc0 = uc[0];
 		var uc1 = uc[1];
@@ -604,7 +631,7 @@ function inText() {
 		['http://www.bmqy.net/1466.html', '百度云分享链接一键登录', ],
 	];
 	var oplf = other_pwd.length - 1;
-	for(var i in other_pwd) {
+	for(i in other_pwd) {
 		var op = other_pwd[i];
 		var op0 = op[0];
 		var op1 = op[1];
@@ -615,7 +642,7 @@ function inText() {
 		te += '</a>';
 		if(i < oplf) {
 			te += '、';
-		}else{
+		} else {
 			te += '。';
 		}
 	}
@@ -624,7 +651,7 @@ function inText() {
 	te += '下面列举脚本中已聚合的百度网盘资源_搜索引擎：';
 	te += '<br>';
 	var tea = dir_all_ot();
-	for(var i in tea) {
+	for(i in tea) {
 		var teaa = tea[i];
 		var teaa0 = teaa[0];
 		var teaa1 = teaa[1];
@@ -654,7 +681,7 @@ function inText() {
 		['https://greasyfork.org/zh-CN/scripts/375838', 'Greasy Fork 简体汉字页面显示日均安装量', ],
 		['https://greasyfork.org/zh-CN/scripts/375799', '全网禁用input自动完成', ],
 	];
-	for(var i in other_scripts) {
+	for(i in other_scripts) {
 		var osb = other_scripts[i];
 		var osb0 = osb[0];
 		var osb1 = osb[1];
