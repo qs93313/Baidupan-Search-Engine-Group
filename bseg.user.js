@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      2.73
+// @version      2.79
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合
 // @match        *://pan.baidu.com
 // @match        *://yun.baidu.com
@@ -85,7 +85,7 @@ function bseg(t) {
 			var new_div_instruct = document.createElement('div');
 			new_div_instruct.setAttribute("id", "instruct");
 			new_div_instruct.innerHTML = "释";
-			new_div_instruct.style.cssText = "display:inline-block;border-top:1px solid lightgray;border-left:1px solid lightgray;border-bottom:1px solid lightgray;font-size:10px;width: 15px;height:20px;line-height:20px;border-radius: 12px 0 0 12px;color:lightgrey;cursor:pointer;text-align:right;";
+			new_div_instruct.style.cssText = "display:inline-block;border-top:1px solid lightgray;border-left:1px solid lightgray;border-bottom:1px solid lightgray;font-size:10px;width: 15px;height:20px;line-height:20px;border-radius: 12px 0 0 12px;color:lightgrey;cursor:pointer;text-align:right;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;";
 			new_span.appendChild(new_div_instruct);
 
 			//span节点再建【选择框】子节点
@@ -119,7 +119,7 @@ function bseg(t) {
 			var new_btn = document.createElement('button');
 			new_btn.innerHTML = "搜索";
 			new_span.appendChild(new_btn);
-			new_btn.style.cssText = "font-size:14px;width:52px;height:29px;color:white;border:1px solid #A9A9A9;cursor:pointer;padding:0;";
+			new_btn.style.cssText = "font-size:14px;width:52px;height:29px;color:white;border:1px solid #A9A9A9;padding:0;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none";
 			new_btn.style.background = "#3B8CFF";
 			new_btn.onmouseenter = function() {
 				new_btn.style.background = "#7EB2FF";
@@ -348,7 +348,7 @@ function bseg(t) {
 
 			//提示文字
 			var new_div_alert_c = document.createElement('div');
-			new_div_alert_c.innerHTML = "<a href='https://greasyfork.org/zh-CN/scripts/375337' target='_blank' style='color:green'>[油猴脚本][百度网盘资源搜索引擎聚合]</a>提示您：<br>请在输入框输入要搜索的内容。";
+			new_div_alert_c.innerHTML = "<a href='https://greasyfork.org/zh-CN/scripts/375337' target='_blank' style='color:green;font-size:15px;'>[油猴脚本][百度网盘资源搜索引擎聚合]</a>提示您：<br><span style='font-size:18px;color:red;'>请在输入框输入要搜索的内容。</span>";
 			new_div_alert_c.style.cssText = "height:42px;font-size:14px;padding:15px;letter-spacing:1px;"
 			new_div_alert.appendChild(new_div_alert_c);
 
@@ -361,14 +361,32 @@ function bseg(t) {
 			//删除按钮点击事件
 			new_x_btnd.onclick = function() {
 				new_input.value = "";
+				new_btn.style.cursor = "not-allowed";
 			}
 
+			//获得输入框数据
+			var new_input_val;
+			//计算输入框数据长度
+			var new_input_val_len;
+			//默认鼠标样式
+			new_btn.style.cursor = "not-allowed";
+			//监控输入框
+			new_input.oninput = function() {
+				new_input_val = new_input.value;
+				new_input_val_len = new_input_val.length;
+				//如果输入框有数据
+				if(new_input_val_len > 0) {
+					//鼠标样式变为手指
+					new_btn.style.cursor = "pointer";
+				} else {
+					//鼠标样式变为禁止
+					new_btn.style.cursor = "not-allowed";
+				}
+			}
 			//搜索按钮点击事件
 			new_btn.onclick = function() {
-				//获得输入框数据
-				var new_input_val = new_input.value;
-				//计算输入框数据长度
-				var new_input_val_len = new_input_val.length;
+				new_input_val = new_input.value;
+				new_input_val_len = new_input_val.length;
 				//如果输入框有数据
 				if(new_input_val_len > 0) {
 					//获得选择框里被选中的选项索引
@@ -389,7 +407,6 @@ function bseg(t) {
 						};
 						httpPost(p_url, p_params);
 					}
-
 				} else {
 					//出现提示
 					new_div_alert.style.display = "block";
@@ -445,7 +462,7 @@ function bseg(t) {
 			var new_div_reward = document.createElement('div');
 			new_div_reward.setAttribute("id", "reward");
 			new_div_reward.innerHTML = "助";
-			new_div_reward.style.cssText = "display:inline-block;border-top:1px solid lightgray;border-right:1px solid lightgray;border-bottom:1px solid lightgray;font-size:10px;width: 15px;height:20px;line-height:20px;border-radius: 0 12px 12px 0;color:lightgrey;cursor:pointer;";
+			new_div_reward.style.cssText = "display:inline-block;border-top:1px solid lightgray;border-right:1px solid lightgray;border-bottom:1px solid lightgray;font-size:10px;width: 15px;height:20px;line-height:20px;border-radius: 0 12px 12px 0;color:lightgrey;cursor:pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none";
 			new_span.appendChild(new_div_reward);
 
 			//建div支持作者二维码放置子节点
@@ -635,6 +652,8 @@ function inText() {
 	}
 	te += ' 分享。';
 	te += '</p><br><p>';
+	te += '该脚本将会频繁更新。由于这是脚本，数据并非存在某服务器的数据库里，而是直接写死在脚本里，数据更新即脚本更新。这些百度网盘搜索引擎网站的规则数据是会发生改变的，作者会注意网站的规则变化并更立即更新脚本。';
+	te += '</p><br><p>';
 	te += '<b>注意：自动填写密码的浏览器扩展有：';
 	var other_pwd = [
 		['https://www.aisouziyuan.com/helper.html', '爱搜资源助手', ],
@@ -668,8 +687,9 @@ function inText() {
 		var teaa1 = teaa[1];
 		var a1 = parseInt(i) + 1;
 		a1 = (a1 < 10) ? '0' + a1 : a1;
+		a1 = (a1 < 100) ? '0' + a1 : a1;
 		te += '<div style="display:inline-block;width:144px;text-indent:0;">';
-		te += '<div style="display:inline-block;width:22px;height:22px;margin:1px 3px 1px 1px;border:1px solid red;text-align:center;background-color:yellow;border-radius:12px;">';
+		te += '<div style="display:inline-block;width:33px;height:22px;margin:1px 3px 1px 1px;border:1px solid red;text-align:center;background-color:yellow;border-radius: 17px 17px 17px 17px / 12px 12px 12px 12px;">';
 		te += a1;
 		te += '</div>';
 		te += '<a href="';
@@ -752,20 +772,26 @@ function dir_all_ot() {
 			["c", "https://yunpanem.com/search/c/%sv%/1.html", "get", ],
 			["f", "https://yunpanem.com/search/f/%sv%/1.html", "get", ],
 		], ],
-		["http://www.slimego.cn/", "史莱姆", [
-			["", "http://www.slimego.cn/search.html?q=%sv%", "get", ],
-		], ],
-		["https://jidanso.com/", "网盘传奇", [
-			["", "https://www.jidanso.com/index.php/search/?q=%sv%", "get", ],
+		["http://www.xiaobaipan.com/", "小白盘", [
+			["", "http://www.xiaobaipan.com/list-%sv%.html", "get", ],
 		], ],
 		["https://nyaso.com/", "喵搜", [
 			["", "https://nyaso.com/dong/%sv%.html", "get", ],
 		], ],
+		["http://www.pansoso.com/", "盘搜搜", [
+			["", "http://www.pansoso.com/zh/%sv%", "get", ],
+		], ],
+		["https://www.xiaoso.net/", "小不点搜索", [
+			["", "https://www.xiaobd.net/m/search?wd=%sv%", "get", ],
+		], ],
+		["http://www.panduoduo.net/", "盘多多", [
+			["", "http://www.panduoduo.net/s/name/%sv%", "get", ],
+		], ],
+		["http://www.slimego.cn/", "史莱姆", [
+			["", "http://www.slimego.cn/search.html?q=%sv%", "get", ],
+		], ],
 		["http://www.3134.cc/", "sola资源站", [
 			["", "http://www.3134.cc/search.php?kw=%sv%", "get", ],
-		], ],
-		["http://www.59pan.com/", "59网盘", [
-			["", "http://www.59pan.com/search/%sv%/", "get", ],
 		], ],
 		["http://www.huisou.me/", "麦库搜索", [
 			["", "http://www.huisou.me/index.php?k=%sv%", "get", ],
@@ -773,17 +799,17 @@ function dir_all_ot() {
 		["http://www.kengso.com/", "坑搜网", [
 			["", "http://www.kengso.com/s?wd=%sv%", "get", ],
 		], ],
-		["http://pan.here325.com/", "325搜", [
-			["", "http://pan.here325.com/s?q=%sv%", "get", ],
+		["http://www.repanso.com", "热盘搜", [
+			["", "http://www.repanso.com/q?wd=%sv%", "get", ],
 		], ],
-		["http://www.pansoso.com/", "盘搜搜", [
-			["", "http://www.pansoso.com/zh/%sv%", "get", ],
+		["http://www.dmpans.com/", "大漠搜索", [
+			["", "http://www.dmpans.com/search?wd=%sv%", "get", ],
 		], ],
-		["http://www.99baiduyun.com/", "99搜索", [
-			["", "http://www.99baiduyun.com/baidu/%sv%", "get", ],
+		["http://www.panmeme.com/", "盘么么", [
+			["", "http://www.panmeme.com/query?key=%sv%", "get", ],
 		], ],
-		["http://www.51sopan.cn/", "51搜盘", [
-			["", "http://www.51sopan.cn/s?wd=%sv%", "get", ],
+		["http://www.vpansou.com/", "V盘搜", [
+			["", "http://www.vpansou.com/query?wd=%sv%", "get", ],
 		], ],
 		["http://www.wwaaffxx.com/search/", "我爱分享", [
 			["", "kw", "post", ],
@@ -794,24 +820,29 @@ function dir_all_ot() {
 		["http://www.panyisou.com/search/", "盘易搜", [
 			["", "kw", "post", ],
 		], ],
-		["http://www.dmpans.com/", "大漠搜索", [
-			["", "http://www.dmpans.com/search?wd=%sv%", "get", ],
+		//以下的更新慢
+		["http://www.59pan.com/", "59网盘", [
+			["", "http://www.59pan.com/search/%sv%/", "get", ],
 		], ],
-		["http://www.xiaobaipan.com/", "小白盘", [
-			["", "http://www.xiaobaipan.com/list-%sv%", "get", ],
+		["http://www.99baiduyun.com/", "99搜索", [
+			["", "http://www.99baiduyun.com/baidu/%sv%", "get", ],
 		], ],
-		["http://www.cilimao.io/", "磁力猫", [
-			["", "https://www.cilimao.me/search?word=%sv%&resourceSource=1", "get", ],
-		], ],
-		["https://www.xiaoso.net/", "小不点搜索", [
-			["", "https://www.xiaobd.net/m/search?wd=%sv%", "get", ],
+		["http://www.51sopan.cn/", "51搜盘", [
+			["", "http://www.51sopan.cn/s?wd=%sv%", "get", ],
 		], ],
 		["https://wangpan007.com/", "网盘007", [
 			["", "https://wangpan007.com/share/kw%sv%", "get", ],
 		], ],
-		["http://www.panduoduo.net/", "盘多多", [
-			["", "http://www.panduoduo.net/s/name/%sv%", "get", ],
+		["https://jidanso.com/", "网盘传奇", [
+			["", "https://www.jidanso.com/index.php/search/?q=%sv%", "get", ],
 		], ],
+		["http://pan.here325.com/", "325搜", [
+			["", "http://pan.here325.com/s?q=%sv%", "get", ],
+		], ],
+		["http://www.cilimao.io/", "磁力猫", [
+			["", "https://www.cilimao.me/search?word=%sv%&resourceSource=1", "get", ],
+		], ],
+		//—0102标记
 		["http://www.tushupan.com", "图书盘", [
 			["", "http://www.tushupan.com/search?query=%sv%", "get", ],
 		], ],
@@ -836,11 +867,17 @@ function dir_all_ot() {
 		["http://tansuo233.com/", "探索云盘", [
 			["", "http://tansuo233.com/?search=%sv%", "get", ],
 		], ],
+		["https://www.qzhou.com.cn/", "轻舟网", [
+			["", "https://www.qzhou.com.cn/search?keyword=%sv%", "get", ],
+		], ],
 		["http://uzi8.cn/", "优质吧", [
 			["", "http://uzi8.cn/search/kw%sv%", "get", ],
 		], ],
-		["https://www.xalssy.com.cn", "百度网盘搜", [
+		["https://www.xalssy.com.cn", "百度网盘搜1", [
 			["", "https://www.xalssy.com.cn/search/kw%sv%", "get", ],
+		], ],
+		["http://aizhaomu.com/", "百度网盘搜2", [
+			["", "http://aizhaomu.com/search/kwsv%", "get", ],
 		], ],
 		["http://wjsou.com/", "文件搜", [
 			["", "http://wjsou.com:8080/s2.jsp?q=%sv%", "get", ],
@@ -854,9 +891,19 @@ function dir_all_ot() {
 		["http://www.sowangpan.com/", "搜网盘", [
 			["", "http://www.sowangpan.com/search/%sv%-0-全部-0.html", "get", ],
 		], ],
-		["https://www.yumuso.com/", "榆木搜", [
-			["", "https://www.yumuso.com/q/%sv%", "get", ],
+		["https://www.dupanbang.com/", "度盘帮", [
+			["", "https://www.dupanbang.com/q/%sv%", "get", ],
 		], ],
+		["http://www.baiduyunsousou.com/", "百度云搜搜", [
+			["", "http://www.baiduyunsousou.com/search?kw=%sv%", "get", ],
+		], ],
+		["http://www.vpanso.com/", "微盘搜", [
+			["", "http://www.vpanso.com/s?wd=%sv%", "get", ],
+		], ],
+		["https://tool.lu/pansou/", "在线工具", [
+			["", "https://tool.lu/pansou/index.html?q=%sv%", "get", ],
+		], ],
+		//以下的搜不到
 		["http://www.bdsoba.com/", "搜百度吧", [
 			["", "http://www.bdsoba.com/search/type_0_1_%sv%/", "get", ],
 		], ],
@@ -872,8 +919,14 @@ function dir_all_ot() {
 		["https://www.xxhh360.com/", "云搜大师", [
 			["", "https://www.xxhh360.com/search?q=%sv%", "get", ],
 		], ],
+		["http://www.panpanso.com/", "盘盘搜", [
+			["", "http://www.panpanso.com/baiduwp?qiehuan=1&sousuo=%sv%", "get", ],
+		], ],
 		["http://www.tuoniao.me/", "鸵鸟搜索", [
 			["", "http://www.tuoniao.me/search/%sv%/list", "get", ],
+		], ],
+		["http://www.zhaoyunpan.cn/", "找云盘", [
+			["", "http://www.zhaoyunpan.cn/share.php?key=%sv%", "get", ],
 		], ],
 		["https://www.dyroy.com/", "乐依分享", [
 			["", "https://www.dyroy.com/html/search.html?q=%sv%", "get", ],
@@ -947,6 +1000,10 @@ function dir_all_ot() {
 		["https://www.xiazaisou.com/wangpan", "下载搜", [
 			["", "https://www.xiazaisou.com/wangpan?s=%sv%", "get", ],
 		], ],
+		["http://pan.muyi.so/", "沐依神器", [
+			["", "http://pan.muyi.so/index.php/home/index/result.html?q=%sv%", "get", ],
+		], ],
+		//以下不是专门的搜索引擎
 		["https://www.baidu.com/s?wd=pan.baidu.com&ct=1", "百度搜索", [
 			["", "https://www.baidu.com/s?wd=%sv%%20pan.baidu.com&ct=1", "get", ],
 		], ],
@@ -992,6 +1049,7 @@ function dir_all_ot() {
 		["https://swisscows.ch/web?query=pan.baidu.com&region=zh-CN", "swisscows", [
 			["", "https://swisscows.ch/web?query=%sv%%20pan.baidu.com&region=zh-CN", "get", ],
 		], ],
+		//以下的要收费
 		["http://www.quzhuanpan.com/", "去转盘", [
 			["", "https://www.quzhuanpan.com/source/search.action?q=%sv%", "get", ],
 		], ],
@@ -1009,6 +1067,7 @@ function dir_all_ot() {
 		["http://www.soyunpan.com/", "搜云盘", [
 			["", "http://www.soyunpan.com/search/%sv%-0-全部-0.html", "get", ],
 		], ],
+		//以下的有md5
 		["https://www.lingfengyun.com/", "凌风云", [
 			["", "https://www.lingfengyun.com/search.asp?so_md5key=74520f7a96596c3328fc0dec611fe290&wd=%sv%", "get", ],
 		], ],
@@ -1021,6 +1080,7 @@ function dir_all_ot() {
 		["http://www.sobaidupan.com/", "搜百度盘", [
 			["", "http://www.sobaidupan.com/search?so_md5key=74fe55625afdc6f58071691ecfac6e35&wd=%sv%", "get", ],
 		], ],
+		//以下的不稳定
 		["https://www.panc.cc/", "胖次搜索", [
 			["", "https://www.panc.cc/s/%sv%/td_0", "get", ],
 		], ],
@@ -1036,6 +1096,12 @@ function dir_all_ot() {
 			["1", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=0", "get", ],
 			["3", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=2", "get", ],
 			["2", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=4", "get", ],
+		], ],
+		["http://www.wanpan.info/", "万盘搜索", [
+			["", "http://www.wanpan.info/k/%sv%", "get", ],
+		], ],
+		["https://www.yumuso.com/", "榆木搜", [
+			["", "https://www.yumuso.com/q/%sv%", "get", ],
 		], ],
 		["http://so.hzbslp.com/", "特多盘", [
 			["", "http://so.hzbslp.com/api.php?pn=1&sr=%sv%", "get", ],
