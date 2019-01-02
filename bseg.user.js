@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      2.7
+// @version      2.73
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合
 // @match        *://pan.baidu.com
 // @match        *://yun.baidu.com
@@ -722,13 +722,12 @@ function httpPost(URL, PARAMS, AC) {
 	temp.acceptCharset = AC;
 	//设置属性class
 	temp.className = 'tpost';
-	for(let x in PARAMS) {
-		let opt = document.createElement("textarea");
+	for(var x in PARAMS) {
+		var opt = document.createElement("textarea");
 		opt.name = x;
 		opt.value = PARAMS[x];
 		temp.appendChild(opt);
 	}
-	//appendChild() 方法可向节点的子节点列表的末尾添加新的子节点。
 	document.body.appendChild(temp);
 	temp.submit();
 	return temp;
@@ -782,6 +781,9 @@ function dir_all_ot() {
 		], ],
 		["http://www.99baiduyun.com/", "99搜索", [
 			["", "http://www.99baiduyun.com/baidu/%sv%", "get", ],
+		], ],
+		["http://www.51sopan.cn/", "51搜盘", [
+			["", "http://www.51sopan.cn/s?wd=%sv%", "get", ],
 		], ],
 		["http://www.wwaaffxx.com/search/", "我爱分享", [
 			["", "kw", "post", ],
@@ -867,6 +869,9 @@ function dir_all_ot() {
 		["https://www.fqsousou.com/", "番茄搜搜", [
 			["", "https://www.fqsousou.com/s/%sv%.html", "get", ],
 		], ],
+		["https://www.xxhh360.com/", "云搜大师", [
+			["", "https://www.xxhh360.com/search?q=%sv%", "get", ],
+		], ],
 		["http://www.tuoniao.me/", "鸵鸟搜索", [
 			["", "http://www.tuoniao.me/search/%sv%/list", "get", ],
 		], ],
@@ -936,6 +941,12 @@ function dir_all_ot() {
 		["http://www.soupan.info/", "搜盘", [
 			["", "http://www.soupan.info/search.php?q=%sv%", "get", ],
 		], ],
+		["http://kaopu.so/", "靠谱搜索", [
+			["", "http://kaopu.so/pan/%sv%", "get", ],
+		], ],
+		["https://www.xiazaisou.com/wangpan", "下载搜", [
+			["", "https://www.xiazaisou.com/wangpan?s=%sv%", "get", ],
+		], ],
 		["https://www.baidu.com/s?wd=pan.baidu.com&ct=1", "百度搜索", [
 			["", "https://www.baidu.com/s?wd=%sv%%20pan.baidu.com&ct=1", "get", ],
 		], ],
@@ -982,7 +993,7 @@ function dir_all_ot() {
 			["", "https://swisscows.ch/web?query=%sv%%20pan.baidu.com&region=zh-CN", "get", ],
 		], ],
 		["http://www.quzhuanpan.com/", "去转盘", [
-			["", "http://www.quzhuanpan.com/source/search.action?q=%sv%", "get", ],
+			["", "https://www.quzhuanpan.com/source/search.action?q=%sv%", "get", ],
 		], ],
 		["http://www.zhuzhupan.com/", "猪猪盘", [
 			["总线", "http://www.zhuzhupan.com/search?s=100&query=%sv%", "get", ],
@@ -1012,6 +1023,12 @@ function dir_all_ot() {
 		], ],
 		["https://www.panc.cc/", "胖次搜索", [
 			["", "https://www.panc.cc/s/%sv%/td_0", "get", ],
+		], ],
+		["https://www.pp93.com/", "泡泡", [
+			["史莱姆", "http://www.pp93.com/pp93sou.php?Slime=%sv%", "get", ],
+			["盘搜", "http://www.pp93.com/pp93sou.php?pansou=%sv%", "get", ],
+			["胖次", "http://www.pp93.com/pp93sou.php?panc=%sv%", "get", ],
+			["盘搜搜", "http://www.pp93.com/pp93sou.php?pansoso=%sv%", "get", ],
 		], ],
 		["http://www.daysou.com/", "云搜", [
 			["全量", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=4", "get", ],
