@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      2.79
+// @version      2.80
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合
 // @match        *://pan.baidu.com
 // @match        *://yun.baidu.com
@@ -652,9 +652,11 @@ function inText() {
 	}
 	te += ' 分享。';
 	te += '</p><br><p>';
-	te += '该脚本将会频繁更新。由于这是脚本，数据并非存在某服务器的数据库里，而是直接写死在脚本里，数据更新即脚本更新。这些百度网盘搜索引擎网站的规则数据是会发生改变的，作者会注意网站的规则变化并更立即更新脚本。';
+	te += '该脚本将会频繁更新。由于这是脚本，数据并非存在某服务器的数据库里，而是直接写死在脚本里，数据更新即脚本更新。这些百度网盘搜索引擎网站的规则数据是会发生改变的，作者会注意网站的规则变化并立即更新脚本。';
 	te += '</p><br><p>';
-	te += '<b>注意：自动填写密码的浏览器扩展有：';
+	te += '<b style="color:red;">注意！这些搜索网页上难免有广告，推荐使用<a href="https://www.yiclear.com/download/" target=_blank" style="color:green;text-decoration:underline;">广告净化器</a>等扩展屏蔽广告。</b>';
+	te += '</p><br><p>';
+	te += '<b style="color:red;">注意！自动填写密码的浏览器扩展有：';
 	var other_pwd = [
 		['https://www.aisouziyuan.com/helper.html', '爱搜资源助手', ],
 		['https://ypsuperkey.meek.com.cn/', '云盘万能钥匙', ],
@@ -676,7 +678,7 @@ function inText() {
 			te += '。';
 		}
 	}
-	te += '它们的数据来源不同，都装上有更大几率获取密码。</b>';
+	te += '</b>它们的数据来源不同，都装上有更大几率获取密码。';
 	te += '</p></br><p>';
 	te += '下面列举脚本中已聚合的百度网盘资源_搜索引擎：';
 	te += '<br>';
@@ -686,8 +688,8 @@ function inText() {
 		var teaa0 = teaa[0];
 		var teaa1 = teaa[1];
 		var a1 = parseInt(i) + 1;
-		a1 = (a1 < 10) ? '0' + a1 : a1;
-		a1 = (a1 < 100) ? '0' + a1 : a1;
+		a1 = (a1 < 10) ? ('0' + a1) : a1;
+		a1 = (a1 < 100) ? ('0' + a1) : a1;
 		te += '<div style="display:inline-block;width:144px;text-indent:0;">';
 		te += '<div style="display:inline-block;width:33px;height:22px;margin:1px 3px 1px 1px;border:1px solid red;text-align:center;background-color:yellow;border-radius: 17px 17px 17px 17px / 12px 12px 12px 12px;">';
 		te += a1;
@@ -700,6 +702,33 @@ function inText() {
 		te += '] ';
 		te += '</a>';
 		te += '</div>'
+	}
+	te += '</p><br><p>';
+	te += '搜索引擎的排序权重为：';
+	var ws = [
+		['网站必须能访问，网站不能访问删除。'],
+		['网站访问要稳定，网站访问稳定的靠前。'],
+		['搜索引擎是否收费，免费的搜索引擎靠前。'],
+		['搜索引擎是否专门搜索百度网盘资源，专门搜索百度网盘资源的靠前。'],
+		['网站服务器的位置，服务器在境内的靠前。'],
+		['搜索结果的数量，数量多的靠前。'],
+		['搜索结果的质量，失效链接少的靠前。'],
+		['搜索结果是否及时更新，及时更新的靠前。'],
+		['网站请求采用的字符编码，已知编码的靠前，MD5编码的靠最后，未知编码的删除。'],
+		['已知字符编码的排序，从前往后依次是单层url编码、双层url编码、gbk编码、Escape编码、Base64编码、Unicode编码。'],
+		['网站采用的HTTP请求方法，采用get方法的靠前。'],
+		['是否有加密分享结果，有加密分享结果的靠前。'],
+		['在已采用广告屏蔽插件的情况下，依然有广告的靠后。'],
+		['是否有自动填加密分享密码的插件，有插件的靠前。'],
+	];
+	for(i in ws) {
+		te += "</p><p>";
+		var wsi = ws[i];
+		var a2 = parseInt(i) + 1;
+		a2 = (a2 < 10) ? ('0' + a2) : a2;
+		te += a2;
+		te += "：";
+		te += wsi;
 	}
 	te += '</p><br><p>';
 	te += '说明书还在进一步完善中。';
@@ -781,6 +810,12 @@ function dir_all_ot() {
 		["http://www.pansoso.com/", "盘搜搜", [
 			["", "http://www.pansoso.com/zh/%sv%", "get", ],
 		], ],
+		["https://www.fqsousou.com/", "番茄搜搜", [
+			["", "https://www.fqsousou.com/s/%sv%.html", "get", ],
+		], ],
+		["http://www.bdsoba.com/", "搜百度吧", [
+			["", "http://www.bdsoba.com/search/type_0_1_%sv%/", "get", ],
+		], ],
 		["https://www.xiaoso.net/", "小不点搜索", [
 			["", "https://www.xiaobd.net/m/search?wd=%sv%", "get", ],
 		], ],
@@ -808,8 +843,29 @@ function dir_all_ot() {
 		["http://www.panmeme.com/", "盘么么", [
 			["", "http://www.panmeme.com/query?key=%sv%", "get", ],
 		], ],
+		["http://www.58wangpan.com/", "58网盘", [
+			["", "http://www.58wangpan.com/search/kw%sv%", "get", ],
+		], ],
+		["http://www.56wangpan.com/", "56网盘", [
+			["", "http://www.56wangpan.com/search/kw%sv%", "get", ],
+		], ],
+		["http://wx01.51caichang.com/", "51网盘", [
+			["", "http://wx01.51caichang.com/so?keyword=%sv%", "get", ],
+		], ],
 		["http://www.vpansou.com/", "V盘搜", [
 			["", "http://www.vpansou.com/query?wd=%sv%", "get", ],
+		], ],
+		["http://tansuo233.com/", "探索云盘", [
+			["", "http://tansuo233.com/?search=%sv%", "get", ],
+		], ],
+		["http://uzi8.cn/", "优质吧", [
+			["", "http://uzi8.cn/search/kw%sv%", "get", ],
+		], ],
+		["https://www.xalssy.com.cn", "税友", [
+			["", "https://www.xalssy.com.cn/search/kw%sv%", "get", ],
+		], ],
+		["http://aizhaomu.com/", "创业招", [
+			["", "http://aizhaomu.com/search/kw%sv%", "get", ],
 		], ],
 		["http://www.wwaaffxx.com/search/", "我爱分享", [
 			["", "kw", "post", ],
@@ -827,11 +883,44 @@ function dir_all_ot() {
 		["http://www.99baiduyun.com/", "99搜索", [
 			["", "http://www.99baiduyun.com/baidu/%sv%", "get", ],
 		], ],
+		["http://www.pansou.com/", "盘搜", [
+			["", "http://www.pansou.com/?q=%sv%", "get", ],
+		], ],
+		["https://www.fastsoso.cn/", "fastsoso", [
+			["", "https://www.fastsoso.cn/search?k=%sv%", "get", ],
+		], ],
+		["http://wjsou.com/", "文件搜", [
+			["", "http://wjsou.com:8080/s2.jsp?q=%sv%", "get", ],
+		], ],
 		["http://www.51sopan.cn/", "51搜盘", [
 			["", "http://www.51sopan.cn/s?wd=%sv%", "get", ],
 		], ],
+		["https://www.qzhou.com.cn/", "轻舟网", [
+			["", "https://www.qzhou.com.cn/search?keyword=%sv%", "get", ],
+		], ],
+		["http://www.baiduyunsousou.com/", "百度云搜搜", [
+			["", "http://www.baiduyunsousou.com/search?kw=%sv%", "get", ],
+		], ],
+		["https://www.dupanbang.com/", "度盘帮", [
+			["", "https://www.dupanbang.com/q/%sv%", "get", ],
+		], ],
+		["http://www.xilinjie.com/", "西林街", [
+			["", "http://www.xilinjie.com/s?q=%sv%&t=pan", "get", ],
+		], ],
 		["https://wangpan007.com/", "网盘007", [
 			["", "https://wangpan007.com/share/kw%sv%", "get", ],
+		], ],
+		["http://www.yunpuzi.net/", "云铺子", [
+			["", "http://www.yunpuzi.net/all/s-%sv%.html", "get", ],
+		], ],
+		["http://www.vpanso.com/", "微盘搜", [
+			["", "http://www.vpanso.com/s?wd=%sv%", "get", ],
+		], ],
+		["https://www.xxhh360.com/", "云搜大师", [
+			["", "https://www.xxhh360.com/search?q=%sv%", "get", ],
+		], ],
+		["http://www.panpanso.com/", "盘盘搜", [
+			["", "http://www.panpanso.com/baiduwp?qiehuan=1&sousuo=%sv%", "get", ],
 		], ],
 		["https://jidanso.com/", "网盘传奇", [
 			["", "https://www.jidanso.com/index.php/search/?q=%sv%", "get", ],
@@ -842,100 +931,39 @@ function dir_all_ot() {
 		["http://www.cilimao.io/", "磁力猫", [
 			["", "https://www.cilimao.me/search?word=%sv%&resourceSource=1", "get", ],
 		], ],
-		//—0102标记
-		["http://www.tushupan.com", "图书盘", [
-			["", "http://www.tushupan.com/search?query=%sv%", "get", ],
-		], ],
-		["http://www.yunpuzi.net/", "云铺子", [
-			["", "http://www.yunpuzi.net/all/s-%sv%.html", "get", ],
-		], ],
-		["http://www.56wangpan.com/", "56网盘", [
-			["", "http://www.56wangpan.com/search/kw%sv%", "get", ],
-		], ],
-		["http://www.58wangpan.com/", "58网盘", [
-			["", "http://www.58wangpan.com/search/kw%sv%", "get", ],
-		], ],
-		["http://wx01.51caichang.com/", "51网盘", [
-			["", "http://wx01.51caichang.com/so?keyword=%sv%", "get", ],
-		], ],
 		["http://www.jisoupan.com/", "及搜盘", [
 			["", "http://www.jisoupan.com/search/%sv%.html", "get", ],
 		], ],
-		["http://www.pansou.com/", "盘搜", [
-			["", "http://www.pansou.com/?q=%sv%", "get", ],
-		], ],
-		["http://tansuo233.com/", "探索云盘", [
-			["", "http://tansuo233.com/?search=%sv%", "get", ],
-		], ],
-		["https://www.qzhou.com.cn/", "轻舟网", [
-			["", "https://www.qzhou.com.cn/search?keyword=%sv%", "get", ],
-		], ],
-		["http://uzi8.cn/", "优质吧", [
-			["", "http://uzi8.cn/search/kw%sv%", "get", ],
-		], ],
-		["https://www.xalssy.com.cn", "百度网盘搜1", [
-			["", "https://www.xalssy.com.cn/search/kw%sv%", "get", ],
-		], ],
-		["http://aizhaomu.com/", "百度网盘搜2", [
-			["", "http://aizhaomu.com/search/kwsv%", "get", ],
-		], ],
-		["http://wjsou.com/", "文件搜", [
-			["", "http://wjsou.com:8080/s2.jsp?q=%sv%", "get", ],
-		], ],
-		["https://www.fastsoso.cn/", "fastsoso", [
-			["", "https://www.fastsoso.cn/search?k=%sv%", "get", ],
-		], ],
-		["https://www.soohub.com/", "soohub", [
-			["", "https://www.soohub.com/search/%sv%/1", "get", ],
+		["http://www.tushupan.com", "图书盘", [
+			["", "http://www.tushupan.com/search?query=%sv%", "get", ],
 		], ],
 		["http://www.sowangpan.com/", "搜网盘", [
 			["", "http://www.sowangpan.com/search/%sv%-0-全部-0.html", "get", ],
 		], ],
-		["https://www.dupanbang.com/", "度盘帮", [
-			["", "https://www.dupanbang.com/q/%sv%", "get", ],
-		], ],
-		["http://www.baiduyunsousou.com/", "百度云搜搜", [
-			["", "http://www.baiduyunsousou.com/search?kw=%sv%", "get", ],
-		], ],
-		["http://www.vpanso.com/", "微盘搜", [
-			["", "http://www.vpanso.com/s?wd=%sv%", "get", ],
-		], ],
-		["https://tool.lu/pansou/", "在线工具", [
-			["", "https://tool.lu/pansou/index.html?q=%sv%", "get", ],
+		["https://www.soohub.com/", "soohub", [
+			["", "https://www.soohub.com/search/%sv%/1", "get", ],
 		], ],
 		//以下的搜不到
-		["http://www.bdsoba.com/", "搜百度吧", [
-			["", "http://www.bdsoba.com/search/type_0_1_%sv%/", "get", ],
-		], ],
 		["http://www.guanggua.com/", "盘115", [
 			["", "http://www.guanggua.com/search?key=%sv%", "get", ],
+		], ],
+		["http://www.sosoyunpan.com/", "搜搜云盘", [
+			["", "http://www.sosoyunpan.com/search.asp?wd=%sv%", "get", ],
+		], ],
+		["http://www.panuso.com/", "盘优搜", [
+			["", "http://www.panuso.com/s/%sv%.html", "get", ],
+		], ],
+		["http://www.sosuopan.com/", "搜索盘", [
+			["", "http://www.sosuopan.com/search?q=%sv%", "get", ],
 		], ],
 		["https://pan.90xz.com/", "90网盘", [
 			["", "https://pan.90xz.com/search/%sv%", "get", ],
 		], ],
-		["https://www.fqsousou.com/", "番茄搜搜", [
-			["", "https://www.fqsousou.com/s/%sv%.html", "get", ],
-		], ],
-		["https://www.xxhh360.com/", "云搜大师", [
-			["", "https://www.xxhh360.com/search?q=%sv%", "get", ],
-		], ],
-		["http://www.panpanso.com/", "盘盘搜", [
-			["", "http://www.panpanso.com/baiduwp?qiehuan=1&sousuo=%sv%", "get", ],
-		], ],
-		["http://www.tuoniao.me/", "鸵鸟搜索", [
-			["", "http://www.tuoniao.me/search/%sv%/list", "get", ],
-		], ],
-		["http://www.zhaoyunpan.cn/", "找云盘", [
-			["", "http://www.zhaoyunpan.cn/share.php?key=%sv%", "get", ],
-		], ],
 		["https://www.dyroy.com/", "乐依分享", [
 			["", "https://www.dyroy.com/html/search.html?q=%sv%", "get", ],
 		], ],
-		["http://sou.wolfbe.com/", "云搜一下", [
-			["", "http://sou.wolfbe.com/s?q=%sv%", "get", ],
-		], ],
-		["http://www.sosoyunpan.com/", "搜搜云盘", [
-			["", "http://www.sosoyunpan.com/search.asp?wd=%sv%", "get", ],
+		["http://www.0933.me/", "网盘资源网", [
+			["", "http://www.0933.me/search.html?wd=%sv%", "get", ],
 		], ],
 		["https://www.sov5.cn/", "SoV5", [
 			["", "https://www.sov5.cn/search?q=%sv%", "get", ],
@@ -943,65 +971,20 @@ function dir_all_ot() {
 		["http://www.pan131.com/", "盘131", [
 			["", "http://www.pan131.com/yun/%sv%/", "get", ],
 		], ],
-		["https://www.xiazaisou.com/", "下载搜", [
-			["", "https://www.xiazaisou.com/wangpan?s=%sv%", "get", ],
+		["http://www.zhaoyunpan.cn/", "找云盘", [
+			["", "http://www.zhaoyunpan.cn/share.php?key=%sv%", "get", ],
 		], ],
-		["http://www.13910.com/", "盘找找", [
-			["", "http://www.13910.com/s/?kw=%sv%", "get", ],
+		["http://sou.wolfbe.com/", "云搜一下", [
+			["", "http://sou.wolfbe.com/s?q=%sv%", "get", ],
 		], ],
-		["http://www.verypan.com/", "verypan", [
-			["", "http://www.verypan.com/index/index/baidusearch?keyword=%sv%", "get", ],
-		], ],
-		["https://www.ttyunsou.com/", "天天云搜", [
-			["", "https://www.ttyunsou.com/s?keyword=%sv%", "get", ],
-		], ],
-		["http://www.wodepan.com/", "我的盘", [
-			["", "http://www.wodepan.com/list/%sv%-1.html", "get", ],
-		], ],
-		["http://www.aiyoweia.com/", "哎呦喂啊", [
-			["", "http://www.aiyoweia.com/search/%sv%", "get", ],
-		], ],
-		["http://www.iwapan.com/", "爱挖盘", [
-			["", "http://www.iwapan.com/so.aspx?wd=%sv%", "get", ],
-		], ],
-		["http://www.xibianyun.com/wp/", "西边云", [
-			["", "http://www.xibianyun.com/wp/search?q=%sv%", "get", ],
-		], ],
-		["http://www.sosobtp.com/", "网盘搜索BT", [
-			["", "http://www.sosobtp.com/search/%sv%", "get", ],
-		], ],
-		["http://baiduyun.6miu.com/", "6miu", [
-			["", "http://baiduyun.6miu.com/word.html?kw=%sv%", "get", ],
-		], ],
-		["http://www.0933.me/", "网盘资源网", [
-			["", "http://www.0933.me/search.html?wd=%sv%", "get", ],
-		], ],
-		["http://www.panuso.com/", "盘优搜", [
-			["", "http://www.panuso.com/s/%sv%.html", "get", ],
-		], ],
-		["http://www.sowp.cn/", "搜网盘2", [
-			["", "http://www.sowp.cn/list/%sv%-1.html", "get", ],
-		], ],
-		["http://www.sosuopan.com/", "搜索盘", [
-			["", "http://www.sosuopan.com/search?q=%sv%", "get", ],
-		], ],
-		["http://www.xilinjie.com/", "西林街", [
-			["", "http://www.xilinjie.com/s?q=%sv%&t=pan", "get", ],
-		], ],
-		["http://www.friok.com/", "百度盘资源", [
-			["", "http://www.friok.com/?s=%sv%", "get", ],
+		["http://www.tuoniao.me/", "鸵鸟搜索", [
+			["", "http://www.tuoniao.me/search/%sv%/list", "get", ],
 		], ],
 		["http://www.soupan.info/", "搜盘", [
 			["", "http://www.soupan.info/search.php?q=%sv%", "get", ],
 		], ],
-		["http://kaopu.so/", "靠谱搜索", [
-			["", "http://kaopu.so/pan/%sv%", "get", ],
-		], ],
-		["https://www.xiazaisou.com/wangpan", "下载搜", [
-			["", "https://www.xiazaisou.com/wangpan?s=%sv%", "get", ],
-		], ],
-		["http://pan.muyi.so/", "沐依神器", [
-			["", "http://pan.muyi.so/index.php/home/index/result.html?q=%sv%", "get", ],
+		["https://tool.lu/pansou/", "在线工具", [
+			["", "https://tool.lu/pansou/index.html?q=%sv%", "get", ],
 		], ],
 		//以下不是专门的搜索引擎
 		["https://www.baidu.com/s?wd=pan.baidu.com&ct=1", "百度搜索", [
@@ -1079,6 +1062,52 @@ function dir_all_ot() {
 		], ],
 		["http://www.sobaidupan.com/", "搜百度盘", [
 			["", "http://www.sobaidupan.com/search?so_md5key=74fe55625afdc6f58071691ecfac6e35&wd=%sv%", "get", ],
+		], ],
+		//以下的什么都搜不到
+		["https://www.xiazaisou.com/", "下载搜", [
+			["", "https://www.xiazaisou.com/wangpan?s=%sv%", "get", ],
+		], ],
+		["http://www.13910.com/", "盘找找", [
+			["", "http://www.13910.com/s/?kw=%sv%", "get", ],
+		], ],
+		["http://www.verypan.com/", "verypan", [
+			["", "http://www.verypan.com/index/index/baidusearch?keyword=%sv%", "get", ],
+		], ],
+		["https://www.ttyunsou.com/", "天天云搜", [
+			["", "https://www.ttyunsou.com/s?keyword=%sv%", "get", ],
+		], ],
+		["http://www.wodepan.com/", "我的盘", [
+			["", "http://www.wodepan.com/list/%sv%-1.html", "get", ],
+		], ],
+		["http://www.aiyoweia.com/", "哎呦喂啊", [
+			["", "http://www.aiyoweia.com/search/%sv%", "get", ],
+		], ],
+		["http://www.iwapan.com/", "爱挖盘", [
+			["", "http://www.iwapan.com/so.aspx?wd=%sv%", "get", ],
+		], ],
+		["http://www.xibianyun.com/wp/", "西边云", [
+			["", "http://www.xibianyun.com/wp/search?q=%sv%", "get", ],
+		], ],
+		["http://www.sosobtp.com/", "网盘搜索BT", [
+			["", "http://www.sosobtp.com/search/%sv%", "get", ],
+		], ],
+		["http://baiduyun.6miu.com/", "6miu", [
+			["", "http://baiduyun.6miu.com/word.html?kw=%sv%", "get", ],
+		], ],
+		["http://www.sowp.cn/", "网盘搜搜", [
+			["", "http://www.sowp.cn/list/%sv%-1.html", "get", ],
+		], ],
+		["http://www.friok.com/", "百度盘资源", [
+			["", "http://www.friok.com/?s=%sv%", "get", ],
+		], ],
+		["http://kaopu.so/", "靠谱搜索", [
+			["", "http://kaopu.so/pan/%sv%", "get", ],
+		], ],
+		["https://www.xiazaisou.com/wangpan", "下载搜", [
+			["", "https://www.xiazaisou.com/wangpan?s=%sv%", "get", ],
+		], ],
+		["http://pan.muyi.so/", "沐依神器", [
+			["", "http://pan.muyi.so/index.php/home/index/result.html?q=%sv%", "get", ],
 		], ],
 		//以下的不稳定
 		["https://www.panc.cc/", "胖次搜索", [
