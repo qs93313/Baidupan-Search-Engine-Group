@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      2.80
+// @version      2.90
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合
 // @match        *://pan.baidu.com
 // @match        *://yun.baidu.com
@@ -34,7 +34,7 @@ function bseg(t) {
 		var find_home = (document.querySelector(".find-light-icon") !== null);
 
 		//密码填写页（https://pan.baidu.com/share/init?surl=……）
-		var find_init = (document.querySelector("#cnwp8RJ8") !== null);
+		var find_init = (document.querySelector(".verify-form") !== null);
 
 		//客户端下载页（https://pan.baidu.com/download || 无视https://pan.baidu.com/disk/award）
 		var find_download = (document.querySelector("#logo-main") !== null);
@@ -60,8 +60,11 @@ function bseg(t) {
 		//未登录页
 		var find_notlogin = (document.querySelector("#login-header") !== null);
 
+		//失效邀请
+		var find_sx = (document.querySelector(".share-invite-box") !== null);
+
 		//综合
-		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center || find_error || find_wenzhang || find_notlogin);
+		var find_or = (find_home || find_init || find_download || find_version || find_checkout || find_mall || find_center || find_error || find_wenzhang || find_notlogin || find_sx);
 		//确定显示点是否存在
 		if(find_or) {
 			//循环索引
@@ -171,6 +174,9 @@ function bseg(t) {
 					//设置新建的输入框的样式
 					new_input.style.cssText += "width:202px;height:24px;";
 					new_btn.style.width = "42px";
+					//清理版面
+					var verify_input = document.getElementsByClassName('verify-input')[0];
+					verify_input.style.paddingBottom = "20px";
 				}
 			} else if(find_download) {
 				//客户端下载页
@@ -336,6 +342,20 @@ function bseg(t) {
 							b_no_ln[i].style.marginRight = "4px";
 						}
 					}
+				}
+			} else if(find_sx){
+				//失效邀请
+				var father_sx = document.getElementsByClassName('share-invite-box')[0];
+				var bro_sx = document.getElementsByClassName('invite-bg-container')[0];
+				if(father_sx && bro_sx){
+					//新建span子节点
+					father_sx.insertBefore(new_span, bro_sx);
+					//设置新建的span节点样式
+					new_span.style.cssText = "display:inline-block;margin:18px 0px 0px 240px";
+					//设置新建的选择框的样式
+					new_select.style.cssText += "height:30px;display:inline-block;";
+					//设置新建的输入框的样式
+					new_input.style.cssText += "width:214px;height:24px;";
 				}
 			}
 
