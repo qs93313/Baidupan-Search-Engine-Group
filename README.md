@@ -1,72 +1,63 @@
-在百度云盘页面中新增百度网盘搜索引擎聚合，有  
-爱搜资源 | https://www.aisouziyuan.com/  
-我爱搜盘 | https://www.52sopan.com/  
-云盘精灵 | https://www.yunpanjingling.com/  
-云盘恶魔 | https://yunpanem.com/  
-磁力猫 | https://www.cilimao.me/  
-小不点 | https://www.xiaoso.net/  
-胖次 | https://www.panc.cc/  
-天天云搜 | https://www.ttyunsou.com/  
-云搜 | http://www.daysou.com/  
-鸵鸟 | http://www.tuoniao.me/  
-盘找找 | http://www.13910.com/  
-verypan | http://www.verypan.com/  
-小白盘 | http://www.xiaobaipan.com/  
-盘多多 | http://www.panduoduo.net/  
-图书盘 | http://www.tushupan.com  
-史莱姆 | http://www.slimego.cn/  
-云铺子 | http://www.yunpuzi.net/  
-网盘传奇 | https://jidanso.com/  
-sola资源站 | http://www.3134.cc/  
-盘115 | http://www.guanggua.com/  
-59网盘 | http://59pan.com/  
-58网盘 | http://www.58wangpan.com/  
-56网盘 | http://www.56wangpan.com/  
-58网盘2 | http://wx01.51caichang.com/  
-我的盘 | http://www.wodepan.com/  
-及搜盘 | http://www.jisoupan.com/  
-哎呦喂啊 | http://www.aiyoweia.com/  
-爱挖盘 | http://www.iwapan.com/  
-盘搜 | http://www.pansou.com/  
-云搜一下 | http://sou.wolfbe.com/  
-麦库搜索 | http://www.huisou.me/  
-探索云盘 | http://tansuo233.com/  
-坑搜网 | http://www.kengso.com/  
-喵搜 | https://nyaso.com/  
-西边云 | http://www.xibianyun.com/wp/  
-网盘搜索BT | http://www.sosobta.cn/  
-百度盘资源 | http://www.friok.com/  
-325搜 | http://pan.here325.com/  
-6miu | http://baiduyun.6miu.com/  
-90网盘 | https://pan.90xz.com/  
-fastsoso | https://www.fastsoso.cn/  
-搜盘 | http://www.soupan.info/  
-特多盘 | http://so.hzbslp.com/  
-网盘资源网 | http://www.0933.me/  
-百度网盘搜 | https://www.xalssy.com.cn  
-特百度 | http://www.tebaidu.com/  
-搜搜云盘 | http://www.sosoyunpan.com/  
-盘优搜 | http://www.panuso.com/  
-SoV5 | https://www.sov5.cn/  
-下载搜 | https://www.xiazaisou.com/  
-优质吧 | http://uzi8.cn/  
-网盘之家 | http://www.wangpanzhijia.net  
-众人搜网盘 | http://wangpan.renrensousuo.com/  
-乐依分享 | https://www.dyroy.com/  
-盘搜搜 | http://www.pansoso.com/  
-盘131 | http://www.pan131.com/  
-soohub | https://www.soohub.com/  
-搜网盘 | http://www.sowp.cn/  
-搜网盘 | http://www.sowangpan.com/  
-99 | http://www.99baiduyun.com/  
-文件搜 | http://wjsou.com/  
-榆木 | https://www.yumuso.com/  
-大漠 | http://www.dmpans.com/  
-搜百度吧 | http://www.bdsoba.com/  
-网盘007 | https://wangpan007.com/  
-闪电云 | http://www.h2ero.com/  
-v搜索 | http://www.v1248.com/  
-西林街 | http://www.xilinjie.com/  
-去转盘 | http://www.quzhuanpan.com/  
-猪猪盘 | http://www.zhuzhupan.com/  
-搜云盘 | http://www.soyunpan.com/  
+脚本在 Greasy Fork、github、吾爱油猴 分享。
+
+
+该脚本将会频繁更新。由于这是脚本，数据并非存在某服务器的数据库里，而是直接写死在脚本里，数据更新即脚本更新。这些百度网盘搜索引擎网站的规则数据是会发生改变的，作者会注意网站的规则变化并立即更新脚本。
+
+
+注意！这些搜索网页上难免有广告，推荐使用广告净化器等扩展屏蔽广告。
+
+
+注意！自动填写密码的浏览器扩展有：爱搜资源助手、云盘万能钥匙、百度云分享链接一键登录。它们的数据来源不同，都装上有更大几率获取密码。
+
+
+下面列举脚本中已聚合的百度网盘资源_搜索引擎：
+
+001[爱搜资源] 002[我爱搜盘] 003[云盘精灵] 004[闪电云] 005[云盘恶魔] 006[小白盘] 007[喵搜] 008[盘搜搜] 009[番茄搜搜] 010[搜百度吧] 011[小不点搜索] 012[盘多多] 013[史莱姆] 014[sola资源站] 015[麦库搜索] 016[坑搜网] 017[热盘搜] 018[大漠搜索] 019[盘么么] 020[58网盘] 021[56网盘] 022[51网盘] 023[V盘搜] 024[探索云盘] 025[优质吧] 026[税友] 027[创业招] 028[我爱分享] 029[57分享] 030[盘易搜] 031[59网盘] 032[99搜索] 033[盘搜] 034[fastsoso] 035[文件搜] 036[51搜盘] 037[轻舟网] 038[暮无雪] 039[度盘帮] 040[西林街] 041[网盘007] 042[云铺子] 043[微盘搜] 044[云搜大师] 045[盘盘搜] 046[网盘传奇] 047[325搜] 048[磁力猫] 049[及搜盘] 050[图书盘] 051[搜网盘] 052[soohub] 053[盘115] 054[搜搜云盘] 055[盘优搜] 056[搜索盘] 057[90网盘] 058[乐依分享] 059[网盘资源网] 060[SoV5] 061[盘131] 062[找云盘] 063[云搜一下] 064[鸵鸟搜索] 065[搜盘] 066[在线工具] 067[百度搜索] 068[谷歌搜索] 069[MEZW] 070[searx] 071[搜狗搜索] 072[360好搜] 073[中国搜索] 074[必应搜索] 075[神马搜索] 076[众人搜网盘] 077[ecosia] 078[duckgo] 079[crawler] 080[web.de] 081[swisscows] 082[去转盘] 083[猪猪盘] 084[搜云盘] 085[凌风云] 086[特百度] 087[云网盘之家] 088[搜百度盘] 089[下载搜] 090[盘找找] 091[verypan] 092[天天云搜] 093[我的盘] 094[哎呦喂啊] 095[爱挖盘] 096[西边云] 097[网盘搜索BT] 098[6miu] 099[网盘搜搜] 100[百度盘资源] 101[靠谱搜索] 102[下载搜] 103[沐依神器] 104[胖次搜索] 105[泡泡] 106[云搜] 107[万盘搜索] 108[榆木搜] 109[特多盘] 110[网盘之家]
+
+搜索引擎的排序权重为：
+
+01：网站必须能访问，网站不能访问删除。
+
+02：网站访问要稳定，网站访问稳定的靠前。
+
+03：搜索引擎是否收费，免费的搜索引擎靠前。
+
+04：搜索引擎是否专门搜索百度网盘资源，专门搜索百度网盘资源的靠前。
+
+05：网站服务器的位置，服务器在境内的靠前。
+
+06：搜索结果的数量，数量多的靠前。
+
+07：搜索结果的质量，失效链接少的靠前。
+
+08：搜索结果是否及时更新，及时更新的靠前。
+
+09：网站请求采用的字符编码，已知编码的靠前，MD5编码的靠最后，未知编码的删除。
+
+10：已知字符编码的排序，从前往后依次是单层url编码、双层url编码、gbk编码、Escape编码、Base64编码、Unicode编码。
+
+11：网站采用的HTTP请求方法，采用get方法的靠前。
+
+12：是否有加密分享结果，有加密分享结果的靠前。
+
+13：在已采用广告屏蔽插件的情况下，依然有广告的靠后。
+
+14：是否有自动填加密分享密码的插件，有插件的靠前。
+
+15：网站使用HTTPS协议的靠前。
+
+
+说明书还在进一步完善中。
+
+
+还可以尝试作者其他脚本：
+
+[同一词条在百度百科维基百科等网络百科中互相跳转]
+
+[百度首页自定义导航直接展开]
+
+[吾爱油猴自动签到]
+
+[Greasy Fork 简体汉字页面显示日均安装量]
+
+[全网禁用input自动完成]
