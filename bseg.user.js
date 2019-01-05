@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      2.90
+// @version      2.91
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合
 // @match        *://pan.baidu.com
 // @match        *://yun.baidu.com
@@ -343,11 +343,11 @@ function bseg(t) {
 						}
 					}
 				}
-			} else if(find_sx){
+			} else if(find_sx) {
 				//失效邀请
 				var father_sx = document.getElementsByClassName('share-invite-box')[0];
 				var bro_sx = document.getElementsByClassName('invite-bg-container')[0];
-				if(father_sx && bro_sx){
+				if(father_sx && bro_sx) {
 					//新建span子节点
 					father_sx.insertBefore(new_span, bro_sx);
 					//设置新建的span节点样式
@@ -740,6 +740,7 @@ function inText() {
 		['是否有加密分享结果，有加密分享结果的靠前。'],
 		['在已采用广告屏蔽插件的情况下，依然有广告的靠后。'],
 		['是否有自动填加密分享密码的插件，有插件的靠前。'],
+		['网站使用HTTPS协议的靠前。'],
 	];
 	for(i in ws) {
 		te += "</p><p>";
@@ -813,8 +814,8 @@ function dir_all_ot() {
 		["https://www.yunpanjingling.com/", "云盘精灵", [
 			["", "https://www.yunpanjingling.com/search/%sv%", "get", ],
 		], ],
-		["http://www.h2ero.com/", "闪电云", [
-			["", "http://www.h2ero.com/search?keywords=%sv%", "get", ],
+		["https://www.h2ero.com/", "闪电云", [
+			["", "https://www.h2ero.com/search?keywords=%sv%", "get", ],
 		], ],
 		["https://yunpanem.com/", "云盘恶魔", [
 			["a", "https://yunpanem.com/search/a/%sv%/1.html", "get", ],
@@ -866,8 +867,8 @@ function dir_all_ot() {
 		["http://www.58wangpan.com/", "58网盘", [
 			["", "http://www.58wangpan.com/search/kw%sv%", "get", ],
 		], ],
-		["http://www.56wangpan.com/", "56网盘", [
-			["", "http://www.56wangpan.com/search/kw%sv%", "get", ],
+		["https://www.56wangpan.com/", "56网盘", [
+			["", "https://www.56wangpan.com/search/kw%sv%", "get", ],
 		], ],
 		["http://wx01.51caichang.com/", "51网盘", [
 			["", "http://wx01.51caichang.com/so?keyword=%sv%", "get", ],
@@ -878,8 +879,8 @@ function dir_all_ot() {
 		["http://tansuo233.com/", "探索云盘", [
 			["", "http://tansuo233.com/?search=%sv%", "get", ],
 		], ],
-		["http://uzi8.cn/", "优质吧", [
-			["", "http://uzi8.cn/search/kw%sv%", "get", ],
+		["https://uzi8.cn/", "优质吧", [
+			["", "https://uzi8.cn/search/kw%sv%", "get", ],
 		], ],
 		["https://www.xalssy.com.cn", "税友", [
 			["", "https://www.xalssy.com.cn/search/kw%sv%", "get", ],
@@ -918,7 +919,7 @@ function dir_all_ot() {
 		["https://www.qzhou.com.cn/", "轻舟网", [
 			["", "https://www.qzhou.com.cn/search?keyword=%sv%", "get", ],
 		], ],
-		["http://www.baiduyunsousou.com/", "百度云搜搜", [
+		["http://www.baiduyunsousou.com/", "暮无雪", [
 			["", "http://www.baiduyunsousou.com/search?kw=%sv%", "get", ],
 		], ],
 		["https://www.dupanbang.com/", "度盘帮", [
@@ -930,8 +931,8 @@ function dir_all_ot() {
 		["https://wangpan007.com/", "网盘007", [
 			["", "https://wangpan007.com/share/kw%sv%", "get", ],
 		], ],
-		["http://www.yunpuzi.net/", "云铺子", [
-			["", "http://www.yunpuzi.net/all/s-%sv%.html", "get", ],
+		["https://www.yunpuzi.net/", "云铺子", [
+			["", "https://www.yunpuzi.net/all/s-%sv%.html", "get", ],
 		], ],
 		["http://www.vpanso.com/", "微盘搜", [
 			["", "http://www.vpanso.com/s?wd=%sv%", "get", ],
@@ -945,10 +946,10 @@ function dir_all_ot() {
 		["https://jidanso.com/", "网盘传奇", [
 			["", "https://www.jidanso.com/index.php/search/?q=%sv%", "get", ],
 		], ],
-		["http://pan.here325.com/", "325搜", [
-			["", "http://pan.here325.com/s?q=%sv%", "get", ],
+		["https://pan.here325.com/", "325搜", [
+			["", "https://pan.here325.com/s?q=%sv%", "get", ],
 		], ],
-		["http://www.cilimao.io/", "磁力猫", [
+		["https://www.cilimao.io/", "磁力猫", [
 			["", "https://www.cilimao.me/search?word=%sv%&resourceSource=1", "get", ],
 		], ],
 		["http://www.jisoupan.com/", "及搜盘", [
@@ -970,8 +971,8 @@ function dir_all_ot() {
 		["http://www.sosoyunpan.com/", "搜搜云盘", [
 			["", "http://www.sosoyunpan.com/search.asp?wd=%sv%", "get", ],
 		], ],
-		["http://www.panuso.com/", "盘优搜", [
-			["", "http://www.panuso.com/s/%sv%.html", "get", ],
+		["https://www.panuso.com/", "盘优搜", [
+			["", "https://www.panuso.com/s/%sv%.html", "get", ],
 		], ],
 		["http://www.sosuopan.com/", "搜索盘", [
 			["", "http://www.sosuopan.com/search?q=%sv%", "get", ],
@@ -982,8 +983,8 @@ function dir_all_ot() {
 		["https://www.dyroy.com/", "乐依分享", [
 			["", "https://www.dyroy.com/html/search.html?q=%sv%", "get", ],
 		], ],
-		["http://www.0933.me/", "网盘资源网", [
-			["", "http://www.0933.me/search.html?wd=%sv%", "get", ],
+		["https://www.0933.me/", "网盘资源网", [
+			["", "https://www.0933.me/search.html?wd=%sv%", "get", ],
 		], ],
 		["https://www.sov5.cn/", "SoV5", [
 			["", "https://www.sov5.cn/search?q=%sv%", "get", ],
@@ -1034,8 +1035,8 @@ function dir_all_ot() {
 		["https://m.sm.cn/s?q=pan.baidu.com", "神马搜索", [
 			["", "https://m.sm.cn/s?q=%sv%%20pan.baidu.com", "get", ],
 		], ],
-		["http://wangpan.renrensousuo.com/", "众人搜网盘", [
-			["", "http://wangpan.renrensousuo.com/jieguo?sa=网盘搜索&q=%sv%", "get", ],
+		["https://wangpan.renrensousuo.com/", "众人搜网盘", [
+			["", "https://wangpan.renrensousuo.com/jieguo?sa=网盘搜索&q=%sv%", "get", ],
 		], ],
 		["https://www.ecosia.org/search?q=pan.baidu.com", "ecosia", [
 			["", "https://www.ecosia.org/search?q=%sv%%20pan.baidu.com", "get", ],
@@ -1043,8 +1044,8 @@ function dir_all_ot() {
 		["https://duckduckgo.com/?q=pan.baidu.com&ia=web", "duckgo", [
 			["", "https://duckduckgo.com/?q=%sv%+pan.baidu.com&ia=web", "get", ],
 		], ],
-		["http://www.webcrawler.com/serp?q=pan.baidu.com", "crawler", [
-			["", "http://www.webcrawler.com/serp?q=%sv%%20pan.baidu.com", "get", ],
+		["https://www.webcrawler.com/serp?q=pan.baidu.com", "crawler", [
+			["", "https://www.webcrawler.com/serp?q=%sv%%20pan.baidu.com", "get", ],
 		], ],
 		["https://suche.web.de/web/result?q=pan.baidu.com", "web.de", [
 			["", "https://suche.web.de/web/result?q=%sv%%20pan.baidu.com", "get", ],
@@ -1053,7 +1054,7 @@ function dir_all_ot() {
 			["", "https://swisscows.ch/web?query=%sv%%20pan.baidu.com&region=zh-CN", "get", ],
 		], ],
 		//以下的要收费
-		["http://www.quzhuanpan.com/", "去转盘", [
+		["https://www.quzhuanpan.com/", "去转盘", [
 			["", "https://www.quzhuanpan.com/source/search.action?q=%sv%", "get", ],
 		], ],
 		["http://www.zhuzhupan.com/", "猪猪盘", [
@@ -1067,8 +1068,8 @@ function dir_all_ot() {
 			["7", "http://www.zhuzhupan.com/search?s=7&query=%sv%", "get", ],
 			["8", "http://www.zhuzhupan.com/search?s=8&query=%sv%", "get", ],
 		], ],
-		["http://www.soyunpan.com/", "搜云盘", [
-			["", "http://www.soyunpan.com/search/%sv%-0-全部-0.html", "get", ],
+		["https://www.soyunpan.com/", "搜云盘", [
+			["", "https://www.soyunpan.com/search/%sv%-0-全部-0.html", "get", ],
 		], ],
 		//以下的有md5
 		["https://www.lingfengyun.com/", "凌风云", [
@@ -1108,8 +1109,8 @@ function dir_all_ot() {
 		["http://www.xibianyun.com/wp/", "西边云", [
 			["", "http://www.xibianyun.com/wp/search?q=%sv%", "get", ],
 		], ],
-		["http://www.sosobtp.com/", "网盘搜索BT", [
-			["", "http://www.sosobtp.com/search/%sv%", "get", ],
+		["https://www.sosobtp.com/", "网盘搜索BT", [
+			["", "https://www.sosobtp.com/search/%sv%", "get", ],
 		], ],
 		["http://baiduyun.6miu.com/", "6miu", [
 			["", "http://baiduyun.6miu.com/word.html?kw=%sv%", "get", ],
