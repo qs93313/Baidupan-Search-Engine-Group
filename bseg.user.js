@@ -1,9 +1,7 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      2.91
+// @version      2.92
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合
-// @match        *://pan.baidu.com
-// @match        *://yun.baidu.com
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
 // @match        *://zhaohui.baidu.com/*
@@ -814,6 +812,9 @@ function dir_all_ot() {
 		["https://www.yunpanjingling.com/", "云盘精灵", [
 			["", "https://www.yunpanjingling.com/search/%sv%", "get", ],
 		], ],
+		["http://www.pansoso.com/", "盘搜搜", [
+			["", "http://www.pansoso.com/zh/%sv%", "get", ],
+		], ],
 		["https://www.h2ero.com/", "闪电云", [
 			["", "https://www.h2ero.com/search?keywords=%sv%", "get", ],
 		], ],
@@ -827,9 +828,6 @@ function dir_all_ot() {
 		], ],
 		["https://nyaso.com/", "喵搜", [
 			["", "https://nyaso.com/dong/%sv%.html", "get", ],
-		], ],
-		["http://www.pansoso.com/", "盘搜搜", [
-			["", "http://www.pansoso.com/zh/%sv%", "get", ],
 		], ],
 		["https://www.fqsousou.com/", "番茄搜搜", [
 			["", "https://www.fqsousou.com/s/%sv%.html", "get", ],
