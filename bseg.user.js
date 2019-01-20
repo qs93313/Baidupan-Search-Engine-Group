@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      2.99
-// @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合
+// @version      3.00
+// @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
 // @match        *://wangpan.baidu.com/*
@@ -648,7 +648,7 @@ function inText() {
 		['搜索结果的数量，数量多的靠前。'],
 		['搜索结果的质量，失效链接少的靠前。'],
 		['搜索结果是否及时更新，及时更新的靠前。'],
-		['网站请求采用的字符编码，已知编码的靠前，MD5编码的靠最后，未知编码的删除。'],
+		['网站请求采用的字符编码，已知编码的保留，未知编码的删除。'],
 		['已知字符编码的排序，从前往后依次是单层url编码、双层url编码、gbk编码、Escape编码、Base64编码、Unicode编码。'],
 		['网站采用的HTTP请求方法，采用get方法的靠前。'],
 		['是否有加密分享结果，有加密分享结果的靠前。'],
@@ -889,6 +889,22 @@ function dir_all_ot() {
 		["https://www.soohub.com/", "soohub", [
 			["", "https://www.soohub.com/search/%sv%/1", "get", "bseg_option_3", ],
 		], ],
+		//以下是搜书的
+		["http://mebook.cc/", "小书屋", [
+			["", "http://mebook.cc/?s=%sv%", "get", "bseg_option_9", ],
+		], ],
+		["http://www.ireadweek.com/index.php", "周读", [
+			["", "http://www.ireadweek.com/index.php/Index/bookList.html?keyword=%sv%", "get", "bseg_option_9", ],
+		], ],
+		["http://ibooks.org.cn/", "读书小站", [
+			["", "http://ibooks.org.cn/?s=下载 %sv%", "get", "bseg_option_9", ],
+		], ],
+		["https://sobooks.cc/", "sobooks", [
+			["", "https://sobooks.cc/search/%sv%", "get", "bseg_option_9", ],
+		], ],
+		["https://sobooks.cc/", "内酷网", [
+			["", "http://neikuw.com/?s=%sv%", "get", "bseg_option_9", ],
+		], ],
 		//以下的搜不到
 		["http://www.guanggua.com/", "盘115", [
 			["", "http://www.guanggua.com/search?key=%sv%", "get", "bseg_option_4", ],
@@ -998,19 +1014,6 @@ function dir_all_ot() {
 		], ],
 		["https://www.soyunpan.com/", "搜云盘", [
 			["", "https://www.soyunpan.com/search/%sv%-0-全部-0.html", "get", "bseg_option_6", ],
-		], ],
-		//以下的有md5
-		["https://www.lingfengyun.com/", "凌风云", [
-			["", "https://www.lingfengyun.com/search.asp?so_md5key=b3ad32f6e7916cb5e3e88945367666bb&wd=%sv%", "get", "bseg_option_9", ],
-		], ],
-		["http://www.tebaidu.com/", "特百度", [
-			["", "http://www.tebaidu.com/search.asp?so_md5key=cf3bb216d5ec0998533c605a0944a646&wd=%sv%", "get", "bseg_option_9", ],
-		], ],
-		["http://www.wowenda.com/", "云网盘之家", [
-			["", "http://www.wowenda.com/search?so_md5key=e445741f1edbe140634558f07606f5db&wd=%sv%", "get", "bseg_option_9", ],
-		], ],
-		["http://www.sobaidupan.com/", "搜百度盘", [
-			["", "http://www.sobaidupan.com/search?so_md5key=e445741f1edbe140634558f07606f5db&wd=%sv%", "get", "bseg_option_9", ],
 		], ],
 		//以下的什么都搜不到
 		["https://www.xiazaisou.com/", "下载搜", [
@@ -1716,7 +1719,7 @@ function bsegCss() {
 	color: #3931FF;
 }
 .bseg_option_9{
-	color: #747474;
+	color: #A0A70F;
 }
 .bseg_option_7{
 	color: #abc;
