@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.01
+// @version      3.02
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -81,10 +81,6 @@ function bseg(ttime) {
 			if(ins && find_or) {
 				//循环索引
 				var i, j;
-
-				//["https://www.aisouziyuan.com/", "爱搜资源", [
-				//			["", "https://www.aisouziyuan.com/?name=%sv%",  "bseg_option_1", ],
-				//		], ],
 
 				//搜索引擎网址目录
 				var dirall = [];
@@ -570,7 +566,7 @@ function inText() {
 		['https://52youhou.com/userscript/userjs-rqj9q', '吾爱油猴', ],
 		['https://mp.weixin.qq.com/s/k1KEn0KJhS5eHOEVoCAEZg', '微信公众号', ],
 		['https://tieba.baidu.com/p/5974006313', 'tampermonkey吧', ],
-		['https://tieba.baidu.com/p/5993472277', 'chrome吧+  ', ],
+		['https://tieba.baidu.com/p/5993472277', 'chrome吧', ],
 		['https://tieba.baidu.com/p/5993474487', 'firefox吧', ],
 		['https://zhuanlan.zhihu.com/p/53190523', '知乎'],
 		['https://juejin.im/post/5c0fc011f265da615d727f00', '掘金', ],
@@ -579,7 +575,7 @@ function inText() {
 		['https://blog.csdn.net/weixin_43219705/article/details/84889289', 'CSDN', ],
 		['https://my.oschina.net/u/3498250/blog/2987043', '开源中国', ],
 		['https://www.cnblogs.com/tszyc/p/10105746.html', '博客园', ],
-		['http://blog.51cto.com/11254154/2328001', '51CTO', ],
+		['https://blog.51cto.com/11254154/2328001', '51CTO', ],
 		['https://www.douban.com/group/topic/131325841/', '豆瓣', ],
 	];
 	var uslf = user_scripts.length - 1;
@@ -589,7 +585,7 @@ function inText() {
 		var uc1 = uc[1];
 		te += '<a href="';
 		te += uc0;
-		te += '" target=_blank" class="bseg_a_blank">';
+		te += '" target="_blank" class="bseg_a_blank">';
 		te += uc1;
 		te += '</a>';
 		if(i < uslf) {
@@ -1637,8 +1633,8 @@ function bsegCss() {
     font-size: 18px;
 }
 .bseg_a_blank {
-    color: green;
-    text-decoration: underline;
+    color: green!important;
+    text-decoration: underline!important;
 }
 .bseg_lookout {
     color: #f00;
