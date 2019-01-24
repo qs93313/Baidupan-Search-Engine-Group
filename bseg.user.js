@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.02
+// @version      3.03
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -751,6 +751,9 @@ function dir_all_ot() {
 		["https://www.fqsousou.com/", "番茄搜搜", [
 			["", "https://www.fqsousou.com/s/%sv%.html", "bseg_option_2", ],
 		], ],
+		["http://www.shiyue.org/", "十月搜索", [
+			["", "http://www.shiyue.org/s/%sv%", "bseg_option_2", ],
+		], ],
 		["https://www.xiaoso.net/", "小不点搜索", [
 			["", "https://www.xiaobd.net/m/search?wd=%sv%", "bseg_option_2", ],
 		], ],
@@ -772,14 +775,20 @@ function dir_all_ot() {
 		["http://www.panmeme.com/", "盘么么", [
 			["", "http://www.panmeme.com/query?key=%sv%", "bseg_option_2", ],
 		], ],
+		["http://wx01.51caichang.com/", "51网盘", [
+			["", "http://wx01.51caichang.com/so?keyword=%sv%", "bseg_option_2", ],
+		], ],
+		["http://wx.haogow.com/", "西部维度", [
+			["", "http://wx.haogow.com/so?keyword=%sv%", "bseg_option_2", ],
+		], ],
+		["http://wx.xingtuhua.com/", "商务中国", [
+			["", "http://wx.xingtuhua.com/so?keyword=%sv%", "bseg_option_2", ],
+		], ],
 		["http://www.58wangpan.com/", "58网盘", [
 			["", "http://www.58wangpan.com/search/kw%sv%", "bseg_option_2", ],
 		], ],
 		["https://www.56wangpan.com/", "56网盘", [
 			["", "https://www.56wangpan.com/search/kw%sv%", "bseg_option_2", ],
-		], ],
-		["http://wx01.51caichang.com/", "51网盘", [
-			["", "http://wx01.51caichang.com/so?keyword=%sv%", "bseg_option_2", ],
 		], ],
 		["http://www.vpansou.com/", "V盘搜", [
 			["", "http://www.vpansou.com/query?wd=%sv%", "bseg_option_2", ],
@@ -812,7 +821,7 @@ function dir_all_ot() {
 		["http://wjsou.com/", "文件搜", [
 			["", "http://wjsou.com:8080/s2.jsp?q=%sv%", "bseg_option_3", ],
 		], ],
-		["http://www.xxdown.cn/", "百度云搜", [
+		["http://www.xxdown.cn/", "西西", [
 			["", "http://www.xxdown.cn/e/action/ListInfo.php?title=%sv%&mid=1&tempid=10&ph=1", "bseg_option_3", ],
 		], ],
 		["http://www.51sopan.cn/", "51搜盘", [
@@ -841,6 +850,9 @@ function dir_all_ot() {
 		], ],
 		["https://www.xxhh360.com/", "云搜大师", [
 			["", "https://www.xxhh360.com/search?q=%sv%", "bseg_option_3", ],
+		], ],
+		["https://www.esopan.com/", "易搜盘", [
+			["", "https://www.esopan.com/share/kw%sv%", "bseg_option_3", ],
 		], ],
 		["http://www.panpanso.com/", "盘盘搜", [
 			["", "http://www.panpanso.com/baiduwp?qiehuan=1&sousuo=%sv%", "bseg_option_3", ],
@@ -936,10 +948,10 @@ function dir_all_ot() {
 		], ],
 		//以下不是专门的搜索引擎
 		["https://www.baidu.com/s?wd=pan.baidu.com&ct=1", "百度搜索", [
-			["", "https://www.baidu.com/s?wd=%sv%%20pan.baidu.com&ct=1", "bseg_option_5", ],
+			["", "https://www.baidu.com/s?wd=%sv%%20(pan|yun).baidu.com&ct=1", "bseg_option_5", ],
 		], ],
 		["https://www.google.com.hk/search?q=pan.baidu.com", "谷歌搜索", [
-			["", "https://www.google.com.hk/search?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
+			["", "https://www.google.com.hk/search?q=%sv%%20pan%20or%20yun%20.baidu.com", "bseg_option_5", ],
 		], ],
 		["https://so.mezw.com/Search?wd=pan.baidu.com", "MEZW", [
 			["", "https://so.mezw.com/Search?wd=%sv%%20pan.baidu.com", "bseg_option_5", ],
