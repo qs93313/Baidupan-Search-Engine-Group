@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.03
+// @version      3.04
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -754,7 +754,10 @@ function dir_all_ot() {
 		["http://www.shiyue.org/", "十月搜索", [
 			["", "http://www.shiyue.org/s/%sv%", "bseg_option_2", ],
 		], ],
-		["https://www.xiaoso.net/", "小不点搜索", [
+		["http://www.sopanba.com/", "搜盘吧", [
+			["", "http://www.sopanba.com/s/name/%sv%", "bseg_option_2", ],
+		], ],
+		["https://www.xiaobd.net/", "小不点搜索", [
 			["", "https://www.xiaobd.net/m/search?wd=%sv%", "bseg_option_2", ],
 		], ],
 		["http://www.panduoduo.net/", "盘多多", [
@@ -768,9 +771,6 @@ function dir_all_ot() {
 		], ],
 		["http://www.repanso.com", "热盘搜", [
 			["", "http://www.repanso.com/q?wd=%sv%", "bseg_option_2", ],
-		], ],
-		["http://www.dmpans.com/", "大漠搜索", [
-			["", "http://www.dmpans.com/search?wd=%sv%", "bseg_option_2", ],
 		], ],
 		["http://www.panmeme.com/", "盘么么", [
 			["", "http://www.panmeme.com/query?key=%sv%", "bseg_option_2", ],
@@ -804,6 +804,9 @@ function dir_all_ot() {
 		], ],
 		["http://aizhaomu.com/", "创业招", [
 			["", "http://aizhaomu.com/search/kw%sv%", "bseg_option_2", ],
+		], ],
+		["http://www.sodu123.com/", "搜度", [
+			["", "http://www.sodu123.com/sodu/so.php?q=%sv%", "bseg_option_2", ],
 		], ],
 		//以下的更新慢
 		["http://www.59pan.com/", "59网盘", [
@@ -875,9 +878,6 @@ function dir_all_ot() {
 		["http://www.jisoupan.com/", "多多下载", [
 			["", "http://www.jisoupan.com/search/%sv%.html", "bseg_option_3", ],
 		], ],
-		["http://www.tushupan.com", "图书盘", [
-			["", "http://www.tushupan.com/search?query=%sv%", "bseg_option_3", ],
-		], ],
 		["http://www.sowangpan.com/", "搜网盘", [
 			["", "http://www.sowangpan.com/search/%sv%-0-全部-0.html", "bseg_option_3", ],
 		], ],
@@ -885,6 +885,9 @@ function dir_all_ot() {
 			["", "https://www.soohub.com/search/%sv%/1", "bseg_option_3", ],
 		], ],
 		//以下是搜书的
+		["http://www.tushupan.com", "图书盘", [
+			["", "http://www.tushupan.com/search?query=%sv%", "bseg_option_9", ],
+		], ],
 		["http://mebook.cc/", "小书屋", [
 			["", "http://mebook.cc/?s=%sv%", "bseg_option_9", ],
 		], ],
@@ -897,8 +900,11 @@ function dir_all_ot() {
 		["https://sobooks.cc/", "sobooks", [
 			["", "https://sobooks.cc/search/%sv%", "bseg_option_9", ],
 		], ],
-		["https://sobooks.cc/", "内酷网", [
+		["http://neikuw.com/", "内酷网", [
 			["", "http://neikuw.com/?s=%sv%", "bseg_option_9", ],
+		], ],
+		["https://www.xssousou.com/", "小说搜搜", [
+			["", "https://www.xssousou.com/s/%sv%.html://neikuw.com/?s=%sv%", "bseg_option_9", ],
 		], ],
 		//以下的搜不到
 		["http://www.guanggua.com/", "盘115", [
@@ -947,11 +953,14 @@ function dir_all_ot() {
 			["", "https://tool.lu/pansou/index.html?q=%sv%", "bseg_option_4", ],
 		], ],
 		//以下不是专门的搜索引擎
-		["https://www.baidu.com/s?wd=pan.baidu.com&ct=1", "百度搜索", [
+		["https://www.baidu.com/s?wd=(pan|yun).baidu.com&ct=1", "百度搜索", [
 			["", "https://www.baidu.com/s?wd=%sv%%20(pan|yun).baidu.com&ct=1", "bseg_option_5", ],
 		], ],
-		["https://www.google.com.hk/search?q=pan.baidu.com", "谷歌搜索", [
+		["https://www.google.com.hk/search?q=pan%20or%20yun%20.baidu.com", "谷歌搜索", [
 			["", "https://www.google.com.hk/search?q=%sv%%20pan%20or%20yun%20.baidu.com", "bseg_option_5", ],
+		], ],
+		["https://mijisou.com/?language=zh-CN&q=pan.baidu.com", "秘迹搜索", [
+			["", "https://mijisou.com/?language=zh-CN&q=%sv%%20pan.baidu.com", "bseg_option_5", ],
 		], ],
 		["https://so.mezw.com/Search?wd=pan.baidu.com", "MEZW", [
 			["", "https://so.mezw.com/Search?wd=%sv%%20pan.baidu.com", "bseg_option_5", ],
@@ -1075,12 +1084,6 @@ function dir_all_ot() {
 			["", "http://pan.muyi.so/index.php/home/index/result.html?q=%sv%", "bseg_option_7", ],
 		], ],
 		//以下的不稳定
-		["http://www.3134.cc/", "sola资源站", [
-			["", "http://www.3134.cc/search.php?kw=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.huisou.me/", "麦库搜索", [
-			["", "http://www.huisou.me/index.php?k=%sv%", "bseg_option_8", ],
-		], ],
 		["https://www.panc.cc/", "胖次搜索", [
 			["", "https://www.panc.cc/s/%sv%/td_0", "bseg_option_8", ],
 		], ],
@@ -1105,12 +1108,6 @@ function dir_all_ot() {
 		], ],
 		["http://so.hzbslp.com/", "特多盘", [
 			["", "http://so.hzbslp.com/api.php?pn=1&sr=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.wangpanzhijia.net", "网盘之家", [
-			["", "http://www.wangpanzhijia.net/search.html?wd=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.bdsoba.com/", "搜百度吧", [
-			["", "http://www.bdsoba.com/search/type_0_1_%sv%/", "bseg_option_8", ],
 		], ],
 	];
 	return tea;
