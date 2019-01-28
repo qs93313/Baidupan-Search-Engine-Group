@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.05
+// @version      3.06
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -1268,7 +1268,7 @@ function bsegCss() {
     text-align: right;
     font-size: 10px;
     line-height: 27px;
-    background-color: #ffb100;
+    background-color: #FFF;
 }
 .bseg_close {
     width: 22px;
@@ -1285,6 +1285,7 @@ function bsegCss() {
     color: #000;
     font-size: 15px;
     outline: 0;
+    width: 104px;
 }
 .bseg_scont {
     display: inline-block;
@@ -1397,7 +1398,7 @@ function bsegCss() {
     color: #000;
     font-size: 10px;
     line-height: 27px;
-    background-color: #3fff00;
+    background-color: #FFF;
 }
 .bseg_qr_all {
     position: absolute;
@@ -1733,6 +1734,8 @@ function bsegCss() {
     color: #067707;
 }
 .bseg_option{
+	text-align: center;
+    text-align-last: center;
 	background-color: #FFFFE3;
 }
 .bseg_option_1{
