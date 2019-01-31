@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.06
+// @version      3.07
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -455,7 +455,7 @@ function bseg(ttime) {
 				//支持作者标题
 				var new_div_qr_title = document.createElement('div');
 				new_div_qr_title.classList.add('bseg_qr_title');
-				new_div_qr_title.innerHTML = "感谢你支持<a href='https://greasyfork.org/zh-CN/scripts/375337' target='_blank' class='bseg_a_blank'> [油猴脚本] [百度网盘资源_搜索引擎_聚合] </a>的作者,谢谢"
+				new_div_qr_title.innerHTML = "感谢你支持<a href='https://greasyfork.org/zh-CN/scripts/375337' target='_blank' class='bseg_a_blank'> [油猴脚本] [百度网盘资源_搜索引擎_聚合] </a>的开发者,谢谢"
 				new_div_qr_all.appendChild(new_div_qr_title);
 
 				//关闭按钮
@@ -518,7 +518,7 @@ function bseg(ttime) {
 			}
 		}
 	} else {
-		console.log("脚本作者还未涉及本页，请提示作者修改脚本。[油猴脚本]");
+		console.log("脚本开发者还未涉及本页，请提示开发者修改脚本。[油猴脚本]");
 	}
 }
 
@@ -569,7 +569,7 @@ function inText() {
 	var i;
 	var te = '';
 	te += '<div id="zczz" class="bseg_zczz bseg_cursor_pointer bseg_user_select">';
-	te += '支持作者';
+	te += '支持开发者';
 	te += '</div><br><p>';
 	te += '脚本在 ';
 	var user_scripts = [
@@ -606,7 +606,7 @@ function inText() {
 	}
 	te += ' 分享。';
 	te += '</p><br><p>';
-	te += '<b class="bseg_lookout">注意：该脚本将会频繁更新。</b>由于这是脚本，数据并非存在某服务器的数据库里，而是直接写死在脚本里，数据更新即脚本更新。这些百度网盘搜索引擎网站的规则数据是会发生改变的，作者会注意网站的规则变化并立即更新脚本。';
+	te += '<b class="bseg_lookout">注意：该脚本将会频繁更新。</b>由于这是脚本，数据并非存在某服务器的数据库里，而是直接写死在脚本里，数据更新即脚本更新。这些百度网盘搜索引擎网站的规则数据是会发生改变的，开发者会注意网站的规则变化并立即更新脚本。';
 	te += '</p><br><p>';
 	te += '<b class="bseg_lookout">注意！这些搜索网页上难免有广告，推荐使用<a href="https://www.yiclear.com/download/" target=_blank" class="bseg_a_blank">广告净化器</a>等扩展屏蔽广告。</b>';
 	te += '</p><br><p>';
@@ -688,7 +688,7 @@ function inText() {
 	te += '</p><br><p>';
 	te += '说明书还在进一步完善中。';
 	te += '</p><br><p>';
-	te += '还可以尝试作者其他脚本：';
+	te += '还可以尝试开发者其他脚本：';
 	te += '</p>';
 	var other_scripts = [
 		['https://greasyfork.org/zh-CN/scripts/39971', '同一词条在百度百科维基百科等网络百科中互相跳转', ],
@@ -995,8 +995,30 @@ function dir_all_ot() {
 		["https://m.sm.cn/s?q=pan.baidu.com", "神马搜索", [
 			["", "https://m.sm.cn/s?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
 		], ],
-		["https://wangpan.renrensousuo.com/", "众人搜网盘", [
-			["", "https://wangpan.renrensousuo.com/jieguo?sa=网盘搜索&q=%sv%", "bseg_option_5", ],
+		["http://www.sousuobd.com/?q=pan.baidu.com", "必达搜索", [
+			["", "http://www.sousuobd.com/?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
+		], ],
+		["https://www.httpso.cn/pan.baidu.com.html", "网页搜", [
+			["", "https://www.httpso.cn/%sv%%20pan.baidu.com.html", "bseg_option_5", ],
+		], ],
+		["http://www.yhso.com/k/pan.baidu.com", "易好搜", [
+			["", "http://www.yhso.com/k/%sv%%20pan.baidu.com", "bseg_option_5", ],
+		], ],
+		["http://www.saoso.net.cn/web/pan.baidu.com/", "扫搜", [
+			["", "http://www.saoso.net.cn/web/%sv%%20pan.baidu.com/", "bseg_option_5", ],
+		], ],
+		["http://www.bangsou.com/q/pan.baidu.com", "帮搜", [
+			["", "http://www.bangsou.com/q/%sv%%20pan.baidu.com", "bseg_option_5", ],
+		], ],
+		["http://www.dgso.cn/k/pan.baidu.com", "稻谷搜索", [
+			["", "http://www.dgso.cn/k/%sv%%20pan.baidu.com", "bseg_option_5", ],
+		], ],
+
+		["http://www.ruonu.com/pan.baidu.com.html", "若怒搜索", [
+			["", "http://www.ruonu.com/%sv%%20pan.baidu.com.html", "bseg_option_5", ],
+		], ],
+		["http://i.easou.com/s.m?q=pan.baidu.com", "宜搜", [
+			["", "http://i.easou.com/s.m?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
 		], ],
 		["https://www.ecosia.org/search?q=pan.baidu.com", "ecosia", [
 			["", "https://www.ecosia.org/search?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
@@ -1012,6 +1034,9 @@ function dir_all_ot() {
 		], ],
 		["https://swisscows.ch/web?query=pan.baidu.com&region=zh-CN", "swisscows", [
 			["", "https://swisscows.ch/web?query=%sv%%20pan.baidu.com&region=zh-CN", "bseg_option_5", ],
+		], ],
+		["https://wangpan.renrensousuo.com/", "众人搜网盘", [
+			["", "https://wangpan.renrensousuo.com/jieguo?sa=网盘搜索&q=%sv%", "bseg_option_5", ],
 		], ],
 		//以下的要收费
 		["http://www.olecn.com/", "资源下载", [
