@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.09
+// @version      3.10
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -896,6 +896,9 @@ function dir_all_ot() {
 		["https://www.soohub.com/", "soohub", [
 			["", "https://www.soohub.com/search/%sv%/1", "bseg_option_3", ],
 		], ],
+		["https://www.lesouyun.com/", "乐搜云", [
+			["", "https://www.lesouyun.com/s?wd=%sv%", "bseg_option_3", ],
+		], ],
 		//以下是搜书的
 		["http://www.tushupan.com", "图书盘", [
 			["", "http://www.tushupan.com/search?query=%sv%", "bseg_option_9", ],
@@ -1150,6 +1153,10 @@ function dir_all_ot() {
 }
 
 //二维码
+//感谢 二维码解析【https://cli.im/deqr/】
+//感谢 二维码生成【https://cli.im/】
+//感谢 应用宝图标【https://sj.qq.com/myapp/】
+//感谢 转base64【http://imgbase64.duoshitong.com/】
 function qrAll() {
 	var gg = "<span class='bseg_gg'>&nbsp;广告&nbsp;</span>&nbsp;";
 	//支付宝红包
