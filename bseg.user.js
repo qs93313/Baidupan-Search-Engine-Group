@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.11
-// @description  在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
+// @version      3.12
+// @description  盘他_在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
 // @match        *://wangpan.baidu.com/*
@@ -573,6 +573,7 @@ function inText() {
 	te += '</div><br><p>';
 	te += '脚本在 ';
 	var user_scripts = [
+		['https://zhuanlan.zhihu.com/p/53190523?app=zhihulite&utm_campaign=lite_share&invite_code=RH5E3P&sign=MTU1MDc1MzM2MDU2MA%3D%3D', '知乎'],
 		['https://greasyfork.org/zh-CN/scripts/375337', 'Greasy Fork', ],
 		['https://github.com/qs93313/Baidupan-Search-Engine-Group/blob/master/bseg.user.js', 'github', ],
 		['https://52youhou.com/userscript/userjs-rqj9q', '吾爱油猴', ],
@@ -580,7 +581,6 @@ function inText() {
 		['https://tieba.baidu.com/p/5974006313', 'tampermonkey吧', ],
 		['https://tieba.baidu.com/p/5993472277', 'chrome吧', ],
 		['https://tieba.baidu.com/p/5993474487', 'firefox吧', ],
-		['https://zhuanlan.zhihu.com/p/53190523', '知乎'],
 		['https://juejin.im/post/5c0fc011f265da615d727f00', '掘金', ],
 		['https://segmentfault.com/a/1190000017500890', 'segmentfault', ],
 		['https://www.v2ex.com/t/524418', 'V2EX', ],
@@ -883,6 +883,9 @@ function dir_all_ot() {
 		], ],
 		["https://www.cilimao.io/", "磁力猫", [
 			["", "https://www.cilimao.me/search?word=%sv%&resourceSource=1", "bseg_option_3", ],
+		], ],
+		["http://chawangpan.com/", "盘搜大师", [
+			["", "http://chawangpan.com/paymentList.html?field=%sv%&pgtype=search&pg=1&type=1&btn=1&flag=1&ctype=1", "bseg_option_3", ],
 		], ],
 		["http://www.jisoupan.com/", "及搜盘", [
 			["", "http://www.jisoupan.com/search/%sv%.html", "bseg_option_3", ],
