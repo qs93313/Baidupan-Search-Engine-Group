@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.13
+// @version      3.14
 // @description  盘他_在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -182,6 +182,8 @@ function bseg(ttime) {
 								}
 							}
 						}
+						var gOIbzPb = document.getElementsByClassName("gOIbzPb")[0];
+						gOIbzPb.classList.add('bseg_none');
 						//新建span子节点
 						father_home.appendChild(new_span);
 						new_input.focus();
