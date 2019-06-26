@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.15
+// @version      3.16
 // @description  盘他_在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -578,7 +578,7 @@ function inText() {
 		['https://zhuanlan.zhihu.com/p/53190523?app=zhihulite&utm_campaign=lite_share&invite_code=RH5E3P&sign=MTU1MDc1MzM2MDU2MA%3D%3D', '知乎'],
 		['https://greasyfork.org/zh-CN/scripts/375337', 'Greasy Fork', ],
 		['https://github.com/qs93313/Baidupan-Search-Engine-Group/blob/master/bseg.user.js', 'github', ],
-		['https://52youhou.com/userscript/userjs-rqj9q', '吾爱油猴', ],
+		//['https://52youhou.com/userscript/userjs-rqj9q', '吾爱油猴', ],
 		['https://mp.weixin.qq.com/s/k1KEn0KJhS5eHOEVoCAEZg', '微信公众号', ],
 		['https://tieba.baidu.com/p/5974006313', 'tampermonkey吧', ],
 		['https://tieba.baidu.com/p/5993472277', 'chrome吧', ],
@@ -695,7 +695,7 @@ function inText() {
 	var other_scripts = [
 		['https://greasyfork.org/zh-CN/scripts/39971', '同一词条在百度百科维基百科等网络百科中互相跳转', ],
 		['https://greasyfork.org/zh-CN/scripts/376187', '百度首页自定义导航直接展开', ],
-		['https://greasyfork.org/zh-CN/scripts/375776', '吾爱油猴自动签到', ],
+		//['https://greasyfork.org/zh-CN/scripts/375776', '吾爱油猴自动签到', ],
 		['https://greasyfork.org/zh-CN/scripts/375838', 'Greasy Fork 简体汉字页面显示日均安装量', ],
 		['https://greasyfork.org/zh-CN/scripts/375799', '全网禁用input自动完成', ],
 	];
@@ -1386,8 +1386,8 @@ function bsegCss() {
     top: 62px;
     right: 14px;
     z-index: 999;
-    width: 820px;
-    height: 510px;
+    width: 612px;
+    height: 550px;
     border: 1px solid #d3d3d3;
     border-radius: 7px;
     background-color: #fff;
@@ -1404,7 +1404,7 @@ function bsegCss() {
 }
 .bseg_qr_text {
     overflow-y: auto;
-    height: 470px;
+    height: 515px;
 }
 .bseg_bse {
     display: inline-block;
