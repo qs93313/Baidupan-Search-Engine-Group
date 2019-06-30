@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.16
+// @version      3.17
 // @description  盘他_在百度云盘页面中新增百度网盘资源_搜索引擎_聚合_一网打尽
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -738,6 +738,9 @@ function dir_all_ot() {
 	var tea = [
 		["http://www.pansoso.com/", "盘搜搜", [
 			["", "http://www.pansoso.com/zh/%sv%", "bseg_option_1", ],
+		], ],
+		["https://www.panhim.com/", "盘他", [
+			["", "https://www.panhim.com/search?query=%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.52sopan.com/", "我爱搜盘", [
 			["", "https://www.52sopan.com/s.php?keyword=%sv%", "bseg_option_1", ],
