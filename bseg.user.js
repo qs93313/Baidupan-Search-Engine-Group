@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.18
+// @version      3.19
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -794,9 +794,6 @@ function dir_all_ot() {
 		["http://www.vpansou.com/", "V盘搜", [
 			["", "http://www.vpansou.com/query?wd=%sv%", "bseg_option_2", ],
 		], ],
-		["http://tansuo233.com/", "探索云盘", [
-			["", "http://tansuo233.com/?search=%sv%", "bseg_option_2", ],
-		], ],
 		["https://www.xalssy.com.cn", "搜盘8", [
 			["", "https://www.xalssy.com.cn/search/kw%sv%", "bseg_option_2", ],
 		], ],
@@ -810,6 +807,9 @@ function dir_all_ot() {
 			["", "https://uzi8.cn/search/kw%sv%", "bseg_option_2", ],
 		], ],
 		//以下的更新慢
+		["https://www.qzhou.com.cn/", "轻舟网", [
+			["", "https://www.qzhou.com.cn/search?keyword=%sv%", "bseg_option_3", ],
+		], ],
 		["http://www.59pan.com/", "59网盘", [
 			["", "http://www.59pan.com/search/%sv%/", "bseg_option_3", ],
 		], ],
@@ -822,14 +822,8 @@ function dir_all_ot() {
 		["https://www.fastsoso.cn/", "fastsoso", [
 			["", "https://www.fastsoso.cn/search?k=%sv%", "bseg_option_3", ],
 		], ],
-		["http://www.xxdown.cn/", "西西", [
-			["", "http://www.xxdown.cn/e/action/ListInfo.php?title=%sv%&mid=1&tempid=10&ph=1", "bseg_option_3", ],
-		], ],
 		["http://www.51sopan.cn/", "51搜盘", [
 			["", "http://www.51sopan.cn/s?wd=%sv%", "bseg_option_3", ],
-		], ],
-		["https://www.qzhou.com.cn/", "轻舟网", [
-			["", "https://www.qzhou.com.cn/search?keyword=%sv%", "bseg_option_3", ],
 		], ],
 		["http://www.baiduyunsousou.com/", "暮无雪", [
 			["", "http://www.baiduyunsousou.com/search?kw=%sv%", "bseg_option_3", ],
@@ -875,6 +869,9 @@ function dir_all_ot() {
 		], ],
 		["https://www.soohub.com/", "soohub", [
 			["", "https://www.soohub.com/search/%sv%/1", "bseg_option_3", ],
+		], ],
+		["http://www.xxdown.cn/", "西西", [
+			["", "http://www.xxdown.cn/e/action/ListInfo.php?title=%sv%&mid=1&tempid=10&ph=1", "bseg_option_3", ],
 		], ],
 		//以下是搜书的
 		["http://mebook.cc/", "小书屋", [
@@ -1006,6 +1003,9 @@ function dir_all_ot() {
 			["", "https://wangpan.renrensousuo.com/jieguo?sa=网盘搜索&q=%sv%", "bseg_option_5", ],
 		], ],
 		//以下的要收费
+		["http://tansuo233.com/", "探索云盘", [
+			["", "http://tansuo233.com/?search=%sv%", "bseg_option_6", ],
+		], ],
 		["https://www.quzhuanpan.com/", "去转盘", [
 			["", "https://www.quzhuanpan.com/source/search.action?q=%sv%", "bseg_option_6", ],
 		], ],
