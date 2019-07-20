@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.20
+// @version      3.21
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -615,7 +615,7 @@ function inText() {
 	var other_pwd = [
 		['https://www.aisouziyuan.com/helper.html', '爱搜资源助手', ],
 		['https://ypsuperkey.meek.com.cn/', '云盘万能钥匙', ],
-		['http://www.bmqy.net/1466.html', '百度云分享链接一键登录', ],
+		['http://www.oceancoder.cn/post/BaiduYunAutoVisit.html', 'YunpanQV', ],
 	];
 	var oplf = other_pwd.length - 1;
 	for(i in other_pwd) {
