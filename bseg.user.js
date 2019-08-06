@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.22
+// @version      3.23
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -734,17 +734,17 @@ function qrGenerate(f, qrm, cih) {
 //搜索引擎目录
 function dir_all_ot() {
 	var tea = [
-		["https://www.xiaokesoso.com/", "小可搜搜", [
-			["", "https://www.xiaokesoso.com/s/search?q=%sv%", "bseg_option_1", ],
+		["http://www.pansoso.com/", "盘搜搜", [
+			["", "http://www.pansoso.com/zh/%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.panhim.com/", "盘他", [
 			["", "https://www.panhim.com/search?query=%sv%", "bseg_option_1", ],
 		], ],
-		["http://www.pansoso.com/", "盘搜搜", [
-			["", "http://www.pansoso.com/zh/%sv%", "bseg_option_1", ],
-		], ],
 		["https://www.52sopan.com/", "我爱搜盘", [
 			["", "https://www.52sopan.com/s.php?keyword=%sv%", "bseg_option_1", ],
+		], ],
+		["https://www.xiaokesoso.com/", "小可搜搜", [
+			["", "https://www.xiaokesoso.com/s/search?q=%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.yunpanjingling.com/", "云盘精灵", [
 			["", "https://www.yunpanjingling.com/search/%sv%", "bseg_option_1", ],
@@ -753,7 +753,6 @@ function dir_all_ot() {
 			["a", "https://yunpanem.com/search/a/%sv%/1.html", "bseg_option_2", ],
 			["f", "https://yunpanem.com/search/f/%sv%/1.html", "bseg_option_2", ],
 			["g", "https://yunpanem.com/search/g/%sv%/1.html", "bseg_option_2", ],
-			["c", "https://yunpanem.com/search/c/%sv%/1.html", "bseg_option_2", ],
 		], ],
 		["http://www.xiaobaipan.com/", "小白盘", [
 			["", "http://www.xiaobaipan.com/list-%sv%.html", "bseg_option_2", ],
