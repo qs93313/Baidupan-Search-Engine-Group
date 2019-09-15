@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.24
+// @version      3.27
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -617,6 +617,7 @@ function inText() {
 	var other_pwd = [
 		['https://www.aisouziyuan.com/helper.html', '爱搜资源助手', ],
 		['https://ypsuperkey.meek.com.cn/', '云盘万能钥匙', ],
+		['http://www.yunpanguanjia.com/', '云盘管家', ],
 		['http://www.oceancoder.cn/post/BaiduYunAutoVisit.html', 'YunpanQV', ],
 	];
 	var oplf = other_pwd.length - 1;
@@ -736,8 +737,8 @@ function qrGenerate(f, qrm, cih) {
 //搜索引擎目录
 function dir_all_ot() {
 	var tea = [
-		["http://www.pansoso.com/", "盘搜搜", [
-			["", "http://www.pansoso.com/zh/%sv%", "bseg_option_1", ],
+		["https://dalipan.com/", "大力盘", [
+			["", "https://dalipan.com/search?keyword=%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.panhim.com/", "盘他", [
 			["", "https://www.panhim.com/search?query=%sv%", "bseg_option_1", ],
@@ -768,12 +769,15 @@ function dir_all_ot() {
 		["http://www.panduoduo.net/", "盘多多", [
 			["", "http://www.panduoduo.net/s/name/%sv%", "bseg_option_2", ],
 		], ],
+		["https://www.dalipan.com/", "大力盘", [
+			["", "https://www.dalipan.com/search?keyword=%sv%", "bseg_option_2", ],
+		], ],
 		["http://www.slimego.cn/", "史莱姆", [
 			["", "http://www.slimego.cn/search.html?q=%sv%", "bseg_option_2", ],
 		], ],
 		["http://www.kengso.com/", "坑搜网", [
 			["", "http://www.kengso.com/s?wd=%sv%", "bseg_option_2", ],
-		], ],
+		], ], 
 		["http://www.repanso.com", "热盘搜", [
 			["", "http://www.repanso.com/q?wd=%sv%", "bseg_option_2", ],
 		], ],
@@ -1165,6 +1169,9 @@ function dir_all_ot() {
 		], ],
 		["https://www.aisouziyuan.com/", "爱搜资源", [
 			["", "https://www.aisouziyuan.com/?name=%sv%", "bseg_option_1", ],
+		], ],
+		["http://www.pansoso.com/", "盘搜搜", [
+			["", "http://www.pansoso.com/zh/%sv%", "bseg_option_1", ],
 		], ],
 	];
 	return tea;
