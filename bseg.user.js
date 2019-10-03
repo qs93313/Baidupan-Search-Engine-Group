@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.27
+// @version      3.28
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -737,14 +737,8 @@ function qrGenerate(f, qrm, cih) {
 //搜索引擎目录
 function dir_all_ot() {
 	var tea = [
-		["https://dalipan.com/", "大力盘", [
-			["", "https://dalipan.com/search?keyword=%sv%", "bseg_option_1", ],
-		], ],
 		["https://www.panhim.com/", "盘他", [
 			["", "https://www.panhim.com/search?query=%sv%", "bseg_option_1", ],
-		], ],
-		["https://www.52sopan.com/", "我爱搜盘", [
-			["", "https://www.52sopan.com/s.php?keyword=%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.xiaokesoso.com/", "小可搜搜", [
 			["", "https://www.xiaokesoso.com/s/search?q=%sv%", "bseg_option_1", ],
@@ -752,19 +746,14 @@ function dir_all_ot() {
 		["https://www.yunpanjingling.com/", "云盘精灵", [
 			["", "https://www.yunpanjingling.com/search/%sv%", "bseg_option_1", ],
 		], ],
+		["https://dalipan.com/", "大力盘", [
+			["", "https://dalipan.com/search?keyword=%sv%", "bseg_option_1", ],
+		], ],
 		["http://www.panmeme.com/", "盘么么", [
 			["", "http://www.panmeme.com/query?key=%sv%", "bseg_option_2", ],
 		], ],
-		["https://yunpanem.com/", "云盘恶魔", [
-			["a", "https://yunpanem.com/search/a/%sv%/1.html", "bseg_option_2", ],
-			["f", "https://yunpanem.com/search/f/%sv%/1.html", "bseg_option_2", ],
-			["g", "https://yunpanem.com/search/g/%sv%/1.html", "bseg_option_2", ],
-		], ],
 		["http://www.xiaobaipan.com/", "小白盘", [
 			["", "http://www.xiaobaipan.com/list-%sv%.html", "bseg_option_2", ],
-		], ],
-		["http://www.shiyue.org/", "十月搜索", [
-			["", "http://www.shiyue.org/s/%sv%", "bseg_option_2", ],
 		], ],
 		["http://www.panduoduo.net/", "盘多多", [
 			["", "http://www.panduoduo.net/s/name/%sv%", "bseg_option_2", ],
@@ -777,9 +766,12 @@ function dir_all_ot() {
 		], ],
 		["http://www.kengso.com/", "坑搜网", [
 			["", "http://www.kengso.com/s?wd=%sv%", "bseg_option_2", ],
-		], ], 
+		], ],
 		["http://www.repanso.com", "热盘搜", [
 			["", "http://www.repanso.com/q?wd=%sv%", "bseg_option_2", ],
+		], ],
+		["http://www.shiyue.org/", "十月搜索", [
+			["", "http://www.shiyue.org/s/%sv%", "bseg_option_2", ],
 		], ],
 		["http://wx01.51caichang.com/", "51网盘", [
 			["", "http://wx01.51caichang.com/so?keyword=%sv%", "bseg_option_2", ],
@@ -1166,6 +1158,14 @@ function dir_all_ot() {
 		], ],
 		["http://www.91sousou.cn/", "91搜搜", [
 			["", "http://www.91sousou.cn/s/%sv%/", "bseg_option_8", ],
+		], ],
+		["https://yunpanem.com/", "云盘恶魔", [
+			["a", "https://yunpanem.com/search/a/%sv%/1.html", "bseg_option_8", ],
+			["f", "https://yunpanem.com/search/f/%sv%/1.html", "bseg_option_8", ],
+			["g", "https://yunpanem.com/search/g/%sv%/1.html", "bseg_option_8", ],
+		], ],
+		["https://www.52sopan.com/", "我爱搜盘", [
+			["", "https://www.52sopan.com/s.php?keyword=%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.aisouziyuan.com/", "爱搜资源", [
 			["", "https://www.aisouziyuan.com/?name=%sv%", "bseg_option_1", ],
@@ -1752,6 +1752,7 @@ function bsegCss() {
 	text-align-last: center;
 }
 .bseg_option_1 {
+	color: #9B0A0F;
 	font-weight: bold;
 }
 .bseg_option_2 {
