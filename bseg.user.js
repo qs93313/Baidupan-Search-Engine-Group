@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.29
+// @version      3.30
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -696,8 +696,8 @@ function inText() {
 	te += '</p>';
 	var other_scripts = [
 		['https://greasyfork.org/zh-CN/scripts/39971', '同一词条在百度百科维基百科等网络百科中互相跳转', ],
-		['https://greasyfork.org/zh-CN/scripts/376187', '百度首页自定义导航直接展开', ],
 		['https://greasyfork.org/zh-CN/scripts/375838', 'Greasy Fork 简体汉字页面显示日均安装量', ],
+		['https://greasyfork.org/zh-CN/scripts/376187', '百度首页自定义导航直接展开', ],
 		['https://greasyfork.org/zh-CN/scripts/375799', '全网禁用input自动完成', ],
 	];
 	for(i in other_scripts) {
@@ -737,8 +737,14 @@ function qrGenerate(f, qrm, cih) {
 //搜索引擎目录
 function dir_all_ot() {
 	var tea = [
+		["https://www.dashengpan.com/", "大圣盘", [
+			["", "https://www.dashengpan.com/search?keyword=%sv%", "bseg_option_1", ],
+		], ],
 		["https://dalipan.com/", "大力盘", [
 			["", "https://www.dalipan.com/search?keyword=%sv%", "bseg_option_1", ],
+		], ],
+		["https://www.xiaozhaolaila.com/", "小昭来啦", [
+			["", "https://www.xiaozhaolaila.com/s/search?q=%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.yunpanjingling.com/", "云盘精灵", [
 			["", "https://www.yunpanjingling.com/search/%sv%", "bseg_option_1", ],
