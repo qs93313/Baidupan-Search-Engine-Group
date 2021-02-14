@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.30
+// @version      3.50
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -580,7 +580,7 @@ function inText() {
 		['https://greasyfork.org/zh-CN/scripts/375337', 'Greasy Fork', ],
 		['https://github.com/qs93313/Baidupan-Search-Engine-Group/blob/master/bseg.user.js', 'github', ],
 		['https://mp.weixin.qq.com/s/k1KEn0KJhS5eHOEVoCAEZg', '微信公众号', ],
-		['https://www.zhihu.com/question/54772214/answer/547902024', '知乎'],
+		['https://www.zhihu.com/question/36935371/answer/547905809', '知乎'],
 		['https://tieba.baidu.com/p/5974006313', 'tampermonkey吧', ],
 		['https://tieba.baidu.com/p/5993472277', 'chrome吧', ],
 		['https://tieba.baidu.com/p/5993474487', 'firefox吧', ],
@@ -609,35 +609,10 @@ function inText() {
 	}
 	te += ' 分享。';
 	te += '</p><br><p>';
-	te += '<b class="bseg_lookout">注意：该脚本将会频繁更新。</b>由于这是脚本，数据并非存在某服务器的数据库里，而是直接写死在脚本里，数据更新即脚本更新。这些百度网盘搜索引擎网站的规则数据是会发生改变的，开发者会注意网站的规则变化并立即更新脚本。';
+	te += '<b class="bseg_lookout">注意：该脚本可能会频繁更新。</b>由于这是脚本，数据并非存在某服务器的数据库里，而是直接写死在脚本里，数据更新即脚本更新。这些百度网盘搜索引擎网站的规则数据是会发生改变的，开发者会注意网站的规则变化并更新脚本。';
 	te += '</p><br><p>';
-	te += '<b class="bseg_lookout">注意！这些搜索网页上难免有广告，推荐使用<a href="https://www.yiclear.com/download/" target=_blank" class="bseg_a_blank">广告净化器</a>等扩展屏蔽广告。</b>';
+	te += '<b class="bseg_lookout">注意！这些搜索网页上难免有广告，推荐使用<a href="https://www.adtchrome.com/help/index.html" target=_blank" class="bseg_a_blank">广告终结者</a>等扩展屏蔽广告。</b>';
 	te += '</p><br><p>';
-	te += '<b class="bseg_lookout">注意！自动填写密码的浏览器扩展有：';
-	var other_pwd = [
-		['https://www.aisouziyuan.com/helper.html', '爱搜资源助手', ],
-		['https://ypsuperkey.meek.com.cn/', '云盘万能钥匙', ],
-		['http://www.yunpanguanjia.com/', '云盘管家', ],
-		['http://www.oceancoder.cn/post/BaiduYunAutoVisit.html', 'YunpanQV', ],
-	];
-	var oplf = other_pwd.length - 1;
-	for(i in other_pwd) {
-		var op = other_pwd[i];
-		var op0 = op[0];
-		var op1 = op[1];
-		te += '<a href="';
-		te += op0;
-		te += '" target=_blank" class="bseg_a_blank">';
-		te += op1;
-		te += '</a>';
-		if(i < oplf) {
-			te += '、';
-		} else {
-			te += '。';
-		}
-	}
-	te += '</b>它们的数据来源不同，都装上有更大几率获取密码。';
-	te += '</p></br><p>';
 	te += '下面列举脚本中已聚合的百度网盘资源_搜索引擎：';
 	te += '<br>';
 	var tea = dir_all_ot();
@@ -696,8 +671,8 @@ function inText() {
 	te += '</p>';
 	var other_scripts = [
 		['https://greasyfork.org/zh-CN/scripts/39971', '同一词条在百度百科维基百科等网络百科中互相跳转', ],
-		['https://greasyfork.org/zh-CN/scripts/375838', 'Greasy Fork 简体汉字页面显示日均安装量', ],
 		['https://greasyfork.org/zh-CN/scripts/376187', '百度首页自定义导航直接展开', ],
+		['https://greasyfork.org/zh-CN/scripts/375838', 'Greasy Fork 简体汉字页面显示日均安装量', ],
 		['https://greasyfork.org/zh-CN/scripts/375799', '全网禁用input自动完成', ],
 	];
 	for(i in other_scripts) {
@@ -743,26 +718,23 @@ function dir_all_ot() {
 		["https://dalipan.com/", "大力盘", [
 			["", "https://www.dalipan.com/search?keyword=%sv%", "bseg_option_1", ],
 		], ],
+		["https://www.iizhi.cn/", "毕方铺", [
+			["", "https://www.iizhi.cn/resource/search/%sv%", "bseg_option_1", ],
+		], ],
 		["https://www.xiaozhaolaila.com/", "小昭来啦", [
 			["", "https://www.xiaozhaolaila.com/s/search?q=%sv%", "bseg_option_1", ],
 		], ],
-		["https://www.yunpanjingling.com/", "云盘精灵", [
+		["https://www.yunpanjingling.com/", "面包树", [
 			["", "https://www.yunpanjingling.com/search/%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.xiaokesoso.com/", "小可搜搜", [
-			["", "https://www.xiaokesoso.com/s/search?q=%sv%", "bseg_option_2", ],
+			["", "https://www.xiaokesoso.com/s/search?q=%sv%", "bseg_option_1", ],
 		], ],
 		["http://www.panmeme.com/", "盘么么", [
 			["", "http://www.panmeme.com/query?key=%sv%", "bseg_option_2", ],
 		], ],
 		["http://www.xiaobaipan.com/", "小白盘", [
 			["", "http://www.xiaobaipan.com/list-%sv%.html", "bseg_option_2", ],
-		], ],
-		["http://www.rufengso.net/", "如风搜", [
-			["", "http://www.rufengso.net/s/name/%sv%", "bseg_option_2", ],
-		], ],
-		["http://www.slimego.cn/", "史莱姆", [
-			["", "http://www.slimego.cn/search.html?q=%sv%", "bseg_option_2", ],
 		], ],
 		["http://www.kengso.com/", "坑搜网", [
 			["", "http://www.kengso.com/s?wd=%sv%", "bseg_option_2", ],
@@ -791,13 +763,10 @@ function dir_all_ot() {
 		["http://www.sodu123.com/", "搜度", [
 			["", "http://www.sodu123.com/sodu/so.php?q=%sv%", "bseg_option_2", ],
 		], ],
+		["http://www.slimego.cn/", "史莱姆", [
+			["", "http://www.slimego.cn/search.html?q=%sv%", "bseg_option_2", ],
+		], ],
 		//以下的更新慢
-		["https://www.qzhou.com.cn/", "轻舟网", [
-			["", "https://www.qzhou.com.cn/search?keyword=%sv%", "bseg_option_3", ],
-		], ],
-		["http://www.59pan.com/", "59网盘", [
-			["", "http://www.59pan.com/search/%sv%/", "bseg_option_3", ],
-		], ],
 		["http://www.pansou.com/", "盘搜", [
 			["", "http://www.pansou.com/?q=%sv%", "bseg_option_3", ],
 		], ],
@@ -807,14 +776,8 @@ function dir_all_ot() {
 		["http://www.51sopan.cn/", "51搜盘", [
 			["", "http://www.51sopan.cn/s?wd=%sv%", "bseg_option_3", ],
 		], ],
-		["http://www.baiduyunsousou.com/", "暮无雪", [
+		["http://www.baiduyunsousou.com/", "两鸟仪", [
 			["", "http://www.baiduyunsousou.com/search?kw=%sv%", "bseg_option_3", ],
-		], ],
-		["https://www.dupanbang.com/", "度盘帮", [
-			["", "https://www.dupanbang.com/q/%sv%", "bseg_option_3", ],
-		], ],
-		["http://www.xilinjie.com/", "西林街", [
-			["", "http://www.xilinjie.com/s?q=%sv%&t=pan", "bseg_option_3", ],
 		], ],
 		["http://www.vpanso.com/", "微盘搜", [
 			["", "http://www.vpanso.com/s?wd=%sv%", "bseg_option_3", ],
@@ -822,17 +785,8 @@ function dir_all_ot() {
 		["https://www.xxhh360.com/", "云搜大师", [
 			["", "https://www.xxhh360.com/search?q=%sv%", "bseg_option_3", ],
 		], ],
-		["https://www.esopan.com/", "易搜盘", [
-			["", "https://www.esopan.com/share/kw%sv%", "bseg_option_3", ],
-		], ],
 		["http://www.panpanso.com/", "盘盘搜", [
 			["", "http://www.panpanso.com/baiduwp?qiehuan=1&sousuo=%sv%", "bseg_option_3", ],
-		], ],
-		["http://www.lsdy8.com/bdpan.php", "猎手电影", [
-			["", "http://www.lsdy8.com/bdpan.php?sousuo=%sv%", "bseg_option_3", ],
-		], ],
-		["https://jidanso.com/", "网盘传奇", [
-			["", "https://www.jidanso.com/index.php/search/?q=%sv%", "bseg_option_3", ],
 		], ],
 		["https://pan.here325.com/", "325搜", [
 			["", "https://pan.here325.com/s?q=%sv%", "bseg_option_3", ],
@@ -843,76 +797,21 @@ function dir_all_ot() {
 		["http://www.jisoupan.com/", "及搜盘", [
 			["", "http://www.jisoupan.com/search/%sv%.html", "bseg_option_3", ],
 		], ],
-		["http://www.jisoupan.com/", "多多下载", [
-			["", "http://www.jisoupan.com/search/%sv%.html", "bseg_option_3", ],
-		], ],
 		["http://www.sowangpan.com/", "搜网盘", [
 			["", "http://www.sowangpan.com/search/%sv%-0-全部-0.html", "bseg_option_3", ],
 		], ],
-		["https://www.soohub.com/", "soohub", [
-			["", "https://www.soohub.com/search/%sv%/1", "bseg_option_3", ],
-		], ],
-		["http://www.xxdown.cn/", "西西", [
-			["", "http://www.xxdown.cn/e/action/ListInfo.php?title=%sv%&mid=1&tempid=10&ph=1", "bseg_option_3", ],
-		], ],
-		["http://www.99baiduyun.com/", "99搜索", [
-			["", "http://www.99baiduyun.com/baidu/%sv%", "bseg_option_3", ],
-		], ],
 		//以下是搜书的
-		["http://mebook.cc/", "小书屋", [
-			["", "http://mebook.cc/?s=%sv%", "bseg_option_9", ],
-		], ],
-		["http://www.ireadweek.com/index.php", "周读", [
-			["", "http://www.ireadweek.com/index.php?g=portal&m=search&a=index&keyword=%sv%", "bseg_option_9", ],
-		], ],
 		["http://ibooks.org.cn/", "读书小站", [
 			["", "http://ibooks.org.cn/?s=下载 %sv%", "bseg_option_9", ],
 		], ],
 		["https://sobooks.cc/", "sobooks", [
 			["", "https://sobooks.cc/search/%sv%", "bseg_option_9", ],
 		], ],
-		["http://neikuw.com/", "内酷网", [
-			["", "http://neikuw.com/?s=%sv%", "bseg_option_9", ],
+		["http://www.xiaoshuwu.vip/", "小书屋", [
+			["", "http://www.xiaoshuwu.vip/search.php?q=%sv%", "bseg_option_9", ],
 		], ],
 		["https://www.xssousou.com/", "小说搜搜", [
 			["", "https://www.xssousou.com/s/%sv%.html://neikuw.com/?s=%sv%", "bseg_option_9", ],
-		], ],
-		["http://www.tushupan.com", "图书盘", [
-			["", "http://www.tushupan.com/search?query=%sv%", "bseg_option_9", ],
-		], ],
-		//以下的搜不到
-		["http://www.sosoyunpan.com/", "搜搜云盘", [
-			["", "http://www.sosoyunpan.com/search.asp?wd=%sv%", "bseg_option_4", ],
-		], ],
-		["https://www.panuso.com/", "盘优搜", [
-			["", "https://www.panuso.com/s/%sv%.html", "bseg_option_4", ],
-		], ],
-		["https://pan.90xz.com/", "90网盘", [
-			["", "https://pan.90xz.com/search/%sv%", "bseg_option_4", ],
-		], ],
-		["https://www.dyroy.com/", "乐依分享", [
-			["", "https://www.dyroy.com/html/search.html?q=%sv%", "bseg_option_4", ],
-		], ],
-		["https://www.0933.me/", "网盘资源网", [
-			["", "https://www.0933.me/search.html?wd=%sv%", "bseg_option_4", ],
-		], ],
-		["https://www.sov5.cn/", "SoV5", [
-			["", "https://www.sov5.cn/search?q=%sv%", "bseg_option_4", ],
-		], ],
-		["http://www.zhaoyunpan.cn/", "找云盘", [
-			["", "http://www.zhaoyunpan.cn/share.php?key=%sv%", "bseg_option_4", ],
-		], ],
-		["http://sou.wolfbe.com/", "云搜一下", [
-			["", "http://sou.wolfbe.com/s?q=%sv%", "bseg_option_4", ],
-		], ],
-		["http://www.soupan.info/", "搜盘", [
-			["", "http://www.soupan.info/search.php?q=%sv%", "bseg_option_4", ],
-		], ],
-		["https://tool.lu/pansou/", "在线工具", [
-			["", "https://tool.lu/pansou/index.html?q=%sv%", "bseg_option_4", ],
-		], ],
-		["http://www.pan131.com/", "盘131", [
-			["", "http://www.pan131.com/yun/%sv%/", "bseg_option_4", ],
 		], ],
 		//以下不是专门的搜索引擎
 		["https://www.baidu.com/s?wd=(pan|yun).baidu.com&ct=1", "百度搜索", [
@@ -923,18 +822,6 @@ function dir_all_ot() {
 		], ],
 		["https://magi.com/search?q=pan.baidu.com", "Magi搜索", [
 			["", "https://magi.com/search?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
-		], ],
-		["https://mijisou.com/?language=zh-CN&q=pan.baidu.com", "秘迹搜索", [
-			["", "https://mijisou.com/?language=zh-CN&q=%sv%%20pan.baidu.com", "bseg_option_5", ],
-		], ],
-		["https://so.mezw.com/Search?wd=pan.baidu.com", "Mazi", [
-			["", "https://magi.com/search?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
-		], ],
-		["https://so.mezw.com/Search?wd=pan.baidu.com", "MEZW", [
-			["", "https://so.mezw.com/Search?wd=%sv%%20pan.baidu.com", "bseg_option_5", ],
-		], ],
-		["https://searx.me/?language=zh-CN&q=pan.baidu.com", "searx", [
-			["", "https://searx.me/?language=zh-CN&q=%sv%%20pan.baidu.com", "bseg_option_5", ],
 		], ],
 		["https://www.sogou.com/web?ie=utf8&query=pan.baidu.com", "搜狗搜索", [
 			["", "https://www.sogou.com/web?ie=utf8&query=%sv%%20pan.baidu.com", "bseg_option_5", ],
@@ -954,32 +841,23 @@ function dir_all_ot() {
 		["http://www.sousuobd.com/?q=pan.baidu.com", "必达搜索", [
 			["", "http://www.sousuobd.com/?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
 		], ],
-		["https://lookao.com/search?q=pan.baidu.com", "lookao", [
-			["", "https://lookao.com/search?q=pan.baidu.com+%sv%", "bseg_option_5", ],
-		], ],
 		["https://dogedoge.com/results?q=pan.baidu.com", "多吉搜索", [
 			["", "https://dogedoge.com/results?q=pan.baidu.com+%sv%", "bseg_option_5", ],
 		], ],
-		["https://www.httpso.cn/pan.baidu.com.html", "网页搜", [
-			["", "https://www.httpso.cn/%sv%%20pan.baidu.com.html", "bseg_option_5", ],
+		["https://mijisou.com/?language=zh-CN&q=pan.baidu.com", "秘迹搜索", [
+			["", "https://mijisou.com/?language=zh-CN&q=%sv%%20pan.baidu.com", "bseg_option_5", ],
 		], ],
-		["http://www.yhso.com/k/pan.baidu.com", "易好搜", [
-			["", "http://www.yhso.com/k/%sv%%20pan.baidu.com", "bseg_option_5", ],
+		["https://www.httpso.cn/pan.baidu.com.html", "包装搜", [
+			["", "https://www.httpso.cn/%sv%%20pan.baidu.com.html", "bseg_option_5", ],
 		], ],
 		["http://www.saoso.net.cn/web/pan.baidu.com/", "扫搜", [
 			["", "http://www.saoso.net.cn/web/%sv%%20pan.baidu.com/", "bseg_option_5", ],
 		], ],
-		["http://www.bangsou.com/q/pan.baidu.com", "帮搜", [
-			["", "http://www.bangsou.com/q/%sv%%20pan.baidu.com", "bseg_option_5", ],
-		], ],
-		["http://www.dgso.cn/k/pan.baidu.com", "稻谷搜索", [
+		["http://www.dgso.cn/k/pan.baidu.com", "稻搜", [
 			["", "http://www.dgso.cn/k/%sv%%20pan.baidu.com", "bseg_option_5", ],
 		], ],
-		["http://www.ruonu.com/pan.baidu.com.html", "若怒搜索", [
-			["", "http://www.ruonu.com/%sv%%20pan.baidu.com.html", "bseg_option_5", ],
-		], ],
-		["http://i.easou.com/s.m?q=pan.baidu.com", "宜搜", [
-			["", "http://i.easou.com/s.m?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
+		["http://www.bangsou.com/q/pan.baidu.com", "帮搜", [
+			["", "http://www.bangsou.com/q/%sv%%20pan.baidu.com", "bseg_option_5", ],
 		], ],
 		["https://www.ecosia.org/search?q=pan.baidu.com", "ecosia", [
 			["", "https://www.ecosia.org/search?q=%sv%%20pan.baidu.com", "bseg_option_5", ],
@@ -1000,9 +878,6 @@ function dir_all_ot() {
 			["", "https://wangpan.renrensousuo.com/jieguo?sa=网盘搜索&q=%sv%", "bseg_option_5", ],
 		], ],
 		//以下的要收费
-		["http://tansuo233.com/", "探索云盘", [
-			["", "http://tansuo233.com/?search=%sv%", "bseg_option_6", ],
-		], ],
 		["https://www.quzhuanpan.com/", "去转盘", [
 			["", "https://www.quzhuanpan.com/source/search.action?q=%sv%", "bseg_option_6", ],
 		], ],
@@ -1022,168 +897,6 @@ function dir_all_ot() {
 		], ],
 		["http://www.olecn.com/", "资源下载", [
 			["", "http://www.olecn.com/?s=%sv%", "bseg_option_6", ],
-		], ],
-		//以下的什么都搜不到
-		["https://www.xiazaisou.com/", "下载搜", [
-			["", "https://www.xiazaisou.com/wangpan?s=%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.13910.com/", "盘找找", [
-			["", "http://www.13910.com/s/?kw=%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.verypan.com/", "verypan", [
-			["", "http://www.verypan.com/index/index/baidusearch?keyword=%sv%", "bseg_option_7", ],
-		], ],
-		["https://www.ttyunsou.com/", "天天云搜", [
-			["", "https://www.ttyunsou.com/s?keyword=%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.wodepan.com/", "我的盘", [
-			["", "http://www.wodepan.com/list/%sv%-1.html", "bseg_option_7", ],
-		], ],
-		["http://www.aiyoweia.com/", "哎呦喂啊", [
-			["", "http://www.aiyoweia.com/search/%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.iwapan.com/", "爱挖盘", [
-			["", "http://www.iwapan.com/so.aspx?wd=%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.xibianyun.com/wp/", "西边云", [
-			["", "http://www.xibianyun.com/wp/search?q=%sv%", "bseg_option_7", ],
-		], ],
-		["http://yun.java1234.com/", "专搜java", [
-			["", "http://yun.java1234.com/search?q=%sv%", "bseg_option_7", ],
-		], ],
-		["https://www.sosobtp.com/", "网盘搜索BT", [
-			["", "https://www.sosobtp.com/search/%sv%", "bseg_option_7", ],
-		], ],
-		["http://baiduyun.6miu.com/", "6miu", [
-			["", "http://baiduyun.6miu.com/word.html?kw=%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.sowp.cn/", "网盘搜搜", [
-			["", "http://www.sowp.cn/list/%sv%-1.html", "bseg_option_7", ],
-		], ],
-		["http://www.friok.com/", "百度盘资源", [
-			["", "http://www.friok.com/?s=%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.pansousou.net/", "盘搜搜", [
-			["", "http://www.pansousou.net/s?wd=%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.sodwz.com/", "网盘资源网", [
-			["", "http://www.sodwz.com/search/type_0_1_%sv%/", "bseg_option_7", ],
-		], ],
-		["http://www.yigeju.cn/", "一个桔", [
-			["", "http://www.yigeju.cn/s.php?kw=%sv%", "bseg_option_7", ],
-		], ],
-		["http://www.pan91.com/", "pan91", [
-			["", "http://www.pan91.com/index/index/search?key=%sv%", "bseg_option_7", ],
-		], ],
-		["http://kaopu.so/", "靠谱搜索", [
-			["", "http://kaopu.so/pan/%sv%", "bseg_option_7", ],
-		], ],
-		["https://www.xiazaisou.com/wangpan", "下载搜", [
-			["", "https://www.xiazaisou.com/wangpan?s=%sv%", "bseg_option_7", ],
-		], ],
-		["http://pan.muyi.so/", "沐依神器", [
-			["", "http://pan.muyi.so/index.php/home/index/result.html?q=%sv%", "bseg_option_7", ],
-		], ],
-		//以下的不稳定
-		["http://wx01.51caichang.com/", "51网盘", [
-			["", "http://wx01.51caichang.com/so?keyword=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.58wangpan.com/", "58网盘", [
-			["", "http://www.58wangpan.com/search/kw%sv%", "bseg_option_8", ],
-		], ],
-		["https://www.56wangpan.com/", "56网盘", [
-			["", "https://www.56wangpan.com/search/kw%sv%", "bseg_option_8", ],
-		], ],
-		["https://www.panc.cc/", "胖次搜索", [
-			["", "https://www.panc.cc/s/%sv%/td_0", "bseg_option_8", ],
-		], ],
-		["https://www.pp93.com/", "泡泡", [
-			["史莱姆", "http://www.pp93.com/pp93sou.php?Slime=%sv%", "bseg_option_8", ],
-			["盘搜", "http://www.pp93.com/pp93sou.php?pansou=%sv%", "bseg_option_8", ],
-			["胖次", "http://www.pp93.com/pp93sou.php?panc=%sv%", "bseg_option_8", ],
-			["盘搜搜", "http://www.pp93.com/pp93sou.php?pansoso=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.daysou.com/", "云搜", [
-			["全量", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=4", "bseg_option_8", ],
-			["加密", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=3", "bseg_option_8", ],
-			["1", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=0", "bseg_option_8", ],
-			["3", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=2", "bseg_option_8", ],
-			["2", "http://www.daysou.com/s?q=%sv%&start=0&isget=1&tp=all&cl=0&line=4", "bseg_option_8", ],
-		], ],
-		["http://www.wanpan.info/", "万盘搜索", [
-			["", "http://www.wanpan.info/k/%sv%", "bseg_option_8", ],
-		], ],
-		["https://www.yumuso.com/", "榆木搜", [
-			["", "https://www.yumuso.com/q/%sv%", "bseg_option_8", ],
-		], ],
-		["http://so.hzbslp.com/", "特多盘", [
-			["", "http://so.hzbslp.com/api.php?pn=1&sr=%sv%", "bseg_option_8", ],
-		], ],
-		//以下的可能已失效
-		["https://uzi8.cn/", "优质吧", [
-			["", "https://uzi8.cn/search/kw%sv%", "bseg_option_8", ],
-		], ],
-		["https://www.xiaobd.net/", "小不点搜索", [
-			["", "https://www.xiaobd.net/m/search?wd=%sv%", "bseg_option_8", ],
-		], ],
-		["https://www.h2ero.com/", "咕咕云", [
-			["", "https://www.h2ero.com/search?keywords=%sv%", "bseg_option_8", ],
-		], ],
-		["https://nyaso.com/", "喵搜动漫", [
-			["", "https://nyaso.com/dong/%sv%.html", "bseg_option_8", ],
-		], ],
-		["https://www.fqsousou.com/", "番茄搜搜", [
-			["", "https://www.fqsousou.com/s/%sv%.html", "bseg_option_8", ],
-		], ],
-		["http://www.sopanba.com/", "搜盘吧", [
-			["", "http://www.sopanba.com/s/name/%sv%", "bseg_option_8", ],
-		], ],
-		["http://wjsou.com/", "文件搜", [
-			["", "http://wjsou.com:8080/s2.jsp?q=%sv%", "bseg_option_8", ],
-		], ],
-		["https://wangpan007.com/", "网盘007", [
-			["", "https://wangpan007.com/share/kw%sv%", "bseg_option_8", ],
-		], ],
-		["https://www.yunpuzi.net/", "云铺子", [
-			["", "https://www.yunpuzi.net/all/s-%sv%.html", "bseg_option_8", ],
-		], ],
-		["https://www.cilimao.io/", "磁力猫", [
-			["", "https://www.cilimao.io/search?word=%sv%&resourceSource=1", "bseg_option_8", ],
-		], ],
-		["https://www.lesouyun.com/", "乐搜云", [
-			["", "https://www.lesouyun.com/s?wd=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.guanggua.com/", "盘115", [
-			["", "http://www.guanggua.com/search?key=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.sosuopan.com/", "搜索盘", [
-			["", "http://www.sosuopan.com/search?q=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.tuoniao.me/", "鸵鸟搜索", [
-			["", "http://www.tuoniao.me/search/%sv%/list", "bseg_option_8", ],
-		], ],
-		["http://www.91sousou.cn/", "91搜搜", [
-			["", "http://www.91sousou.cn/s/%sv%/", "bseg_option_8", ],
-		], ],
-		["https://www.xalssy.com.cn", "搜盘8", [
-			["", "https://www.xalssy.com.cn/search/kw%sv%", "bseg_option_8", ],
-		], ],
-		["https://yunpanem.com/", "云盘恶魔", [
-			["a", "https://yunpanem.com/search/a/%sv%/1.html", "bseg_option_8", ],
-			["f", "https://yunpanem.com/search/f/%sv%/1.html", "bseg_option_8", ],
-			["g", "https://yunpanem.com/search/g/%sv%/1.html", "bseg_option_8", ],
-		], ],
-		["https://www.52sopan.com/", "我爱搜盘", [
-			["", "https://www.52sopan.com/s.php?keyword=%sv%", "bseg_option_8", ],
-		], ],
-		["https://www.aisouziyuan.com/", "爱搜资源", [
-			["", "https://www.aisouziyuan.com/?name=%sv%", "bseg_option_8", ],
-		], ],
-		["http://www.pansoso.com/", "盘搜搜", [
-			["", "http://www.pansoso.com/zh/%sv%", "bseg_option_8", ],
-		], ],
-		["https://www.panhim.com/", "盘他", [
-			["", "https://www.panhim.com/search?query=%sv%", "bseg_option_8", ],
 		], ],
 	];
 	return tea;
@@ -1214,18 +927,12 @@ function qrAll() {
 	var qrToutiao = "data:image/png;base64,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";
 
 	var qrAllArr = [
-		//支付宝红包
-		[qrAlipayHongbao, "<span class='bseg_alipay'>支付宝</span>扫一扫<br>或搜<span class='bseg_lookout'> 528558941 </span><span class='bseg_lookout'>领红包</span>"],
 		//支付宝
 		[qrAlipay, "<span class='bseg_alipay'>支付宝</span>扫一扫<br>捐助支持"],
-		//余额宝体验金
-		[qrYuebaoT, "<span class='bseg_alipay'>支付宝·</span><span class='bseg_YuebaoT'>余额宝·体验金</span><br>跳龙门 赢收益奖励"],
 		//微信
 		[qrWechat, "<span class='bseg_Wechat'>微信</span>扫一扫<br>捐助支持"],
 		//QQ
 		[qrQQ, "QQ扫一扫<br>捐助支持"],
-		//一淘
-		[qrYt, "淘宝生活<br>省钱利器"],
 	];
 	return qrAllArr;
 }
@@ -1420,7 +1127,7 @@ function bsegCss() {
 	right: 14px;
 	z-index: 999;
 	width: 612px;
-	height: 550px;
+	height: 285px;
 	border: 1px solid #d3d3d3;
 	border-radius: 7px;
 	background-color: #fff;
