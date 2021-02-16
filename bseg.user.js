@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.51
+// @version      3.60
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -671,7 +671,6 @@ function inText() {
 	te += '</p>';
 	var other_scripts = [
 		['https://greasyfork.org/zh-CN/scripts/39971', '同一词条在百度百科维基百科等网络百科中互相跳转', ],
-		['https://greasyfork.org/zh-CN/scripts/376187', '百度首页自定义导航直接展开', ],
 		['https://greasyfork.org/zh-CN/scripts/375838', 'Greasy Fork 简体汉字页面显示日均安装量', ],
 		['https://greasyfork.org/zh-CN/scripts/375799', '全网禁用input自动完成', ],
 	];
@@ -718,17 +717,32 @@ function dir_all_ot() {
 		["https://dalipan.com/", "大力盘", [
 			["", "https://www.dalipan.com/search?keyword=%sv%", "bseg_option_1", ],
 		], ],
+		["https://www.feifeipan.com/", "飞飞盘", [
+			["", "https://www.feifeipan.com/search?keyword=%sv%", "bseg_option_1", ],
+		], ],
 		["https://www.iizhi.cn/", "毕方铺", [
 			["", "https://www.iizhi.cn/resource/search/%sv%", "bseg_option_1", ],
 		], ],
-		["https://www.xiaozhaolaila.com/", "小昭来啦", [
-			["", "https://www.xiaozhaolaila.com/s/search?q=%sv%", "bseg_option_1", ],
+		["https://www.luomapan.com/", "罗马盘", [
+			["", "https://www.luomapan.com/search?keyword=%sv%", "bseg_option_1", ],
+		], ],
+		["https://www.baimapan.com/", "白马盘", [
+			["", "https://www.baimapan.com//search?keyword=%sv%", "bseg_option_1", ],
+		], ],
+		["https://www.feizhupan.com/", "飞猪盘", [
+			["", "https://www.feizhupan.com/search?keyword=%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.yunpanjingling.com/", "面包树", [
 			["", "https://www.yunpanjingling.com/search/%sv%", "bseg_option_1", ],
 		], ],
+		["https://www.xiaozhaolaila.com/", "小昭来啦", [
+			["", "https://www.xiaozhaolaila.com/s/search?q=%sv%", "bseg_option_1", ],
+		], ],
 		["https://www.xiaokesoso.com/", "小可搜搜", [
 			["", "https://www.xiaokesoso.com/s/search?q=%sv%", "bseg_option_1", ],
+		], ],
+		["https://www.panother.com/", "盘他", [
+			["", "https://www.panother.com/search?query=%sv%", "bseg_option_1", ],
 		], ],
 		["http://www.panmeme.com/", "盘么么", [
 			["", "http://www.panmeme.com/query?key=%sv%", "bseg_option_2", ],
@@ -1220,6 +1234,281 @@ function bsegCss() {
 	margin: 18px 0 0 2px;
 }
 .bseg_f_checkout > .bseg_s {
+	display: inline-block;
+	margin: 5px 0 0 10px;
+}
+.bseg_f_download > .bseg_s {
+	display: inline-block;
+	margin: 5px 0 0 48px;
+}
+.bseg_f_version > .bseg_s {
+	display: inline-block;
+	margin: 5px 0 0 85px;
+}
+.bseg_f_mall > .bseg_s {
+	margin: 0 0 0 3px;
+}
+.bseg_f_home > .bseg_s > .bseg_select {
+	height: 30px;
+}
+.bseg_f_init > .bseg_s > .bseg_select {
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+}
+.bseg_f_download > .bseg_s > .bseg_select {
+	height: 30px;
+}
+.bseg_f_version > .bseg_s > .bseg_select {
+	height: 30px;
+}
+.bseg_f_checkout > .bseg_s > .bseg_select {
+	height: 30px;
+}
+.bseg_f_mall > .bseg_s > .bseg_select {
+	height: 30px;
+}
+.bseg_f_error > .bseg_s > .bseg_select {
+	height: 30px;
+}
+.bseg_f_face > .bseg_s > .bseg_select {
+	height: 30px;
+}
+.bseg_f_wenzhang > .bseg_s > .bseg_select {
+	display: inline-block;
+	height: 30px;
+}
+.bseg_f_notlogin > .bseg_s > .bseg_select {
+	display: inline-block;
+	height: 30px;
+}
+.bseg_f_sx > .bseg_s > .bseg_select {
+	display: inline-block;
+	height: 30px;
+}
+.bseg_f_center > .bseg_s > .bseg_select {
+	width: 100px;
+	height: 30px;
+}
+.bseg_f_home > .bseg_s > .bseg_scont {
+	width: 264px;
+	height: 24px;
+}
+.bseg_f_init > .bseg_s > .bseg_scont {
+	width: 202px;
+	height: 24px;
+}
+.bseg_f_download > .bseg_s > .bseg_scont {
+	width: 234px;
+	height: 24px;
+}
+.bseg_f_version > .bseg_s > .bseg_scont {
+	width: 234px;
+	height: 24px;
+}
+.bseg_f_checkout > .bseg_s > .bseg_scont {
+	width: 234px;
+	height: 24px;
+}
+.bseg_f_mall > .bseg_s > .bseg_scont {
+	padding: 4px 2px;
+	width: 215px;
+	height: 20px;
+	border-left: 1px solid #000;
+}
+.bseg_f_center > .bseg_s > .bseg_scont {
+	width: 176px;
+	height: 24px;
+}
+.bseg_f_error > .bseg_s > .bseg_scont {
+	width: 255px;
+	height: 24px;
+}
+.bseg_f_wenzhang > .bseg_s > .bseg_scont {
+	width: 264px;
+	height: 24px;
+}
+.bseg_f_notlogin > .bseg_s > .bseg_scont {
+	width: 214px;
+	height: 24px;
+}
+.bseg_f_sx > .bseg_s > .bseg_scont {
+	width: 214px;
+	height: 24px;
+}
+.bseg_f_face > .bseg_s > .bseg_scont {
+	width: 264px;
+	height: 24px;
+}
+.bseg_f_init > .bseg_s > .bseg_btn {
+	width: 42px;
+}
+.bseg_f_checkout > .bseg_s > .bseg_btn {
+	height: 31px;
+	line-height: 31px;
+}
+.bseg_f_mall > .bseg_s > .bseg_btn {
+	height: 30px;
+	font-size: 15px;
+	line-height: 4px;
+}
+.bseg_f_center > .bseg_s > .bseg_btn {
+	font-size: 15px;
+}
+.father_center > .bseg_s > .bseg_btn {
+	height: 30px;
+	line-height: 30px;
+}
+.father_error > .bseg_s > .bseg_btn {
+	height: 30px;
+	line-height: 30px;
+}
+.bseg_verify_input {
+	padding-bottom: 20px;
+}
+.bseg_tce {
+	padding: 0 8px!important;
+}
+.bseg_header_content {
+	width: 1140px;
+}
+.bseg_nav_button {
+	margin: 0 5px!important;
+}
+.bseg_first_nav_button_sub {
+	margin-left: 250px;
+}
+.bseg_b_no_ln {
+	margin-right: 4px!important;
+}
+.bseg_a_alert_c {
+	color: #008000;
+	font-size: 15px;
+}
+.bseg_n_alert_c {
+	color: #f00;
+	font-size: 18px;
+}
+.bseg_a_blank {
+	color: green!important;
+	text-decoration: underline!important;
+}
+.bseg_lookout {
+	color: #f00;
+}
+.bseg_gg {
+	background-color: red;
+	color: #fff;
+}
+.bseg_alipay {
+	color: #2790D6;
+}
+.bseg_YuebaoT {
+	color: #EB0A0A;
+}
+.bseg_Jdjr {
+	color: #FD3414;
+}
+.bseg_Wechat {
+	color: #7CAA0D;
+}
+.bseg_BaiduPan {
+	color: #2F73EF;
+}
+.bseg_Ttqw {
+	color: #FA394E;
+}
+.bseg_Txw {
+	color: #FF4424;
+}
+.bseg_Dzkd {
+	color: #C70000;
+}
+.bseg_Yt {
+	color: #EA100F;
+}
+.bseg_Yztm {
+	color: #EE4C40;
+}
+.bseg_Tfb {
+	color: #FE5100;
+}
+.bseg_Lq {
+	color: #00B7A8;
+}
+.bseg_Htt {
+	color: #FE3D44;
+}
+.bseg_Xtt {
+	color: #FE0000;
+}
+.bseg_Wlkk {
+	color: #FF120D;
+}
+.bseg_yqm {
+	background-color: #950AD3;
+	color: #fff;
+}
+.bseg_Mytt {
+	color: #E83425;
+}
+.bseg_Dftt {
+	color: #F90000;
+}
+.bseg_4399 {
+	color: #067707;
+}
+.bseg_Zh {
+	color: #0F88EB;
+}
+.bseg_option {
+	background-color: #FFF;
+	text-align: center;
+	text-align-last: center;
+}
+.bseg_option_1 {
+	color: #9B0A0F;
+	font-weight: bold;
+	background-color:#d8fbd0;
+}
+.bseg_option_2 {
+	color: #F00;
+}
+.bseg_option_3 {
+	color: #E38600;
+}
+.bseg_option_4 {
+	color: #29C90A;
+}
+.bseg_option_5 {
+	color: #00C4D3;
+}
+.bseg_option_6 {
+	color: #3931FF;
+}
+.bseg_option_9 {
+	color: #A0A70F;
+}
+.bseg_option_7 {
+	color: #ABC;
+}
+.bseg_option_8 {
+	color: #dfc5f7;
+}
+.bseg_zczz {
+	margin: 0 auto;
+	width: 114px;
+	height: 30px;
+	border-radius: 5px;
+	background-color: #fb1d1d;
+	color: white;
+	text-align: center;
+	text-indent: 0;
+	font-size: 18px;
+	line-height: 30px;
+}
+`);
+} > .bseg_s {
 	display: inline-block;
 	margin: 5px 0 0 10px;
 }
