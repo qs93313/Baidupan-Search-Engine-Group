@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.62
+// @version      3.63
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -711,9 +711,6 @@ function qrGenerate(f, qrm, cih) {
 //搜索引擎目录
 function dir_all_ot() {
 	var tea = [
-		["https://www.xiaomapan.com/", "小马盘", [
-			["", "https://www.xiaomapan.com/search?keyword=%sv%", "bseg_option_1", ],
-		], ],
 		["https://www.dashengpan.com/", "大圣盘", [
 			["", "https://www.dashengpan.com/search?keyword=%sv%", "bseg_option_1", ],
 		], ],
@@ -735,6 +732,12 @@ function dir_all_ot() {
 		["https://www.luomapan.com/", "罗马盘", [
 			["", "https://www.luomapan.com/search?keyword=%sv%", "bseg_option_1", ],
 		], ],
+		["https://www.xiaomapan.com/", "小马盘", [
+			["", "https://www.xiaomapan.com/search?keyword=%sv%", "bseg_option_1", ],
+		], ],
+		["https://www.panother.com/", "盘他", [
+			["", "https://www.panother.com/search?query=%sv%", "bseg_option_1", ],
+		], ],
 		["https://www.yunpanjingling.com/", "面包树", [
 			["", "https://www.yunpanjingling.com/search/%sv%", "bseg_option_1", ],
 		], ],
@@ -743,9 +746,6 @@ function dir_all_ot() {
 		], ],
 		["https://www.xiaokesoso.com/", "小可搜搜", [
 			["", "https://www.xiaokesoso.com/s/search?q=%sv%", "bseg_option_1", ],
-		], ],
-		["https://www.panother.com/", "盘他", [
-			["", "https://www.panother.com/search?query=%sv%", "bseg_option_1", ],
 		], ],
 		["https://www.kolsou.com/", "酷搜", [
 			["", "https://www.kolsou.com/search?q=%sv%", "bseg_option_2", ],
