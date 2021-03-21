@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         百度网盘资源_搜索引擎_聚合
-// @version      3.63
+// @version      3.64
 // @description  在百度云盘页面中新增百度网盘资源_搜索引擎_(争取一网打尽)
 // @match        *://pan.baidu.com/*
 // @match        *://yun.baidu.com/*
@@ -711,6 +711,9 @@ function qrGenerate(f, qrm, cih) {
 //搜索引擎目录
 function dir_all_ot() {
 	var tea = [
+		["https://www.yubaipan.com/", "白玉盘", [
+			["", "https://www.yubaipan.com/#/main/search?keyword=%sv%", "bseg_option_1", ],
+		], ],
 		["https://www.dashengpan.com/", "大圣盘", [
 			["", "https://www.dashengpan.com/search?keyword=%sv%", "bseg_option_1", ],
 		], ],
